@@ -8,10 +8,8 @@ INSERT INTO users (username,password_hash,role) VALUES ('jose','$2a$10$gPzzMX6n6
 INSERT INTO users (username,password_hash,role) VALUES ('alejandro', '$2a$10$kEvamjfY0ju9Hme4llBH2eJ0KWbqP/QrK0B7WrSe14zGfr5uvXXlq', 'ROLE_TRAINER');
 INSERT INTO users (username,password_hash,role) VALUES ('caroline', '$2a$10$VmhtTJg3l9WMi2tXNMUQpe0oT4tpZNUfPCLhk0YXgxHIQdcDOya22', 'ROLE_TRAINER');
 
-<<<<<<< HEAD
-INSERT INTO
-COMMIT TRANSACTION;
-=======
+
+
 -- exercises data
 INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target)
 VALUES ('Bicep Curl', 'A bicep curl is a popular strength-training exercise that primarily targets the biceps brachii muscle group, which is located in the front of the upper arm.',
@@ -325,4 +323,4 @@ INSERT INTO trainer_workouts (trainer_id, workout_id) VALUES (
 );
 
 COMMIT TRANSACTION;
->>>>>>> b466ba4fe400cd7e4171f54fed7ed3ad0fb14647
+
