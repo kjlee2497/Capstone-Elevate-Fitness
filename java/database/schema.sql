@@ -26,7 +26,7 @@ CREATE SEQUENCE seq_exercise_id
   NO MAXVALUE;
 
 CREATE TABLE exercises (
-   exercise_id  int NOT NULL DEFAULT nextval('seq_exercise_id'),,
+   exercise_id  int NOT NULL DEFAULT nextval('seq_exercise_id'),
    exercise_name varchar(50) NOT NULL,
    description varchar(1000) NOT NULL,
    suggested_weight_lbs int NOT NULL,
@@ -42,10 +42,10 @@ CREATE SEQUENCE seq_workout_id
   NO MAXVALUE;
 
 CREATE TABLE workouts (
-    workout_id int NOT NULL DEFAULT nextval('seq_workout_id'),,
+    workout_id int NOT NULL DEFAULT nextval('seq_workout_id'),
     isCompleted boolean,
     name varchar(50),
-    description varchar(1000)
+    description varchar(1000),
    CONSTRAINT PK_workouts PRIMARY KEY(workout_id)
 );
 
@@ -60,7 +60,7 @@ CREATE TABLE trainer_workouts (
 CREATE TABLE workout_exercises (
     workout_id int NOT NULL,
     exercise_id int NOT NULL,
-    CONSTRAINT PK_workout_exercises PRIMARY KEY(trainer_id, workout_id),
+    CONSTRAINT PK_workout_exercises PRIMARY KEY(exercise_id, workout_id),
     CONSTRAINT FK_workout_exercises_exercise FOREIGN KEY(exercise_id) REFERENCES exercises(exercise_id),
     CONSTRAINT FK_workout_exercises_workout FOREIGN KEY(workout_id) REFERENCES workouts(workout_id)
 );
