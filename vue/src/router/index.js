@@ -5,7 +5,7 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
-
+import Metrics from '../views/Metrics.vue'
 Vue.use(Router)
 
 /**
@@ -52,9 +52,17 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
+    },
+    {
+      path: "/metrics",
+      name: "metrics",
+      component: Metrics,
+      meta: {
+        requiresAuth: false
+      }
     }
   ]
-})
+});
 
 router.beforeEach((to, from, next) => {
   // Determine if the route requires Authentication

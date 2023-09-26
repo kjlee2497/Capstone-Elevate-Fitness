@@ -8,6 +8,9 @@ export default {
 
   register(user) {
     return axios.post('/register', user)
-  }
+  },
 
+  metrics(user){
+    return axios.post('/metrics',user)
+  }
 }

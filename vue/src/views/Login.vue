@@ -1,8 +1,14 @@
 <template>
-  <div id="login">
-    <header>Workout App</header>
-    <form @submit.prevent="login">
 
+
+
+  <div id="login">
+    
+    <div class="bg-image"
+     style="background-image: url('https://img.freepik.com/free-photo/dumbbells-floor-gym-ai-generative_123827-23745.jpg?w=1380&t=st=1695696952~exp=1695697552~hmac=af1847e11029522a3e0021f8649fd3ec26425e66cd642d317b483b378a40b0a1');
+            height: 100vh ; width:100vw " repeat-x ></div>
+    <form @submit.prevent="login">
+       <img class="logo" src="logo.png" alt="logo">
       <h1 >Please Sign In</h1>
       <div role="alert" v-if="invalidCredentials">
         Invalid username and password!
@@ -65,7 +71,15 @@ export default {
 
 <style scoped>
  
-
+.bg-image{
+  background-size:cover;
+  
+}
+img.logo{
+  align-items: center;
+  margin-left: 15px;
+  
+}
 #login {
   
       width: 100vw;
