@@ -9,9 +9,7 @@
      style="background-image: url('https://img.freepik.com/free-photo/dumbbells-floor-gym-ai-generative_123827-23745.jpg?w=1380&t=st=1695696952~exp=1695697552~hmac=af1847e11029522a3e0021f8649fd3ec26425e66cd642d317b483b378a40b0a1');
             height: 100vh ; width:100vw ">
 	</div>
-    <!-- <background>
-       <img src="dumbbells-background.jpg" alt="background">
-     </background> -->
+    
     <form @submit.prevent="register">
       
      <img class="logo" src="logo.png" alt="logo">
@@ -142,10 +140,11 @@ form *{
   letter-spacing: 00.5px;
   outline: none;
   border: none;
+  text-shadow: 2px 2px 2px black; 
 }
 .form-input-group {
   width: 95%;
- 
+ text-shadow: none;
 }
 
 form h3{
@@ -182,6 +181,7 @@ input{
       font-weight: 600;
       border-radius: 5px;
       cursor: pointer;
+      text-shadow:none;
   } 
  
 

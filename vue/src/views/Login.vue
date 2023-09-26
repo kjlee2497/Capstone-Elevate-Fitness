@@ -88,7 +88,7 @@ img.logo{
       transform: translate(-50%,-50%);
       left: 50%;
       top: 50%;
-      background-color: #958fbe;     
+      
 }
 
   form{
@@ -104,6 +104,7 @@ img.logo{
       border: 2px solid rgba(255,255,255,0.1);
       box-shadow: 0 0 40px rgba(8,7,16,0.6);
       padding: 10px 15px;
+      
   }
   form *{
       font-family: 'Poppins',sans-serif;
@@ -111,12 +112,12 @@ img.logo{
       letter-spacing: 0.5px;
       outline: none;
       border: none;
-      
+     text-shadow: 2px 2px 2px black; 
   }
   .form-input-group {
   
       width: 95%;
-     
+     text-shadow: none;
   }
 
 
@@ -155,6 +156,7 @@ img.logo{
       font-weight: 600;
       border-radius: 5px;
       cursor: pointer;
+      text-shadow: none;
   }  
 
 </style>
