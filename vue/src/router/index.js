@@ -60,6 +60,62 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
+    },
+    {
+      path: "/exercises",
+      name: "all-exercises",
+      component: ExerciseList,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/exercise/:exerciseId",
+      name: "edit-exercise",
+      component: EditExercise,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/exercise/add",
+      name: "add-exercises",
+      component: AddExercise,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/workouts",
+      name: "workouts",
+      component: AllWorkouts,
+      meta: {
+        requiresAuth: true
+      }
+    },    
+    {
+      path: "/workout/:workoutId",
+      name: "workout",
+      component: Workout,
+      meta: {
+        requiresAuth: true
+      }
+    },    
+    {
+      path: "/workout/add",
+      name: "add-workout",
+      component: AddWorkout,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/workout/history",
+      name: "history",
+      component: WorkoutHistory,
+      meta: {
+        requiresAuth: true
+      }
     }
   ]
 });
