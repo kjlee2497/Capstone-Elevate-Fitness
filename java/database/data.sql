@@ -297,27 +297,27 @@ INSERT INTO workout_exercises (workout_id, exercise_id) VALUES (
 
 
 --WORKOUTS DATA
-INSERT INTO trainer_workouts (trainer_id, workout_id) VALUES (
+INSERT INTO user_workouts (user_id, workout_id) VALUES (
     1003,
     3001
 );
 
-INSERT INTO trainer_workouts (trainer_id, workout_id) VALUES (
+INSERT INTO user_workouts (user_id, workout_id) VALUES (
     1004,
     3002
 );
 
-INSERT INTO trainer_workouts (trainer_id, workout_id) VALUES (
+INSERT INTO user_workouts (user_id, workout_id) VALUES (
     1005,
     3003
 );
 
-INSERT INTO trainer_workouts (trainer_id, workout_id) VALUES (
+INSERT INTO user_workouts (user_id, workout_id) VALUES (
     1006,
     3004
 );
 
-INSERT INTO trainer_workouts (trainer_id, workout_id) VALUES (
+INSERT INTO user_workouts (user_id, workout_id) VALUES (
     1007,
     3005
 );
