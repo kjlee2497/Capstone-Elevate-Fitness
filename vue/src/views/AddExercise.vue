@@ -1,6 +1,11 @@
 <template>
-  <div>
-      
+  <div class="addExercise">
+      <h1>Add Exercise</h1>
+      <table>
+        <tr >
+
+        </tr>
+      </table>
   </div>
 </template>
 

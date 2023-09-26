@@ -12,5 +12,5 @@ export default {
 
   metrics(user){
     return axios.post('/metrics',user)
-  }
+  },
 }
