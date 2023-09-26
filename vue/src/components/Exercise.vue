@@ -1,6 +1,8 @@
 <template>
   <div>
+
       {{ exercise }}
+      
         <form v-on:submit.prevent="saveExercise">
         Name: <input type="text" v-model='exercise.name'/>
         <br>
@@ -14,8 +16,9 @@
         <br>
          Target: <input type="number" v-model='exercise.target'/>
         <br>
-        <button type="submit"> Save </button>
+        <button type="submit"> Save </button> 
         </form> 
+
   </div>
  
 
