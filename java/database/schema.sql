@@ -50,11 +50,11 @@ CREATE TABLE workouts (
    CONSTRAINT PK_workouts PRIMARY KEY(workout_id)
 );
 
-CREATE TABLE trainer_workouts (
-    trainer_id int NOT NULL,
+CREATE TABLE user_workouts (
+    user_id int NOT NULL,
     workout_id int NOT NULL,
-    CONSTRAINT PK_trainer_workouts PRIMARY KEY(trainer_id, workout_id),
-    CONSTRAINT FK_trainer_workouts_trainer FOREIGN KEY(trainer_id) REFERENCES users(user_id),
+    CONSTRAINT PK_trainer_workouts PRIMARY KEY(user_id, workout_id),
+    CONSTRAINT FK_trainer_workouts_trainer FOREIGN KEY(user_id) REFERENCES users(user_id),
     CONSTRAINT FK_trainer_workouts_workout FOREIGN KEY(workout_id) REFERENCES workouts(workout_id)
 );
 
@@ -70,6 +70,7 @@ CREATE TABLE users_info (
 	user_id int NOT NULL,
 	weight int NOT NULL,
 	height int NOT NULL,
+	age int NOT NULL,
 
 	CONSTRAINT PK_user_info PRIMARY KEY (user_id),
 	CONSTRAINT FK_user_info_user FOREIGN KEY(user_id) REFERENCES users(user_id)
