@@ -6,6 +6,14 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import Metrics from '../views/Metrics.vue'
+import ExerciseList from '../views/ExerciseList.vue'
+import EditExercise from '../views/EditExercise.vue'
+import AddExercise from '../views/AddExercise.vue'
+import AllWorkouts from '../views/AllWorkouts.vue'
+import Workout from '../views/Workout.vue'
+import AddWorkout from '../views/AddWorkout.vue'
+import WorkoutHistory from '../views/WorkoutHistory.vue'
+
 Vue.use(Router)
 
 /**
