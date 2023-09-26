@@ -1,9 +1,8 @@
 <template>
     <div id="metrics" class="text-center">
-        <div class="bg-image"
-     style="background-image: url('https://img.freepik.com/free-photo/dumbbells-floor-gym-ai-generative_123827-23745.jpg?w=1380&t=st=1695696952~exp=1695697552~hmac=af1847e11029522a3e0021f8649fd3ec26425e66cd642d317b483b378a40b0a1');
-            height: 100vh ; width:100vw ">
-        </div>
+        
+       <img class="bg-image" src="dumbbells-floor.jpg" alt="background"  >
+        
 
         <form @submit.prevent="metrics">
 
@@ -21,7 +20,8 @@
                 <label for="userAge">Age</label>
                 <input type="number" id="age"  v-model="user.age" required/>
             </div>
-            <button type="submit">Submit</button>
+            
+            <router-link :to="{ name: 'home'}"> <button type="submit">Submit</button> </router-link>
         </form>
     </div>
 </template>
@@ -36,7 +36,8 @@ export default {
       user: {
         height: '',
         weight: '',
-        age: '',    
+        age: '',   
+        role: 'user', 
       },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',
@@ -72,7 +73,8 @@ export default {
       this.registrationErrorMsg = 'There were problems registering this user.';
     },
   },
-};
+
+}
 
 </script>
 <style scoped>
@@ -80,13 +82,11 @@ export default {
 
 
 .bg-image{
-  background-size:cover;
- 
-}
-img{
-  align-items: center;
-  max-width: 100vw;
-  max-height: 100vh;
+    background-size:cover;
+    
+    width: 100vw;
+    height: 100vh;
+   
 }
 
 img.logo{

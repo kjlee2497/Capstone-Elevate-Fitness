@@ -30,7 +30,7 @@
         <label for="confirmPassword">Confirm Password</label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
-      <button type="submit">Create Account</button>
+       <router-link :to="{ name: 'metrics'}"><button type="submit">Create Account</button></router-link>
       <p><router-link :to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
    
     </form>
