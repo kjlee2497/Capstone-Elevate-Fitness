@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS workouts;
 DROP TABLE IF EXISTS trainer_workouts;
 DROP TABLE IF EXISTS workout_exercises;
 DROP TABLE IF EXISTS users_info;
+DROP TABLE IF EXISTS user_exercises;
 
 
 CREATE SEQUENCE seq_user_id
@@ -68,9 +69,9 @@ CREATE TABLE workout_exercises (
 CREATE TABLE user_exercises (
     trainer_id int NOT NULL,
     exercise_id int NOT NULL,
-    CONSTRAINT PK_workout_exercises PRIMARY KEY(exercise_id, trainer_id),
-    CONSTRAINT FK_workout_exercises_exercise FOREIGN KEY(exercise_id) REFERENCES exercises(exercise_id),
-    CONSTRAINT FK_workout_exercises_workout FOREIGN KEY(trainer_id) REFERENCES users(user_id)
+    CONSTRAINT PK_user_exercises PRIMARY KEY(exercise_id, trainer_id),
+    CONSTRAINT FK_user_exercises_exercise FOREIGN KEY(exercise_id) REFERENCES exercises(exercise_id),
+    CONSTRAINT FK_user_exercises_workout FOREIGN KEY(trainer_id) REFERENCES users(user_id)
 );
 
 CREATE TABLE users_info (
