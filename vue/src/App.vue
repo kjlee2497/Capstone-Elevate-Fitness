@@ -70,10 +70,12 @@ background-image: linear-gradient(147deg, #4d4855 0%, #000000 74%);
   color: #fff;
   display: block;
   transition: color 0.3s ease; /* Smooth color transition */
+  /* animation: pulse 0.5s ease infinite alternate; */
 }
 
 .sidebar a:hover {
-    background-image: linear-gradient(180deg, #8f05ff,#b409f88c)/* Change color on hover */
+    background-image: linear-gradient(180deg, #8f05ff,#b409f88c);/* Change color on hover */
+    
 }
 
 .content {
