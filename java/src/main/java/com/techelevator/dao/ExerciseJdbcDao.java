@@ -31,6 +31,8 @@ public class ExerciseJdbcDao implements ExerciseDao {
             exercise.setRepCount(results.getInt("rep_count"));
             exercise.setExpectedTime(results.getInt("expected_time_seconds"));
             exercise.setTarget(results.getString("target"));
+
+            exercises.add(exercise);
         }
         return exercises;
     }
