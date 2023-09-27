@@ -21,8 +21,8 @@
         <input type="password" id="password" v-model="user.password" required />
       </div>
      <button type="submit"> Sign in</button>
-      <p>
-      <router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
+      <p class="registerLink">
+      <router-link :to="{ name: 'register' }" align:center >Need an account? Sign up.</router-link></p>
     </form>
   </div>
 </template>
@@ -62,12 +62,15 @@ export default {
 };
 </script>
 <style scoped>
+p.registerLink{
+  text-align: center;
+}
 .bg-image{
   background-size:cover;
 }
 img.logo{
   align-items: center;
-  margin-left: 15px;
+ margin-left: 15px;
 }
 #login {
       width: 100vw;
@@ -78,7 +81,7 @@ img.logo{
       top: 50%;
 }
   form{
-      height: 520px;
+      height: auto;
       width: 400px;
       background-color: rgba(255,255,255,0.13);
       position: absolute;
