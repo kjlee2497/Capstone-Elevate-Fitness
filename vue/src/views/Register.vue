@@ -1,23 +1,19 @@
  
 <template>
-
- 
-
- 
   <div id="register" class="text-center">
     <div class="bg-image"
      style="background-image: url('https://img.freepik.com/free-photo/dumbbells-floor-gym-ai-generative_123827-23745.jpg?w=1380&t=st=1695696952~exp=1695697552~hmac=af1847e11029522a3e0021f8649fd3ec26425e66cd642d317b483b378a40b0a1');
             height: 100vh ; width:100vw ">
-	</div>
-    
+  </div>
+    <!-- <background>
+       <img src="dumbbells-background.jpg" alt="background">
+     </background> -->
     <form @submit.prevent="register">
-      
      <img class="logo" src="logo.png" alt="logo">
       <h1>Create Account</h1>
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      
       <div class="form-input-group">
         <label for="username">Username</label>
         <input type="text" id="username" v-model="user.username" required autofocus />
@@ -30,9 +26,8 @@
         <label for="confirmPassword">Confirm Password</label>
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
-       <router-link :to="{ name: 'metrics'}"><button type="submit">Create Account</button></router-link>
+      <button type="submit">Create Account</button>
       <p><router-link :to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
-   
     </form>
 
      
