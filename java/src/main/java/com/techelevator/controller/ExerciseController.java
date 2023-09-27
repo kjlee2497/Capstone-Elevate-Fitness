@@ -17,7 +17,7 @@ public class ExerciseController {
     @Autowired
    private ExerciseDao exerciseDao;
 
-    @RequestMapping(path = "/exercise", method = RequestMethod.GET)
+    @RequestMapping(path = "/exercises", method = RequestMethod.GET)
     public List<Exercise> getAllExercises(){
         return exerciseDao.getAllExercises();
     }

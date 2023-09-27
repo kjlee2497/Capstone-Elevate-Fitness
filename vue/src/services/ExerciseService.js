@@ -3,7 +3,7 @@ import axios from "axios";
 export default {
 
 getAllExercises() {
-    return axios.get("/exercise");
+    return axios.get("/exercises");
 },
 
 addExercise(exercise) {
