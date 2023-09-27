@@ -1,9 +1,5 @@
 <template>
-
-
-
   <div id="login">
-    
     <div class="bg-image"
      style="background-image: url('https://img.freepik.com/free-photo/dumbbells-floor-gym-ai-generative_123827-23745.jpg?w=1380&t=st=1695823629~exp=1695824229~hmac=ee69275c0111291a55c20f103415d66f21edafd2367d7ffcda747bc7a3c19745');
             height: 100vh ; width:100vw " repeat-x ></div>
@@ -24,17 +20,14 @@
         <label for="password">Password</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
-       <button type="submit">Sign in</button>
-     
+     <button type="submit"> Sign in</button>
       <p>
       <router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
     </form>
   </div>
 </template>
-
 <script>
 import authService from "../services/AuthService";
-
 export default {
   name: "login",
   components: {},
@@ -60,7 +53,6 @@ export default {
         })
         .catch(error => {
           const response = error.response;
-
           if (response.status === 401) {
             this.invalidCredentials = true;
           }
@@ -69,29 +61,22 @@ export default {
   }
 };
 </script>
-
 <style scoped>
- 
 .bg-image{
   background-size:cover;
-  
 }
 img.logo{
   align-items: center;
   margin-left: 15px;
-  
 }
 #login {
-  
       width: 100vw;
       height: 100vh;
       position: absolute;
       transform: translate(-50%,-50%);
       left: 50%;
       top: 50%;
-      
 }
-
   form{
       height: 520px;
       width: 400px;
@@ -105,30 +90,25 @@ img.logo{
       border: 2px solid rgba(255,255,255,0.1);
       box-shadow: 0 0 40px rgba(8,7,16,0.6);
       padding: 10px 15px;
-      
   }
   form *{
       font-family: 'Poppins',sans-serif;
-      color: #ffffff;
+      color: #FFFFFF;
       letter-spacing: 0.5px;
       outline: none;
       border: none;
-     text-shadow: 2px 2px 2px black; 
+     text-shadow: 2px 2px 2px black;
   }
   .form-input-group {
-  
       width: 95%;
      text-shadow: none;
   }
-
-
   form h3{
       font-size: 32px;
       font-weight: 500;
       line-height: 42px;
       text-align: center;
   }
-  
   label{
       display: block;
       margin-top: 30px;
@@ -146,11 +126,10 @@ img.logo{
       font-size: 14px;
       font-weight: 300;
   }
- 
   button{
       margin-top: 50px;
       width: 100%;
-      background-color: #ffffff;
+      background-color: #FFFFFF;
       color: #080710;
       padding: 15px 0;
       font-size: 18px;
@@ -158,7 +137,5 @@ img.logo{
       border-radius: 5px;
       cursor: pointer;
       text-shadow: none;
-  }  
-
+  }
 </style>
-

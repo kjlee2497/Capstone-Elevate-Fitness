@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import service from 'ExerciseService.js';
+import service from '../services/ExerciseService';
 
 export default {
     data() {
@@ -40,7 +40,7 @@ export default {
             service.addExercise(this.exercise).then((response) =>{
                 if(response.status == 200){
                     window.alert('Exercise Added');
-                    this.$router.push({name: 'addExercise'});
+                    this.$router.push({name: 'add-Exercises'});
                 }
             });
         }

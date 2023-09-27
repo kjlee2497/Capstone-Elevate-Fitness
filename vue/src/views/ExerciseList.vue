@@ -23,7 +23,7 @@
  import service from '../services/ExerciseService'
   
 export default {
-  name: "exerciseList",
+  name: "all-exercises",
   data(){
     return{
       exercises:[]
