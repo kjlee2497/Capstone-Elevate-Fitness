@@ -1,6 +1,8 @@
 <template>
   <div class="addExercise">
       <h1>Add Exercise</h1>
+      <h1>Add Exercise</h1>
+      <h1>Add Exercise</h1>
       <table>
         <tr >
 

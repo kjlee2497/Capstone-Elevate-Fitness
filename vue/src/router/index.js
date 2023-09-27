@@ -85,7 +85,7 @@ const router = new Router({
       }
     },
     {
-      path: "/exercise/add",
+      path: "/exercise/add/addexercise",
       name: "add-exercises",
       component: AddExercise,
       meta: {
