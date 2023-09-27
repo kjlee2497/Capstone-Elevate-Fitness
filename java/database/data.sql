@@ -322,5 +322,161 @@ INSERT INTO user_workouts (user_id, workout_id) VALUES (
     3005
 );
 
+INSERT INTO user_workouts (user_id, workout_id) VALUES (
+    1007,
+    3006
+);
+
+-- USERS EXERCISES DATA
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1003,
+    2001
+);
+
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1003,
+    2002
+);
+
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1003,
+    2003
+);
+
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1003,
+    2004
+);
+
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1003,
+    2005
+);
+
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1004,
+    2006
+);
+
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1004,
+    2007
+);
+
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1004,
+    2008
+);
+
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1004,
+    2009
+);
+
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1004,
+    2010
+);
+
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1005,
+    2011
+);
+
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1005,
+    2012
+);
+
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1005,
+    2013
+);
+
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1005,
+    2014
+);
+
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1005,
+    2015
+);
+
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1006,
+    2016
+);
+
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1006,
+    2017
+);
+
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1006,
+    2018
+);
+
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1006,
+    2019
+);
+
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1006,
+    2020
+);
+
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1007,
+    2021
+);
+
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1007,
+    2022
+);
+
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1007,
+    2023
+);
+
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1007,
+    2024
+);
+
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1007,
+    2025
+);
+
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1007,
+    2026
+);
+
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1007,
+    2027
+);
+
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1007,
+    2028
+);
+
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1007,
+    2029
+);
+
+INSERT INTO user_exercises (trainer_id, exercise_id) VALUES (
+    1007,
+    2030
+);
+
 COMMIT TRANSACTION;
 

@@ -2,6 +2,10 @@ package com.techelevator.dao;
 
 
 import com.techelevator.model.Exercise;
+import com.techelevator.model.Workout;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.jdbc.BadSqlGrammarException;
+import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -23,14 +27,7 @@ public class ExerciseJdbcDao implements ExerciseDao {
         List<Exercise> exercises = new ArrayList<>();
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
-            Exercise exercise = new Exercise();
-            exercise.setExercise_id(results.getInt("exercise_id"));
-            exercise.setName(results.getString("exercise_name"));
-            exercise.setDescription(results.getString("description"));
-            exercise.setWeight(results.getInt("suggested_weight_lbs"));
-            exercise.setRepCount(results.getInt("rep_count"));
-            exercise.setExpectedTime(results.getInt("expected_time_seconds"));
-            exercise.setTarget(results.getString("target"));
+            Exercise exercise = mapRowToExercise(results);
 
             exercises.add(exercise);
         }
@@ -42,6 +39,240 @@ public class ExerciseJdbcDao implements ExerciseDao {
        String sql = "INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target) VALUES ( ?, ?, ?, ?, ?, ?)";
        jdbcTemplate.update(sql, exercise.getName(), exercise.getDescription(), exercise.getWeight(), exercise.getRepCount(), exercise.getExpectedTime(), exercise.getTarget());
     }
+    @Override
+    public Exercise getExerciseById(int id) {
+    Exercise exercise  = null;
+    String sql = "SELECT * FROM exercises WHERE exercise_id = ?";
 
+    try {
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+        if(results.next()){
+            exercise = mapRowToExercise(results);
+        }
+    } catch (CannotGetJdbcConnectionException e){
+        throw new RuntimeException("Unable to contact the database!", e);
+    } catch (BadSqlGrammarException e){
+        throw new RuntimeException("Bad SQL query: " + e.getSql()
+                +"\n"+e.getSQLException(), e);
+    } catch (DataIntegrityViolationException e){
+        throw new RuntimeException("Database Integrity Violation", e);
+    }
 
+    return exercise;
+}
+
+//    @Override
+//    public Exercise getExerciseByName(String name) {
+//        Exercise exercise = new Exercise();
+//        String sql = "SELECT * FROM exercises WHERE name = ?";
+//
+//        try {
+//            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, name);
+//            if(results.next()) {
+//                exercise = mapRowToExercise(results);
+//            }
+//        } catch (CannotGetJdbcConnectionException e){
+//            throw new RuntimeException("Unable to contact the database!", e);
+//        } catch (BadSqlGrammarException e){
+//            throw new RuntimeException("Bad SQL query: " + e.getSql()
+//                    +"\n"+e.getSQLException(), e);
+//        } catch (DataIntegrityViolationException e){
+//            throw new RuntimeException("Database Integrity Violation", e);
+//        }
+//
+//        return exercise;
+//    }
+
+    @Override
+    public List<Exercise> getExerciseByTarget(String target) {
+        List<Exercise> exercises = new ArrayList<>();
+        target = target.toLowerCase();
+        String sql = "SELECT * FROM exercises WHERE target = ?";
+
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, target);
+            while(results.next()) {
+                Exercise exercise = mapRowToExercise(results);
+                exercises.add(exercise);
+            }
+        } catch (CannotGetJdbcConnectionException e){
+            throw new RuntimeException("Unable to contact the database!", e);
+        } catch (BadSqlGrammarException e){
+            throw new RuntimeException("Bad SQL query: " + e.getSql()
+                    +"\n"+e.getSQLException(), e);
+        } catch (DataIntegrityViolationException e){
+            throw new RuntimeException("Database Integrity Violation", e);
+        }
+
+        return exercises;
+    }
+
+    @Override
+    public List<Exercise> getExercisesByUser(int userId) {
+        List<Exercise> exercises = new ArrayList<>();
+        String sql = "SELECT *\n" +
+                "FROM exercises JOIN user_exercises ON exercises.exercise_id = user_exercises.exercise_id\n" +
+                "WHERE trainer_id = ?;";
+
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+            while(results.next()) {
+                Exercise exercise = mapRowToExercise(results);
+                exercises.add(exercise);
+            }
+        } catch (CannotGetJdbcConnectionException e){
+            throw new RuntimeException("Unable to contact the database!", e);
+        } catch (BadSqlGrammarException e){
+            throw new RuntimeException("Bad SQL query: " + e.getSql()
+                    +"\n"+e.getSQLException(), e);
+        } catch (DataIntegrityViolationException e){
+            throw new RuntimeException("Database Integrity Violation", e);
+        }
+
+        return exercises;
+    }
+
+    @Override
+    public List<Exercise> getExercisesByWorkout(int workoutId) {
+        List<Exercise> exercises = new ArrayList<>();
+        String sql = "SELECT *\n" +
+                "FROM exercises JOIN workout_exercises ON exercises.exercise_id = workout_exercises.exercise_id\n" +
+                "WHERE workout_id = ?;";
+
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, workoutId);
+            while(results.next()) {
+                Exercise exercise = mapRowToExercise(results);
+                exercises.add(exercise);
+            }
+        } catch (CannotGetJdbcConnectionException e){
+            throw new RuntimeException("Unable to contact the database!", e);
+        } catch (BadSqlGrammarException e){
+            throw new RuntimeException("Bad SQL query: " + e.getSql()
+                    +"\n"+e.getSQLException(), e);
+        } catch (DataIntegrityViolationException e){
+            throw new RuntimeException("Database Integrity Violation", e);
+        }
+
+        return exercises;
+    }
+
+    @Override
+    public Exercise createExercise(Exercise exercise) {
+        Exercise newExercise = new Exercise();
+        String sql = "INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target) VALUES ( ?, ?, ?, ?, ?, ?) RETURNING exercise_id";
+
+        try {
+            int newId = jdbcTemplate.update(sql, exercise.getName(), exercise.getDescription(), exercise.getWeight(), exercise.getRepCount(), exercise.getExpectedTime(), exercise.getTarget());
+            newExercise = getExerciseById(newId);
+        } catch (CannotGetJdbcConnectionException e){
+            throw new RuntimeException("Unable to contact the database!", e);
+        } catch (BadSqlGrammarException e){
+            throw new RuntimeException("Bad SQL query: " + e.getSql()
+                    +"\n"+e.getSQLException(), e);
+        } catch (DataIntegrityViolationException e){
+            throw new RuntimeException("Database Integrity Violation", e);
+        }
+
+        return newExercise;
+    }
+
+    @Override
+    public Exercise editExercise(Exercise exercise, int exerciseId) {
+        Exercise editedExercise = new Exercise();
+        String sql = "UPDATE exercises SET exercise_name = ?, description = ?, suggested_weight_lbs = ?, rep_count = ?, expected_time_seconds = ?, target = ? WHERE exercise_id = ?";
+
+        try {
+            jdbcTemplate.update(sql, exercise.getName(), exercise.getDescription(), exercise.getWeight(), exercise.getRepCount(), exercise.getExpectedTime(), exercise.getTarget(), exercise.getExercise_id());
+            editedExercise = getExerciseById(exercise.getExercise_id());
+        } catch (CannotGetJdbcConnectionException e){
+            throw new RuntimeException("Unable to contact the database!", e);
+        } catch (BadSqlGrammarException e){
+            throw new RuntimeException("Bad SQL query: " + e.getSql()
+                    +"\n"+e.getSQLException(), e);
+        } catch (DataIntegrityViolationException e){
+            throw new RuntimeException("Database Integrity Violation", e);
+        }
+
+        return editedExercise;
+    }
+
+    @Override
+    public boolean deleteExercise(int id) {
+        boolean deleted = false;
+        String sql = "DELETE FROM user_exercises WHERE exercise_id = ?";
+        String sql2 = "DELETE FROM workout_exercises WHERE exercise_id = ?";
+        String sql3 = "DELETE FROM exercises WHERE exercise_id = ?";
+
+        try {
+            int rowsDeleted = jdbcTemplate.update(sql, id);
+            if(rowsDeleted == 1) {
+                deleted = true;
+            } else {
+                deleted = false;
+            }
+        } catch (CannotGetJdbcConnectionException e){
+            throw new RuntimeException("Unable to contact the database!", e);
+        } catch (BadSqlGrammarException e){
+            throw new RuntimeException("Bad SQL query: " + e.getSql()
+                    +"\n"+e.getSQLException(), e);
+        } catch (DataIntegrityViolationException e){
+            throw new RuntimeException("Database Integrity Violation", e);
+        }
+
+        try {
+            int rowsDeleted = jdbcTemplate.update(sql2, id);
+            if(rowsDeleted == 1) {
+                deleted = true;
+            } else {
+                deleted = false;
+            }
+        } catch (CannotGetJdbcConnectionException e){
+            throw new RuntimeException("Unable to contact the database!", e);
+        } catch (BadSqlGrammarException e){
+            throw new RuntimeException("Bad SQL query: " + e.getSql()
+                    +"\n"+e.getSQLException(), e);
+        } catch (DataIntegrityViolationException e){
+            throw new RuntimeException("Database Integrity Violation", e);
+        }
+
+        try {
+            int rowsDeleted = jdbcTemplate.update(sql3, id);
+            if(rowsDeleted == 1) {
+                deleted = true;
+            } else {
+                deleted = false;
+            }
+        } catch (CannotGetJdbcConnectionException e){
+            throw new RuntimeException("Unable to contact the database!", e);
+        } catch (BadSqlGrammarException e){
+            throw new RuntimeException("Bad SQL query: " + e.getSql()
+                    +"\n"+e.getSQLException(), e);
+        } catch (DataIntegrityViolationException e){
+            throw new RuntimeException("Database Integrity Violation", e);
+        }
+
+        return deleted;
+    }
+
+    private Exercise mapRowToExercise(SqlRowSet results) {
+        Exercise exercise = new Exercise();
+        int id = results.getInt("exercise_id");
+        String name = results.getString("exercise_name");
+        String desc = results.getString("description");
+        int weight = results.getInt("suggested_weight_lbs");
+        int repCount = results.getInt("rep_count");
+        int seconds = results.getInt("expected_time_seconds");
+        String target = results.getString("target");
+
+        exercise.setExercise_id(id);
+        exercise.setName(name);
+        exercise.setDescription(desc);
+        exercise.setWeight(weight);
+        exercise.setRepCount(repCount);
+        exercise.setExpectedTime(seconds);
+        exercise.setTarget(target);
+
+        return exercise;
+    }
 }

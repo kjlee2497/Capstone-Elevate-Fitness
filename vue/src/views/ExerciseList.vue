@@ -86,6 +86,7 @@ export default {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
     margin-right: 18%;
     margin-left: 18%;
+    
   }
   /* Header cell styles */
   .exerciseList-table th {
@@ -157,6 +158,7 @@ export default {
     }
   }
   #buttons{
+    
      margin-top: 20px;
      display: flex;
     justify-content: space-between;
