@@ -5,7 +5,7 @@
   <div id="login">
     
     <div class="bg-image"
-     style="background-image: url('https://img.freepik.com/free-photo/dumbbells-floor-gym-ai-generative_123827-23745.jpg?w=1380&t=st=1695696952~exp=1695697552~hmac=af1847e11029522a3e0021f8649fd3ec26425e66cd642d317b483b378a40b0a1');
+     style="background-image: url('https://img.freepik.com/free-photo/dumbbells-floor-gym-ai-generative_123827-23745.jpg?w=1380&t=st=1695823629~exp=1695824229~hmac=ee69275c0111291a55c20f103415d66f21edafd2367d7ffcda747bc7a3c19745');
             height: 100vh ; width:100vw " repeat-x ></div>
     <form @submit.prevent="login">
        <img class="logo" src="logo.png" alt="logo">
@@ -24,7 +24,7 @@
         <label for="password">Password</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
-        <button type="submit"> Sign in</button>
+       <router-link :to="{ name: 'home'}"> <button type="submit"> Sign in</button></router-link>
      
       <p>
       <router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
