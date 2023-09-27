@@ -15,7 +15,7 @@ import java.util.List;
 @PreAuthorize("isAuthenticated()")
 public class ExerciseController {
     @Autowired
-   private ExerciseDao exerciseDao;
+    ExerciseDao exerciseDao;
 
     @RequestMapping(path = "/exercises", method = RequestMethod.GET)
     public List<Exercise> getAllExercises(){
