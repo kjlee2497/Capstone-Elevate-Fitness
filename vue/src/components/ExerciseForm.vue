@@ -76,7 +76,7 @@ export default {
             ExerciseService.createExercise(newExercise)
                 .then(res => {
                     if (res.status === 200) {
-                        this.$router.push(`/exercises}`);
+                        this.$router.push(`/exercises/`);
                     }
                 })
                 .catch(err => {
