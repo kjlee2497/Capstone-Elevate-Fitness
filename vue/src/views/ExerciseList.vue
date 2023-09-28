@@ -1,5 +1,6 @@
 <template>
   <div class="exerciseList">
+  
     <h1>Exercise List</h1>
       <table class="exerciseList-table">
         <th> Exercise name</th>
