@@ -6,13 +6,8 @@ getAllExercises() {
     return axios.get("/exercises");
 },
 
-<<<<<<< HEAD
-addExercise(exercise) {
-    return axios.post("/exercises/generate", exercise);
-=======
 createExercise(exercise) {
-    return axios.post("/exercise/add/addExercise", exercise);
->>>>>>> main
+    return axios.post("/exercises/generate", exercise);
 },
 
 editExercise(exercise) {

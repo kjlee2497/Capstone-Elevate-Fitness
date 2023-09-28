@@ -73,7 +73,7 @@ export default {
                 target: this.exercise.target
             };
 
-            ExerciseService.addExercise(newExercise)
+            ExerciseService.createExercise(newExercise)
                 .then(res => {
                     if (res.status === 200) {
                         this.$router.push(`/exercises}`);
