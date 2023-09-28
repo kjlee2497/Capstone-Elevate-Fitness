@@ -1,17 +1,17 @@
 <template>
   <div class="addExercise">
-      <h1>Add Exercise</h1>
-      <table>
-        <tr >
-
-        </tr>
-      </table>
+      <h1>Add Exercise!!!</h1>
+      <exercise-form />
   </div>
 </template>
 
 <script>
-export default {
+import ExerciseForm from '../components/ExerciseForm.vue'
 
+export default {
+    components: {
+      ExerciseForm
+    }
 }
 </script>
 

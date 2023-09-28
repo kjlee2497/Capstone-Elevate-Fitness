@@ -7,7 +7,7 @@ getAllExercises() {
 },
 
 addExercise(exercise) {
-    return axios.post("/exercise/add", exercise);
+    return axios.post("/exercises/generate", exercise);
 },
 
 }
