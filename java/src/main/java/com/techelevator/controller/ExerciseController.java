@@ -54,12 +54,12 @@ public class ExerciseController {
     }
 
     @RequestMapping(path = "/exercises/generate", method = RequestMethod.POST)
-    public void createExercise(Exercise exercise)  {
+    public void createExercise(@RequestBody Exercise exercise)  {
         exerciseDao.createExercise(exercise);
     }
 
     @RequestMapping(path = "/exercises/id/{exerciseId}", method = RequestMethod.PUT)
-    public void editExercise(Exercise exercise, @PathVariable int exerciseId)  {
+    public void editExercise(@RequestBody Exercise exercise, @PathVariable int exerciseId)  {
         exerciseDao.editExercise(exercise, exerciseId);
     }
 
