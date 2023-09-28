@@ -13,7 +13,7 @@
       <router-link v-if="$store.state.token !== ''" :to="{ name: 'home' }" @click="toggleSidebar">Home</router-link>
 
       
-      <router-link v-if="$store.state.token !== ''" :to="{ name: 'exercise' }" @click="toggleSidebar">Exercises</router-link>
+      <router-link to="/exercises" v-if="$store.state.token !== ''"  @click="toggleSidebar">Exercises</router-link>
       <router-link v-if="$store.state.token !== ''" :to="{ name: 'workout' }" @click="toggleSidebar">Workout</router-link>
       <router-link v-if="$store.state.token !== ''" :to="{ name: 'history' }" @click="toggleSidebar">History</router-link>
       <router-link v-if="$store.state.token !== ''" :to="{ name: 'logout' }" @click="toggleSidebar">Logout</router-link>

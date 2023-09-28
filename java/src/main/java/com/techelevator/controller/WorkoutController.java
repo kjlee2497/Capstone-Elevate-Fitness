@@ -34,11 +34,13 @@ public class WorkoutController {
     public List<Workout> listWorkoutsByTarget(@PathVariable String target) {
         return workoutDao.listWorkoutsByTarget(target);
     }
-
+//TODO:Add /{id} to the end of then path? update accordingly in the workoutService in vue
     @RequestMapping(path = "/v1/workouts/user", method = RequestMethod.GET)
     public List<Workout> listWorkoutsByUser(int id) {
         return workoutDao.listWorkoutsByUser(id);
     }
+
+    //TODO: Maybe change to getWorkoutByLength and add length as a parameter? update accordingly in the workoutService in vue
     @RequestMapping(path = "/v1/workouts/length", method = RequestMethod.GET)
     public List<Workout> listWorkoutsByLength() {
         return workoutDao.listWorkoutsByLength();
@@ -54,6 +56,7 @@ public class WorkoutController {
         workoutDao.generateWorkout(workout);
     }
 
+    //TODO: is it fine that the path for the bottom 2 methods is the same? update workoutservice in vue accordingly
     @RequestMapping(path = "/v1/workout/{id}", method = RequestMethod.PUT)
     public void updateWorkout(@RequestBody Workout workout, @PathVariable int id) {
         workoutDao.updateWorkout(workout);
