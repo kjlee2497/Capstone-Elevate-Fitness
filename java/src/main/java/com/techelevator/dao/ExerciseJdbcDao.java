@@ -159,12 +159,13 @@ public class ExerciseJdbcDao implements ExerciseDao {
 
     @Override
     public Exercise createExercise(Exercise exercise) {
-        Exercise newExercise = new Exercise();
+
         String sql = "INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target) VALUES ( ?, ?, ?, ?, ?, ?) RETURNING exercise_id";
 
         try {
-            int newId = jdbcTemplate.update(sql, exercise.getName(), exercise.getDescription(), exercise.getWeight(), exercise.getRepCount(), exercise.getExpectedTime(), exercise.getTarget());
-            newExercise = getExerciseById(newId);
+            int newId = jdbcTemplate.queryForObject(sql, int.class, exercise.getName(), exercise.getDescription(), exercise.getWeight(), exercise.getRepCount(), exercise.getExpectedTime(), exercise.getTarget());
+            exercise = getExerciseById(newId);
+
         } catch (CannotGetJdbcConnectionException e){
             throw new RuntimeException("Unable to contact the database!", e);
         } catch (BadSqlGrammarException e){
@@ -174,19 +175,24 @@ public class ExerciseJdbcDao implements ExerciseDao {
             throw new RuntimeException("Database Integrity Violation", e);
         }
 
-        return newExercise;
+        return exercise;
     }
 
     @Override
     public Exercise editExercise(Exercise exercise, int exerciseId) {
+<<<<<<< HEAD
         Exercise editedExercise = new Exercise();
         String sql = "UPDATE exercises " +
                 "SET exercise_name = ?, description = ?, suggested_weight_lbs = ?, rep_count = ?, expected_time_seconds = ?, target = ? " +
                 "WHERE exercise_id = ?";
+=======
+        exercise.setExercise_id(exerciseId);
+        String sql = "UPDATE exercises SET exercise_name = ?, description = ?, suggested_weight_lbs = ?, rep_count = ?, expected_time_seconds = ?, target = ? WHERE exercise_id = ?";
+>>>>>>> main
 
         try {
             jdbcTemplate.update(sql, exercise.getName(), exercise.getDescription(), exercise.getWeight(), exercise.getRepCount(), exercise.getExpectedTime(), exercise.getTarget(), exercise.getExercise_id());
-            editedExercise = getExerciseById(exercise.getExercise_id());
+
         } catch (CannotGetJdbcConnectionException e){
             throw new RuntimeException("Unable to contact the database!", e);
         } catch (BadSqlGrammarException e){
@@ -196,7 +202,7 @@ public class ExerciseJdbcDao implements ExerciseDao {
             throw new RuntimeException("Database Integrity Violation", e);
         }
 
-        return editedExercise;
+        return exercise;
     }
 
     @Override
