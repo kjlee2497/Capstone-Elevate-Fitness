@@ -180,7 +180,9 @@ public class ExerciseJdbcDao implements ExerciseDao {
     @Override
     public Exercise editExercise(Exercise exercise, int exerciseId) {
         Exercise editedExercise = new Exercise();
-        String sql = "UPDATE exercises SET exercise_name = ?, description = ?, suggested_weight_lbs = ?, rep_count = ?, expected_time_seconds = ?, target = ? WHERE exercise_id = ?";
+        String sql = "UPDATE exercises " +
+                "SET exercise_name = ?, description = ?, suggested_weight_lbs = ?, rep_count = ?, expected_time_seconds = ?, target = ? " +
+                "WHERE exercise_id = ?";
 
         try {
             jdbcTemplate.update(sql, exercise.getName(), exercise.getDescription(), exercise.getWeight(), exercise.getRepCount(), exercise.getExpectedTime(), exercise.getTarget(), exercise.getExercise_id());
