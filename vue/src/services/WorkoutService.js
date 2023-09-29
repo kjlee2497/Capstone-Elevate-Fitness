@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default {
 
-getAllWorkouts() {
+listWorkouts() {
     return axios.get("/v1/workouts");
 },
 
