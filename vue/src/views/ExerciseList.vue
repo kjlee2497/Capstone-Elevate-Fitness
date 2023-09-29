@@ -9,6 +9,7 @@
         <th>Rep Count</th>
         <th>Expected Time to Complete</th>
         <th>Target Area</th>
+        <th></th>
           <tr v-for="exercise in exercises" v-bind:key="exercise.id">
             <!-- <td>{{ exercise.id }}</td> -->
             <td>{{ exercise.name }}</td>
@@ -17,6 +18,7 @@
             <td>{{ exercise.repCount }}</td>
             <td>{{ exercise.expectedTime }}</td>
             <td>{{ exercise.target }}</td>
+            <td><button v-on:click="goToEditPage(exercise.exercise_id)">Edit</button></td>
         </tr>
       </table>
       <div id="buttons">
@@ -39,6 +41,11 @@ export default {
     service.getAllExercises().then((response) => {
       this.exercises = response.data
     });
+  },
+  methods: {
+    goToEditPage(exerciseId) {
+      this.$router.push(`/exercise/${exerciseId}`)
+    }
   }
 }
 </script>
@@ -191,5 +198,8 @@ export default {
   .table-container {
     overflow-y: auto;
     max-height: 40px; /* Adjust the maximum height as needed */
+  }
+  .edit-btn {
+    padding: 5px;
   }
 </style>

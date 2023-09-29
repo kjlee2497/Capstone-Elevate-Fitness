@@ -10,8 +10,8 @@ createExercise(exercise) {
     return axios.post("/exercises/generate", exercise);
 },
 
-editExercise(exercise) {
-    return axios.put("/exercises/id/edit/editExercise/", exercise);
+editExercise(exercise, exerciseId) {
+    return axios.put(`/exercises/id/${exerciseId}/`, exercise);
 },
 
 deleteExercise(exerciseId) {

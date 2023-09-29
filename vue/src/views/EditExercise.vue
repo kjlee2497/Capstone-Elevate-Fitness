@@ -1,12 +1,16 @@
 <template>
   <div>
-      
+    <exercise-edit-form v-bind:exerciseId="this.exerciseId" />
   </div>
 </template>
 
 <script>
-export default {
+import ExerciseEditForm from '../components/ExerciseEditForm.vue'
 
+export default {
+  components: {
+    ExerciseEditForm
+  }
 }
 </script>
 
