@@ -116,7 +116,7 @@ export default {
 </script>
 
 <style scoped>
-
+.div
 .form-group {
     display: inline-block;
     border: 1px black solid;

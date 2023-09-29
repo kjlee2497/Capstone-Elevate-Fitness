@@ -2,7 +2,7 @@
   <div id="login">
     <div class="bg-image"
      style="background-image: url('https://img.freepik.com/free-photo/dumbbells-floor-gym-ai-generative_123827-23745.jpg?w=1380&t=st=1695823629~exp=1695824229~hmac=ee69275c0111291a55c20f103415d66f21edafd2367d7ffcda747bc7a3c19745');
-            height: 100vh ; width:100vw " repeat-x ></div>
+            height: 100vh ; width:100vw "  ></div>
     <form @submit.prevent="login">
        <img class="logo" src="logo.png" alt="logo">
       <h1 >Please Sign In</h1>
@@ -88,8 +88,8 @@ img.logo{
       transform: translate(-50%,-50%);
       top: 50%;
       left: 50%;
-      border-radius: 10px;
-      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      backdrop-filter: blur(30px);
       border: 2px solid rgba(255,255,255,0.1);
       box-shadow: 0 0 40px rgba(8,7,16,0.6);
       padding: 10px 15px;
