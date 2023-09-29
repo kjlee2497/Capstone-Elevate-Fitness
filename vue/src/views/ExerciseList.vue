@@ -9,6 +9,7 @@
         <th>Rep Count</th>
         <th>Expected Time to Complete</th>
         <th>Target Area</th>
+        <th></th>
           <tr v-for="exercise in exercises" v-bind:key="exercise.id">
             <!-- <td>{{ exercise.id }}</td> -->
             <td>{{ exercise.name }}</td>
@@ -17,13 +18,14 @@
             <td>{{ exercise.repCount }}</td>
             <td>{{ exercise.expectedTime }}</td>
             <td>{{ exercise.target }}</td>
+            <td><button v-on:click="goToEditPage(exercise.exercise_id)">Edit</button></td>
         </tr>
       </table>
       <div id="buttons">
       <button>Add Selected Exercises to a Workout</button>
       <button>Request an Exercise</button>
       <button>Generate a Random Workout</button>
-</div>
+      </div>
   </div>
 </template>
 <script>
@@ -39,6 +41,11 @@ export default {
     service.getAllExercises().then((response) => {
       this.exercises = response.data
     });
+  },
+  methods: {
+    goToEditPage(exerciseId) {
+      this.$router.push(`/exercise/${exerciseId}`)
+    }
   }
 }
 </script>
@@ -69,10 +76,16 @@ export default {
     font-style: italic;
   } */
    /* Container styles */
+
+   /* div.exerciseList{
+     margin-top: 0;
+     
+   } */
   .exerciseList {
     font-family: Arial, sans-serif;
     margin-top: 20vh;
     margin-right: none;
+    margin:0px;
 }
   /* Header styles */
   .exerciseList h1 {
@@ -87,6 +100,7 @@ export default {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
     margin-right: 18%;
     margin-left: 18%;
+    
     
   }
   /* Header cell styles */
@@ -191,5 +205,8 @@ export default {
   .table-container {
     overflow-y: auto;
     max-height: 40px; /* Adjust the maximum height as needed */
+  }
+  .edit-btn {
+    padding: 5px;
   }
 </style>

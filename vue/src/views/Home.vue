@@ -1,13 +1,13 @@
 <template>
 
 
-  <div class="home" >
+  <div class="home"  >
     
 
 
-<!--     
+    
     <h1>Home</h1>
-    <p>If you are seeing this, you are authenticated.</p> -->
+    <p>If you are seeing this, you are authenticated.</p>
   </div>
   
   
@@ -19,5 +19,14 @@ export default {
 };
 </script>
 <style scoped>
-  
+
+
+.home {
+  height: 100vh;
+}
+
+  /* .home{
+    background-image: radial-gradient(grey,brown,purple);
+  } */
+
 </style>

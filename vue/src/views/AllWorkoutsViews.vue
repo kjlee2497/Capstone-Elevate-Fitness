@@ -16,6 +16,12 @@ export default {
 }
 </script>
 
-<style>
+
+
+<style scopded>
+.listWorkout {
+  margin:0px;
+  height: 100vh;
+}
 
 </style>
