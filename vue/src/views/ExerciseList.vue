@@ -23,7 +23,7 @@
       <button>Add Selected Exercises to a Workout</button>
       <button>Request an Exercise</button>
       <button>Generate a Random Workout</button>
-</div>
+      </div>
   </div>
 </template>
 <script>
@@ -69,10 +69,16 @@ export default {
     font-style: italic;
   } */
    /* Container styles */
+
+   /* div.exerciseList{
+     margin-top: 0;
+     
+   } */
   .exerciseList {
     font-family: Arial, sans-serif;
     margin-top: 20vh;
     margin-right: none;
+    margin:0px;
 }
   /* Header styles */
   .exerciseList h1 {
@@ -87,6 +93,7 @@ export default {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
     margin-right: 18%;
     margin-left: 18%;
+    
     
   }
   /* Header cell styles */
