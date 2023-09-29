@@ -9,9 +9,9 @@ import Metrics from '../views/Metrics.vue'
 import ExerciseList from '../views/ExerciseList'
 import EditExercise from '../views/EditExercise'
 import AddExercise from '../views/AddExercise'
-import AllWorkouts from '../views/AllWorkouts'
+import CreateWorkout from '../views/CreateWorkout'
 import Workout from '../views/Workout'
-import AddWorkout from '../views/AddWorkout'
+import AllWorkoutsViews from '../views/AllWorkoutsViews'
 import WorkoutHistory from '../views/WorkoutHistory'
 Vue.use(Router)
 
@@ -93,9 +93,9 @@ const router = new Router({
       }
     },
     {
-      path: "/workouts",
+      path: "/v1/workouts",
       name: "workouts",
-      component: AllWorkouts,
+      component: AllWorkoutsViews,
       meta: {
         requiresAuth: true
       }
@@ -111,7 +111,7 @@ const router = new Router({
     {
       path: "/workout/add",
       name: "add-workout",
-      component: AddWorkout,
+      component: CreateWorkout,
       meta: {
         requiresAuth: true
       }
