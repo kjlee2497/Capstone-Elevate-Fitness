@@ -1,15 +1,15 @@
 <template>
 
   
-  <div id="app" class="app-bg">
+  <div id="app">
     <!-- <div class="bg-image"
      style="background-image: url('https://images.rawpixel.com/image_1000/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsb2ZmaWNlN19waG90b2dyYXBoeV9vZl9tb2Rlcm5fZml0bmVzc19yb29tX21pbmltYWxfOGtfMjdjNmZkYjctNGQxMS00Yjc1LWJkODQtZThjZTBiMTY4NmY3XzEuanBn.jpg');
             height: 100vh ; width:100vw " ></div> -->
-   
+            
     <button class="toggle-button futuristic" @click="toggleSidebar">
       <i class="fas fa-bars"></i> 
     </button>
-
+  
     
     <div class="sidebar futuristic" :class="{ 'show': isSidebarVisible }">
       <br>
@@ -51,7 +51,7 @@ export default {
 
 <style>
 
-#app{
+/* #app{
   
   background-color: rgb(105, 91, 91); 
  
@@ -60,7 +60,7 @@ export default {
   height: 100%;
  
   
-}
+} */
 
 /* .content {
   height: 100vmax; 
@@ -72,7 +72,12 @@ export default {
  background-image: radial-gradient(green,red,purple);
  background-size: cover;
 } */
-
+/* 
+#app {
+  background-color: black;
+  height:100vh;
+  width: 100vw;
+} */
 
 .sidebar {
   position: fixed;
@@ -80,7 +85,8 @@ export default {
   left: -250px; 
   width: 150px;
   height: 100%;
-  background-image: linear-gradient(147deg, #4d4855 0%, #000000 74%);
+  background-color: rgba(0, 0, 0, 0.418);
+    backdrop-filter: blur(30px);
 
   color: #fff;
   overflow-x: hidden;
@@ -113,7 +119,7 @@ export default {
 }
 
 .sidebar a:hover {
-    background-image: linear-gradient(180deg, #8f05ff,#b409f88c);
+    background-image: linear-gradient(180deg, #8f05ff7c,#b409f88c);
     animation: pulse 0.5s ease infinite alternate;
 }
 
@@ -129,7 +135,7 @@ export default {
   left: 10px;
   z-index: 1001; 
   background-color: transparent;
-  color: rgb(14, 14, 14);
+  color: rgb(150, 111, 255);
   border: none;
   cursor: pointer;
   border-radius: 50%;
@@ -140,7 +146,7 @@ export default {
 }
 
 .toggle-button.futuristic:hover {
-  background-image: linear-gradient(180deg, rgb(82, 93, 243), rgb(35, 96, 189),rgb(245, 0, 245)); /* Change background color on hover */
+  background-image: linear-gradient(180deg, rgba(82, 93, 243, 0.514), rgb(35, 96, 189,0.514),rgb(245, 0, 245,0.514)); /* Change background color on hover */
   transform: rotate(180deg); 
 }
 

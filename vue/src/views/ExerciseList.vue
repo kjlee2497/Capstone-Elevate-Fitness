@@ -1,6 +1,8 @@
 <template>
   <div class="exerciseList">
-  
+    <div class="bg-image"
+     style="background-image: url('  https://img.peerspace.com/image/upload/w_1200,c_limit/c_crop,g_custom,f_auto,q_auto,dpr_auto/l_PS-logo,g_south_east,x_20,y_20,w_175,o_75/nutvnqk8nwfellox26n5
+');" >
     <h1>Exercise List</h1>
       <table class="exerciseList-table">
         <th> Exercise name</th>
@@ -29,6 +31,7 @@
       <button class="requestButton" @click="goToRequestExercise">Request an Exercise</button>
       <button>Generate a Random Workout</button>
       </div>
+    </div>
   </div>
 </template>
 <script>
@@ -82,6 +85,17 @@ export default {
 }
 </script>
 <style scoped>
+.bg-image {
+ 
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  margin:0
+  
+}
+
+
   /* table{
      height: 900px;
       width: 75vw;
@@ -114,17 +128,7 @@ export default {
      
    } */
 
-  .requestButton {
-     background-color: #0b080cc0;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-  text-decoration: none; /* Remove underline */
-  }
+
 
   .exerciseList {
     font-family: Arial, sans-serif;
@@ -164,6 +168,7 @@ export default {
   /* Alternate row background color */
   .exerciseList-table tr:nth-child(even) {
     background-color: #F9F9F9;
+    backdrop-filter: blur(30px);
   }
   /* Hover effect for rows */
   .exerciseList-table tr:hover {
@@ -175,6 +180,7 @@ export default {
   }
   .exerciseList-table tr {
     transition: background-color 0.3s, opacity 0.3s;
+    
   }
   /* Change background color and opacity on hover */
   .exerciseList-table tr:hover {
@@ -251,4 +257,17 @@ export default {
     overflow-y: auto;
     max-height: 40px; /* Adjust the maximum height as needed */
   }
+
+
+  /* .exerciseList-table {
+    
+    display: inline-block;
+    border: 1px black solid;
+    padding: 10px 20px;
+    border-radius: 15px;
+    font-family: 'Poppins',sans-serif;
+    background-color: rgba(255,255,255,0.13);
+    backdrop-filter: blur(30px);
+} */
+
 </style>
