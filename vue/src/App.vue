@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+    <!-- <div class="bg-image"
+     style="background-image: url('https://images.rawpixel.com/image_1000/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsb2ZmaWNlN19waG90b2dyYXBoeV9vZl9tb2Rlcm5fZml0bmVzc19yb29tX21pbmltYWxfOGtfMjdjNmZkYjctNGQxMS00Yjc1LWJkODQtZThjZTBiMTY4NmY3XzEuanBn.jpg');
+            height: 100vh ; width:100vw " ></div> -->
     <!-- Toggle button to show/hide the sidebar -->
     <button class="toggle-button futuristic" @click="toggleSidebar">
       <i class="fas fa-bars"></i> 
@@ -13,8 +16,8 @@
       <router-link v-if="$store.state.token !== ''" :to="{ name: 'home' }" @click="toggleSidebar">Home</router-link>
 
       
-      <router-link v-if="$store.state.token !== ''" :to="{ name: 'exercise' }" @click="toggleSidebar">Exercises</router-link>
-      <router-link v-if="$store.state.token !== ''" :to="{ name: 'workout' }" @click="toggleSidebar">Workout</router-link>
+      <router-link v-if="$store.state.token !== ''" :to="{ name: 'all-exercises' }" @click="toggleSidebar">Exercises</router-link>
+      <router-link v-if="$store.state.token !== ''" :to="{ name: 'workouts' }" @click="toggleSidebar">Workouts</router-link>
       <router-link v-if="$store.state.token !== ''" :to="{ name: 'history' }" @click="toggleSidebar">History</router-link>
       <router-link v-if="$store.state.token !== ''" :to="{ name: 'logout' }" @click="toggleSidebar">Logout</router-link>
       <!-- Add more menu items as needed -->
@@ -44,6 +47,11 @@ export default {
 </script>
 
 <style>
+.bg-image{
+ background-size: cover;
+ 
+}
+
 /* CSS for the animated sidebar menu */
 .sidebar {
   position: fixed;
@@ -63,6 +71,15 @@ background-image: linear-gradient(147deg, #4d4855 0%, #000000 74%);
 .sidebar.show {
   left: 0; /* Show the sidebar by moving it to the left */
 }
+ /* Define the pulse animation */
+  @keyframes pulse {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.02);
+    }
+  }
 
 .sidebar a {
   padding: 20px;
@@ -70,12 +87,12 @@ background-image: linear-gradient(147deg, #4d4855 0%, #000000 74%);
   color: #fff;
   display: block;
   transition: color 0.3s ease; /* Smooth color transition */
-  /* animation: pulse 0.5s ease infinite alternate; */
+  
 }
 
 .sidebar a:hover {
     background-image: linear-gradient(180deg, #8f05ff,#b409f88c);/* Change color on hover */
-    
+    animation: pulse 0.5s ease infinite alternate;
 }
 
 .content {

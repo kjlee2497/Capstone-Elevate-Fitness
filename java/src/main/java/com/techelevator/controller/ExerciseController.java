@@ -11,7 +11,9 @@ import org.w3c.dom.stylesheets.LinkStyle;
 import java.util.List;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = {
+        "http://localhost:8080"
+})
 @PreAuthorize("isAuthenticated()")
 public class ExerciseController {
     @Autowired
