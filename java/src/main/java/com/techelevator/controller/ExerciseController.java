@@ -8,6 +8,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.w3c.dom.stylesheets.LinkStyle;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -56,8 +57,9 @@ public class ExerciseController {
     }
 
     @RequestMapping(path = "/exercises/generate", method = RequestMethod.POST)
-    public void createExercise(@RequestBody Exercise exercise)  {
-        exerciseDao.createExercise(exercise);
+    public void createExercise(Principal principal, @RequestBody Exercise exercise)  {
+
+        exerciseDao.createExercise(exercise, principal.getName());
     }
 
     @RequestMapping(path = "/exercises/id/{exerciseId}", method = RequestMethod.PUT)

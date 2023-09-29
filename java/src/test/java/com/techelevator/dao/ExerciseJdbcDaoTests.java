@@ -120,7 +120,7 @@ public class ExerciseJdbcDaoTests extends BaseDaoTests{
     public void createExerciseTest(){
         Exercise exerciseTest = new Exercise("test", "description", 1, 1, 1, "back");
 
-       Exercise created = sut.createExercise(exerciseTest);
+       Exercise created = sut.createExercise(exerciseTest, "trainer");
 
         List<Exercise> actual = sut.getAllExercises();
 
@@ -143,7 +143,7 @@ public class ExerciseJdbcDaoTests extends BaseDaoTests{
     public void editExerciseTest(){
         Exercise exerciseTest = new Exercise("test", "description", 1, 1, 1, "back");
 
-        Exercise created = sut.createExercise(exerciseTest);
+        Exercise created = sut.createExercise(exerciseTest, "trainer");
 
         Exercise editTest = new Exercise("xxx", "xxx", 100, 100, 100, "chest");
        sut.editExercise(editTest, created.getExercise_id());
@@ -167,7 +167,7 @@ public class ExerciseJdbcDaoTests extends BaseDaoTests{
     public void deleteExerciseTest(){
         Exercise exerciseTest = new Exercise("test", "description", 1, 1, 1, "back");
 
-        Exercise created = sut.createExercise(exerciseTest);
+        Exercise created = sut.createExercise(exerciseTest, "trainer");
 
         //check list length before the delete
         List<Exercise> allExercises = sut.getAllExercises();

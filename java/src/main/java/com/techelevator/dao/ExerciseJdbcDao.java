@@ -2,15 +2,19 @@ package com.techelevator.dao;
 
 
 import com.techelevator.model.Exercise;
+import com.techelevator.model.User;
 import com.techelevator.model.Workout;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.BadSqlGrammarException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -169,13 +173,31 @@ public class ExerciseJdbcDao implements ExerciseDao {
     }
 
     @Override
-    public Exercise createExercise(Exercise exercise) {
+    public int findIdByUsername(String username) {
+        if (username == null) throw new IllegalArgumentException("Username cannot be null");
+
+        int userId;
+        try {
+            userId = jdbcTemplate.queryForObject("select user_id from users where username = ?", int.class, username);
+        } catch (EmptyResultDataAccessException e) {
+            throw new UsernameNotFoundException("User " + username + " was not found.");
+        }
+
+        return userId;
+    }
+
+    @Override
+    public Exercise createExercise(Exercise exercise, String username) {
 
         String sql = "INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target) VALUES ( ?, ?, ?, ?, ?, ?) RETURNING exercise_id";
+        int trainerId = findIdByUsername(username);
 
         try {
             int newId = jdbcTemplate.queryForObject(sql, int.class, exercise.getName(), exercise.getDescription(), exercise.getWeight(), exercise.getRepCount(), exercise.getExpectedTime(), exercise.getTarget());
             exercise = getExerciseById(newId);
+
+
+            addTrainerExercise(trainerId, newId);
 
         } catch (CannotGetJdbcConnectionException e){
             throw new RuntimeException("Unable to contact the database!", e);
@@ -269,6 +291,24 @@ public class ExerciseJdbcDao implements ExerciseDao {
         }
 
         return deleted;
+    }
+
+    private void addTrainerExercise(int trainerId, int exerciseId){
+
+        String sql = "INSERT INTO user_exercises(trainer_id, exercise_id) VALUES(?,?)";
+
+        try {
+            jdbcTemplate.update(sql,trainerId, exerciseId);
+
+        }catch (CannotGetJdbcConnectionException e){
+        throw new RuntimeException("Unable to contact the database!", e);
+    } catch (BadSqlGrammarException e){
+        throw new RuntimeException("Bad SQL query: " + e.getSql()
+                +"\n"+e.getSQLException(), e);
+    } catch (DataIntegrityViolationException e){
+        throw new RuntimeException("Database Integrity Violation", e);
+    }
+
     }
 
     private Exercise mapRowToExercise(SqlRowSet results) {
