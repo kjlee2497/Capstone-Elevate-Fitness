@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="app-bg">
     <!-- <div class="bg-image"
      style="background-image: url('https://images.rawpixel.com/image_1000/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsb2ZmaWNlN19waG90b2dyYXBoeV9vZl9tb2Rlcm5fZml0bmVzc19yb29tX21pbmltYWxfOGtfMjdjNmZkYjctNGQxMS00Yjc1LWJkODQtZThjZTBiMTY4NmY3XzEuanBn.jpg');
             height: 100vh ; width:100vw " ></div> -->
@@ -47,6 +47,9 @@ export default {
 </script>
 
 <style>
+.app-bg {
+  background-color: #0760b9; /* Use your desired background color code */
+}
 .bg-image{
  background-size: cover;
  
@@ -57,7 +60,7 @@ export default {
   position: fixed;
   top: 0;
   left: -250px; /* Initially hidden */
-  width: 250px;
+  width: 175px;
   height: 100%;
 background-image: linear-gradient(147deg, #4d4855 0%, #000000 74%);
 ; /* Dark background color */
