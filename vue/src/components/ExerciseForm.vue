@@ -32,7 +32,7 @@
         
         <div class="btn-container">
             <button class="btn btn-submit">Submit</button>
-            <button class="btn btn-cancel">Cancel</button>
+            <button class="btn btn-cancel" @click="cancelForm">Cancel</button>
         </div>
 
   </div>
@@ -85,7 +85,7 @@ export default {
                 })
         },
         cancelForm() {
-            this.$router.push(`/exercises}`);
+            this.$router.push(`/exercises`);
         },
         handleErrorResponse(error, verb) {
             if (error.response) {

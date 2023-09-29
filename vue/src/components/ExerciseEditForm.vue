@@ -34,6 +34,7 @@
         <div class="btn-container">
           <button class="btn btn-submit" type="submit">Submit</button>
           <button class="btn btn-cancel" @click="cancelForm">Cancel</button>
+          <button></button>
         </div>
       </div>
     </form>
@@ -83,7 +84,7 @@ export default {
         alert(
             "Cancelled.  Returning to exercise list."
         )
-        this.router.push({ name: 'all-exercises' })
+        this.router.push({ name: `all-exercises` })
     },
     handleErrorResponse(error, verb) {
       if (error.response) {
