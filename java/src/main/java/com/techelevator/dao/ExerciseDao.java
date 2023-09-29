@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Exercise;
 
+import java.security.Principal;
 import java.util.List;
 
 public interface ExerciseDao {
@@ -12,7 +13,8 @@ public interface ExerciseDao {
     List<Exercise> getExerciseByTarget(String target);
     List<Exercise> getExercisesByUser(int userId);
     List<Exercise> getExercisesByWorkout(int workoutId);
-    Exercise createExercise(Exercise exercise);
+    Exercise createExercise(Exercise exercise, String username);
     Exercise editExercise(Exercise exercise, int exerciseId);
     boolean deleteExercise(int exerciseId);
+    int findIdByUsername(String username);
 }

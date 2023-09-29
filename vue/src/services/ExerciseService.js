@@ -15,7 +15,7 @@ editExercise(exercise, exerciseId) {
 },
 
 deleteExercise(exerciseId) {
-    return axios.delete(`/exercises/id/deleteExercise/${exerciseId}`);
+    return axios.delete(`/exercises/id/${exerciseId}`);
 },
 
 getExercisesByWorkout(workoutId) {
