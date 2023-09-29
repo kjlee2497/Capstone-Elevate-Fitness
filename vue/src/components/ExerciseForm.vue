@@ -1,6 +1,11 @@
 <template>
+
 <form v-on:submit.prevent="submitForm" class="cardForm">
+     
+ 
   <div class="form-group">
+     
+
         <div class="form-control">
             <label for="name">Exercise Name:</label>
             <input type="text" id="name" v-model="exercise.name" required>
@@ -34,9 +39,11 @@
             <button class="btn btn-submit">Submit</button>
             <button class="btn btn-cancel" @click="cancelForm">Cancel</button>
         </div>
-
+  
   </div>
+    
 </form>
+  
 </template>
 
 <script>
@@ -116,6 +123,7 @@ export default {
 
 <style scoped>
 
+
 .cardForm{
     margin:0px;
     height: 100vh;
@@ -133,7 +141,8 @@ export default {
     padding: 10px 20px;
     border-radius: 15px;
     font-family: 'Poppins',sans-serif;
-    background-color: lightgrey;
+    background-color: rgba(255,255,255,0.13);
+    backdrop-filter: blur(30px);
 }
 
 .btn-container{
@@ -142,6 +151,19 @@ export default {
 
 .btn {
     margin: 10px 50px;
+    background-color: #0b080cc0;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+.btn:hover {
+     background-color: #8F05FF;
+    transform: scale(1.05);
+        animation: pulse 0.5s ease infinite alternate;
 }
 
 .form-control {
