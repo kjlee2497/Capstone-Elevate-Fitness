@@ -32,6 +32,7 @@
 
 <script>
 export default {
+  
   data() {
     return {
       isSidebarVisible: false // Initially, the sidebar is hidden
