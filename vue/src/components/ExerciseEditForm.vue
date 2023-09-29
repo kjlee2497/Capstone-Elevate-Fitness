@@ -118,6 +118,15 @@ export default {
 </script>
 
 <style>
+
+.cardForm{
+    margin:0px;
+    height: 100vh;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+
+}
 .form-group {
     display: inline-block;
     border: 1px black solid;

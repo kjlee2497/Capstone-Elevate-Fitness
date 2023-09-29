@@ -78,9 +78,9 @@ export default {
   position: fixed;
   top: 0;
   left: -250px; 
-  width: 175px;
+  width: 150px;
   height: 100%;
-background-image: linear-gradient(147deg, #4d4855 0%, #000000 74%);
+  background-image: linear-gradient(147deg, #4d4855 0%, #000000 74%);
 
   color: #fff;
   overflow-x: hidden;
@@ -108,6 +108,7 @@ background-image: linear-gradient(147deg, #4d4855 0%, #000000 74%);
   color: #fff;
   display: block;
   transition: color 0.3s ease; 
+  
   
 }
 
