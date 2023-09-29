@@ -18,8 +18,8 @@ import java.util.List;
 public class ExerciseJdbcDao implements ExerciseDao {
 
     private JdbcTemplate jdbcTemplate;
-    public ExerciseJdbcDao(DataSource dataSource) {
-        jdbcTemplate = new JdbcTemplate(dataSource);
+    public ExerciseJdbcDao(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
         }
     @Override
     public List<Exercise> getAllExercises() {
@@ -58,6 +58,7 @@ public class ExerciseJdbcDao implements ExerciseDao {
         throw new RuntimeException("Database Integrity Violation", e);
     }
 
+    if (exercise == null) throw new IllegalArgumentException("This exercise_id does not exist");
     return exercise;
 }
 
@@ -85,15 +86,18 @@ public class ExerciseJdbcDao implements ExerciseDao {
 
     @Override
     public List<Exercise> getExerciseByTarget(String target) {
+        int check = 0;
         List<Exercise> exercises = new ArrayList<>();
         target = target.toLowerCase();
         String sql = "SELECT * FROM exercises WHERE target = ?";
 
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, target);
+
             while(results.next()) {
                 Exercise exercise = mapRowToExercise(results);
                 exercises.add(exercise);
+                check++;
             }
         } catch (CannotGetJdbcConnectionException e){
             throw new RuntimeException("Unable to contact the database!", e);
@@ -104,11 +108,13 @@ public class ExerciseJdbcDao implements ExerciseDao {
             throw new RuntimeException("Database Integrity Violation", e);
         }
 
+        if (check == 0) throw new IllegalArgumentException("This target does not exist");
         return exercises;
     }
 
     @Override
     public List<Exercise> getExercisesByUser(int userId) {
+        int check = 0;
         List<Exercise> exercises = new ArrayList<>();
         String sql = "SELECT *\n" +
                 "FROM exercises JOIN user_exercises ON exercises.exercise_id = user_exercises.exercise_id\n" +
@@ -119,6 +125,7 @@ public class ExerciseJdbcDao implements ExerciseDao {
             while(results.next()) {
                 Exercise exercise = mapRowToExercise(results);
                 exercises.add(exercise);
+                check++;
             }
         } catch (CannotGetJdbcConnectionException e){
             throw new RuntimeException("Unable to contact the database!", e);
@@ -129,11 +136,13 @@ public class ExerciseJdbcDao implements ExerciseDao {
             throw new RuntimeException("Database Integrity Violation", e);
         }
 
+        if (check == 0) throw new IllegalArgumentException("This user does not exist");
         return exercises;
     }
 
     @Override
     public List<Exercise> getExercisesByWorkout(int workoutId) {
+        int check = 0;
         List<Exercise> exercises = new ArrayList<>();
         String sql = "SELECT *\n" +
                 "FROM exercises JOIN workout_exercises ON exercises.exercise_id = workout_exercises.exercise_id\n" +
@@ -144,6 +153,7 @@ public class ExerciseJdbcDao implements ExerciseDao {
             while(results.next()) {
                 Exercise exercise = mapRowToExercise(results);
                 exercises.add(exercise);
+                check++;
             }
         } catch (CannotGetJdbcConnectionException e){
             throw new RuntimeException("Unable to contact the database!", e);
@@ -154,6 +164,7 @@ public class ExerciseJdbcDao implements ExerciseDao {
             throw new RuntimeException("Database Integrity Violation", e);
         }
 
+        if (check == 0) throw new IllegalArgumentException("This workout does not exist");
         return exercises;
     }
 

@@ -15,8 +15,8 @@ import java.util.List;
 @Component
 public class WorkoutJdbcDao implements WorkoutDao {
     private JdbcTemplate jdbcTemplate;
-    public WorkoutJdbcDao(DataSource datasource) {
-        jdbcTemplate = new JdbcTemplate(datasource);
+    public WorkoutJdbcDao(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
     }
 
     @Override
