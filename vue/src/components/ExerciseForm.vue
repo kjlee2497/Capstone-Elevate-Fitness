@@ -76,7 +76,6 @@ export default {
             ExerciseService.createExercise(newExercise)
                 .then(res => {
                     if (res.status === 200) {
-                        window.alert('Exercise Added');
                         this.$router.push(`/exercises/`);
                     }
                 })
@@ -116,7 +115,7 @@ export default {
 </script>
 
 <style scoped>
-.div
+
 .form-group {
     display: inline-block;
     border: 1px black solid;
