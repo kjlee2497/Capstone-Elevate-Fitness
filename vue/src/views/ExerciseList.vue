@@ -23,7 +23,8 @@
       </table>
       <div id="buttons">
       <button>Add Selected Exercises to a Workout</button>
-      <button>Request an Exercise</button>
+      
+      <button class="requestButton" @click="goToRequestExercise">Request an Exercise</button>
       <button>Generate a Random Workout</button>
       </div>
   </div>
@@ -45,7 +46,10 @@ export default {
   methods: {
     goToEditPage(exerciseId) {
       this.$router.push(`/exercise/${exerciseId}`)
-    }
+    },
+   goToRequestExercise() {
+      this.$router.push({ name: 'add-exercises' });
+  }
   }
 }
 </script>
@@ -81,6 +85,19 @@ export default {
      margin-top: 0;
      
    } */
+
+  .requestButton {
+     background-color: #0b080cc0;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  text-decoration: none; /* Remove underline */
+  }
+
   .exerciseList {
     font-family: Arial, sans-serif;
     margin-top: 20vh;
