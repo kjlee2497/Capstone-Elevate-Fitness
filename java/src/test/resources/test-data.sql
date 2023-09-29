@@ -1,8 +1,10 @@
 BEGIN TRANSACTION;
 --Users--------------------------------------------------------------------------
-INSERT INTO users (username,password_hash,role) VALUES ('user1','user1','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('trainer','user1','ROLE_TRAINER');
 INSERT INTO users (username,password_hash,role) VALUES ('user2','user2','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('user3','user3','ROLE_USER');
+
+
 
 --Exercises--------------------------------------------------------------------------
 INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target)
