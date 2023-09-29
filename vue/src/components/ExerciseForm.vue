@@ -76,7 +76,6 @@ export default {
             ExerciseService.createExercise(newExercise)
                 .then(res => {
                     if (res.status === 200) {
-                        window.alert('Exercise Added');
                         this.$router.push(`/exercises/`);
                     }
                 })
