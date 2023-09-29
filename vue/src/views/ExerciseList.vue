@@ -9,7 +9,8 @@
         <th>Rep Count</th>
         <th>Expected Time to Complete</th>
         <th>Target Area</th>
-        <th></th>
+        <th class="editHeader"></th>
+        <th class="deleteHeader"></th>
           <tr v-for="exercise in exercises" v-bind:key="exercise.id">
             <!-- <td>{{ exercise.id }}</td> -->
             <td>{{ exercise.name }}</td>
@@ -19,6 +20,7 @@
             <td>{{ exercise.expectedTime }}</td>
             <td>{{ exercise.target }}</td>
             <td><button v-on:click="goToEditPage(exercise.exercise_id)">Edit</button></td>
+            <td><button v-on:click="deleteExercise(exercise.exercise_id)">Delete</button></td>
         </tr>
       </table>
       <div id="buttons">
@@ -45,6 +47,32 @@ export default {
   methods: {
     goToEditPage(exerciseId) {
       this.$router.push(`/exercise/${exerciseId}`)
+    },
+    deleteExercise(exerciseId) {
+      service.deleteExercise(exerciseId)
+          .then(res => {
+            if(res.status == 200) {
+              confirm("Exercise will be deleted.  Would you like to continue?");
+              this.$router.go();
+            }
+          })
+          .catch(err => {
+            this.handleErrorResponse(err, "deleting")
+          })
+    },
+    handleErrorResponse(error, verb) {
+      if (error.response) {
+        this.errorMsg =
+          "Error " + verb + " exercise. Response received was '" +
+          error.response.statusText +
+          "'.";
+      } else if (error.request) {
+        this.errorMsg =
+          "Error " + verb + " exercise. Server could not be reached.";
+      } else {
+        this.errorMsg =
+          "Error " + verb + " exercise. Request could not be created.";
+      }
     }
   }
 }
@@ -205,8 +233,5 @@ export default {
   .table-container {
     overflow-y: auto;
     max-height: 40px; /* Adjust the maximum height as needed */
-  }
-  .edit-btn {
-    padding: 5px;
   }
 </style>
