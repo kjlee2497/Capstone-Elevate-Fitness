@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Exercise;
 import com.techelevator.model.Workout;
 
 import java.util.List;
@@ -13,6 +14,8 @@ public interface WorkoutDao {
     List<Workout> listWorkoutsByLength();
     List<Workout> listCompletedWorkouts(int id);
     Workout generateWorkout(Workout workout);
+
+    void addExerciseToWorkout(int workoutId, int exercisesId);
     Workout updateWorkout(Workout workout);
     boolean deleteWorkout(int id);
 
