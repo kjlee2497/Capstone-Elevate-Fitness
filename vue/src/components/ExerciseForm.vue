@@ -37,7 +37,7 @@
         
         <div class="btn-container">
             <button class="btn btn-submit">Submit</button>
-            <button class="btn btn-cancel" @click="cancelForm">Cancel</button>
+            <button class="btn btn-cancel">Cancel</button>
         </div>
   
   </div>
