@@ -4,6 +4,14 @@
      style="background-image: url('  https://img.peerspace.com/image/upload/w_1200,c_limit/c_crop,g_custom,f_auto,q_auto,dpr_auto/l_PS-logo,g_south_east,x_20,y_20,w_175,o_75/nutvnqk8nwfellox26n5
 ');" >
     <h1>Exercise List</h1>
+    <div class="filterBar">
+        <input type="text" id="filterTextBar" v-model="filterOptions.searchQuery">
+        <select name="filterCategory" id="filterCategory" v-model="filterOptions.searchFilter">
+          <option value="target">Target</option>
+          <option value="all">All</option>
+        </select>
+        <button id="filterBtn" v-on:click="filterExercises">Filter</button>
+    </div>
       <table class="exerciseList-table">
         <th> Exercise name</th>
         <th>Description</th>
@@ -13,9 +21,8 @@
         <th>Target Area</th>
         <th class="editHeader"></th>
         <th class="deleteHeader"></th>
-        <tbody> 
-          
-          <tr v-for="exercise in exercises" v-bind:key="exercise.id">
+        <tbody>
+          <tr v-for="exercise in filter" v-bind:key="exercise.id">
             <td class="name">{{ exercise.name }}</td>
             <td class="description">{{ exercise.description }}</td>
             <td class="weight">{{ exercise.weight }}</td>
@@ -44,12 +51,21 @@ export default {
   name: "all-exercises",
   data(){
     return{
-      exercises:[]
+      exercises:[],
+      filter:[],
+      filterOptions: {
+        searchQuery: "",
+        searchFilter: "all"
+      }
     }
   },
   created() {
     service.getAllExercises().then((response) => {
-      this.exercises = response.data
+      this.exercises = response.data;
+      this.filter = this.exercises;
+    })
+    .catch(err => {
+      this.handleErrorResponse(err, "getting")
     });
   },
   methods: {
@@ -71,6 +87,21 @@ export default {
             this.handleErrorResponse(err, "deleting")
           })
     },
+    filterExercises(){
+      if(this.filterOptions.searchFilter == 'all') {
+        this.filter = this.exercises;
+      }
+      if(this.filterOptions.searchFilter == 'target') {
+        this.filter = [];
+        let filteredExercises = [];
+        for(const exercise of this.exercises) {
+          if(exercise.target == this.filterOptions.searchQuery) {
+            filteredExercises.push(exercise);
+          }
+        }
+        this.filter = filteredExercises;
+      }
+    },
     handleErrorResponse(error, verb) {
       if (error.response) {
         this.errorMsg =
@@ -90,7 +121,6 @@ export default {
 </script>
 <style scoped>
 .bg-image {
- 
   height: 100vh;
   width: 100vw;
 }
@@ -216,5 +246,23 @@ tbody{
   /* Add a subtle box shadow on hover for depth */
   button:hover {
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+.filterBar {
+  text-align: center;
+}
+
+#filterTextBar {
+  width: 40vw;
+  height: 20px;
+}
+
+#filterCategory {
+  width: 10vw;
+  height: 25px;
+  margin-left: 30px;
+}
+
+#filterBtn {
+  margin-left: 30px;
 }
 </style>

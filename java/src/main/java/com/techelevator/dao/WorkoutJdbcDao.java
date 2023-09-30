@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Exercise;
 import com.techelevator.model.Workout;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.BadSqlGrammarException;
@@ -183,13 +184,13 @@ public class WorkoutJdbcDao implements WorkoutDao {
 
     @Override
     public Workout generateWorkout(Workout workout) {
-        Workout newWorkout = null;
+
         String sql = "INSERT INTO workouts (name, description, isCompleted)" +
                      "VALUES (?, ?, ?) " +
                      "RETURNING workout_id";
         try {
-            int newId = jdbcTemplate.update(sql, workout.getName(), workout.getDescription(), workout.isCompleted());
-            newWorkout = getWorkoutById(newId);
+            int newId = jdbcTemplate.queryForObject(sql, int.class,workout.getName(), workout.getDescription(), false);
+            workout = getWorkoutById(newId);
         } catch (CannotGetJdbcConnectionException e){
             throw new RuntimeException("Unable to contact the database!", e);
         } catch (BadSqlGrammarException e){
@@ -199,7 +200,24 @@ public class WorkoutJdbcDao implements WorkoutDao {
             throw new RuntimeException("Database Integrity Violation", e);
         }
 
-        return newWorkout;
+        return workout;
+    }
+
+    @Override
+    public void addExerciseToWorkout(int workoutId, int exercisesId) {
+
+        String sql = "INSERT INTO workout_exercises(workout_id, exercise_id) VALUES(?,?)";
+        try {
+            jdbcTemplate.update(sql,workoutId, exercisesId);
+
+        }catch (CannotGetJdbcConnectionException e){
+            throw new RuntimeException("Unable to contact the database!", e);
+        } catch (BadSqlGrammarException e){
+            throw new RuntimeException("Bad SQL query: " + e.getSql()
+                    +"\n"+e.getSQLException(), e);
+        } catch (DataIntegrityViolationException e){
+            throw new RuntimeException("Database Integrity Violation", e);
+        }
     }
 
     @Override

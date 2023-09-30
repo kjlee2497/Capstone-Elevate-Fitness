@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.WorkoutDao;
+import com.techelevator.model.Exercise;
 import com.techelevator.model.Workout;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -49,11 +50,18 @@ public class WorkoutController {
     @RequestMapping(path = "/v1/workouts/completed", method = RequestMethod.GET)
     public List<Workout> listCompletedWorkouts(int id) {
         return workoutDao.listCompletedWorkouts(id);
+
+
     }
 
     @RequestMapping(path = "/v1/workout", method = RequestMethod.POST)
-    public void generateWorkout(@RequestBody Workout workout) {
+    public void generateWorkout(@RequestBody Workout workout, @RequestBody  List<Integer> exercises) {
         workoutDao.generateWorkout(workout);
+
+        for (int i = 0; i < exercises.size(); i++) {
+            workoutDao.addExerciseToWorkout(workout.getWorkout_id(), exercises.get(i));
+        }
+
     }
 
     //TODO: is it fine that the path for the bottom 2 methods is the same? update workoutservice in vue accordingly
