@@ -1,6 +1,7 @@
 <template>
 <div class="bg-image"
-     style="background-image: url('https://images.rawpixel.com/image_1000/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsb2ZmaWNlN19waG90b2dyYXBoeV9vZl9tb2Rlcm5fZml0bmVzc19yb29tX21pbmltYWxfOGtfMjdjNmZkYjctNGQxMS00Yjc1LWJkODQtZThjZTBiMTY4NmY3XzEuanBn.jpg');" >
+     style="background-image: url('https://images.rawpixel.com/image_1000/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8yMV9waG90b19vZl9maXRuZXNzX2d5bV9iYWNrZ3JvdW5kX2NvcHlfc3BhY2VfZThiOGMxMTAtYzRhOC00YjlmLTk2OGEtZWUzNDVlZGQwYzUwXzEuanBn.jpg');" >
+  
   <div class="history">
       <h1>Workout History</h1>
   </div>

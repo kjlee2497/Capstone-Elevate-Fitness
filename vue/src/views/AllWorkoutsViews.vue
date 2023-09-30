@@ -1,8 +1,10 @@
 <template>
+
   <div class="listWorkout">
       <h1>List workouts!!!</h1>
       <all-workouts/>
   </div>
+
 </template>
 
 <script>
@@ -19,9 +21,9 @@ export default {
 
 
 <style scopded>
-.listWorkout {
+/* .listWorkout {
   margin:0px;
   height: 100vh;
-}
+} */
 
 </style>
