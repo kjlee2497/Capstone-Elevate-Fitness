@@ -1,4 +1,8 @@
 <template>
+<div class="bg-image"
+     style="background-image: url('https://images.rawpixel.com/image_1000/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8yMV9waG90b19vZl9tb2Rlcm5fZ3ltX3Jvb21fZml0bmVzc19jZW50ZXJfd2l0aF84MWUwNjEzMC1lOGQwLTQ4MDktOTEwZC04NzQzZDQxY2M5ZWJfMS5qcGc.jpg');" >
+  
+
   <div class="allWorkouts">
     <h1>Workout List</h1>
       <table class="workoutList-table">
@@ -17,6 +21,7 @@
       <button>Delete Workout</button>
       <button>Update Workout</button>
 </div>
+  </div>
   </div>
 </template>
 <script>

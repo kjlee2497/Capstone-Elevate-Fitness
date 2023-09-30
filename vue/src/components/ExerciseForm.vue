@@ -37,7 +37,7 @@
         
         <div class="btn-container">
             <button class="btn btn-submit">Submit</button>
-            <button class="btn btn-cancel">Cancel</button>
+            <button class="btn btn-cancel"  @click="cancelForm">Cancel</button>
         </div>
   
   </div>
@@ -91,7 +91,10 @@ export default {
                 })
         },
         cancelForm() {
-            this.$router.push(`/exercises}`);
+            alert(
+                "Cancelled.  Returning to exercise list."
+            )
+            this.$router.push({ name: `all-exercises` });
         },
         handleErrorResponse(error, verb) {
             if (error.response) {
@@ -123,8 +126,11 @@ export default {
 
 <style scoped>
 
-
+form.cardForm {
+    margin-top: -100px;
+}
 .cardForm{
+    
     margin:0px;
     height: 100vh;
     display: flex;
