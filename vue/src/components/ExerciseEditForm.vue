@@ -1,6 +1,7 @@
 <template>
   <div>
     <form @submit.prevent="submitForm" class="cardForm">
+      
       <div class="form-group">
         <div class="form-control">
           <label for="name">Exercise Name:</label>
@@ -34,7 +35,7 @@
         <div class="btn-container">
           <button class="btn btn-submit" type="submit">Submit</button>
           <button class="btn btn-cancel" @click="cancelForm">Cancel</button>
-          <button></button>
+          
         </div>
       </div>
     </form>
@@ -120,13 +121,15 @@ export default {
 
 <style>
 
+form.cardForm {
+    margin-top: -100px;
+}
 .cardForm{
     margin:0px;
     height: 100vh;
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-
+    justify-content: center; 
+    align-items: center; 
 }
 .form-group {
     display: inline-block;
@@ -134,7 +137,8 @@ export default {
     padding: 10px 20px;
     border-radius: 15px;
     font-family: 'Poppins',sans-serif;
-    background-color: lightgrey;
+    background-color: rgba(255,255,255,0.13);
+    backdrop-filter: blur(30px);
 }
 
 .btn-container{
@@ -143,6 +147,20 @@ export default {
 
 .btn {
     margin: 10px 50px;
+     background-color: #0b080cc0;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+     background-color: #8F05FF;
+    transform: scale(1.05);
+        animation: pulse 0.5s ease infinite alternate;
 }
 
 .form-control {

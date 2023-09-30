@@ -91,7 +91,10 @@ export default {
                 })
         },
         cancelForm() {
-            this.$router.push(`/exercises`);
+            alert(
+                "Cancelled.  Returning to exercise list."
+            )
+            this.$router.push({ name: `all-exercises` });
         },
         handleErrorResponse(error, verb) {
             if (error.response) {
@@ -123,8 +126,11 @@ export default {
 
 <style scoped>
 
-
+form.cardForm {
+    margin-top: -100px;
+}
 .cardForm{
+    
     margin:0px;
     height: 100vh;
     display: flex;
