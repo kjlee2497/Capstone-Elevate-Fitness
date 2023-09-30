@@ -13,17 +13,18 @@
         <th>Target Area</th>
         <th class="editHeader"></th>
         <th class="deleteHeader"></th>
+        <tbody>
           <tr v-for="exercise in exercises" v-bind:key="exercise.id">
-            <!-- <td>{{ exercise.id }}</td> -->
-            <td>{{ exercise.name }}</td>
-            <td>{{ exercise.description }}</td>
-            <td>{{ exercise.weight }}</td>
-            <td>{{ exercise.repCount }}</td>
-            <td>{{ exercise.expectedTime }}</td>
-            <td>{{ exercise.target }}</td>
+            <td class="name">{{ exercise.name }}</td>
+            <td class="description">{{ exercise.description }}</td>
+            <td class="weight">{{ exercise.weight }}</td>
+            <td class="repCount">{{ exercise.repCount }}</td>
+            <td class="expectedTime">{{ exercise.expectedTime }}</td>
+            <td class="target">{{ exercise.target }}</td>
             <td><button v-on:click="goToEditPage(exercise.exercise_id)">Edit</button></td>
             <td><button v-on:click="deleteExercise(exercise.exercise_id)">Delete</button></td>
         </tr>
+        </tbody>
       </table>
       <div id="buttons">
       <button>Add Selected Exercises to a Workout</button>
@@ -87,26 +88,17 @@ export default {
 <style scoped>
 .bg-image {
  
-  background-size: cover;
-  background-position: center;
   height: 100vh;
   width: 100vw;
-  margin:0
-  
 }
-
-
-  /* table{
-     height: 900px;
+  table{
       width: 75vw;
-      background-color: rgba(255,255,255,0.13);
-      position: absolute;
+      position:absolute;
       transform: translate(-50%,-50%);
       top: 50%;
       left: 50%;
       border-radius: 10px;
       backdrop-filter: blur(10px);
-      border: 2px solid rgba(255,255,255,0.1);
       box-shadow: 0 0 40px rgba(8,7,16,0.6);
       padding: 10px 15px;
       font-family: 'Poppins',sans-serif;
@@ -116,50 +108,14 @@ export default {
       border: none;
      text-shadow: 2px 2px 2px black;
      border-collapse: collapse;
-  margin: 20px 0;
+  display: inline-block;
+    border: 1px black solid;
+    padding: 30px;
+    font-family: 'Poppins',sans-serif;
+    background-color: rgba(255,255,255,0.13);
+    backdrop-filter: blur(15px);
   }
-  th {
-    font-style: italic;
-  } */
-   /* Container styles */
-
-   /* div.exerciseList{
-     margin-top: 0;
-     
-   } */
-
-
-
-  .exerciseList {
-    font-family: Arial, sans-serif;
-    margin-top: 20vh;
-    margin-right: none;
-    margin:0px;
-}
-  /* Header styles */
-  .exerciseList h1 {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  /* Table styles */
-  .exerciseList-table {
-    border-collapse: collapse;
-    background-color: #F2F2F2;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-    margin-right: 18%;
-    margin-left: 18%;
-    
-    
-  }
-  /* Header cell styles */
-  .exerciseList-table th {
-    background-color: #333;
-    color: #fff;
-    text-align: left;
-    padding: 10px;
-    transform: none;
-  }
+ 
   /* Data cell styles */
   .exerciseList-table td {
     padding: 10px;
@@ -167,33 +123,27 @@ export default {
   }
   /* Alternate row background color */
   .exerciseList-table tr:nth-child(even) {
-    background-color: #F9F9F9;
+    background-color: #0505056e;
     backdrop-filter: blur(30px);
   }
-  /* Hover effect for rows */
-  .exerciseList-table tr:hover {
-    background-color: #ccc;
-  }
+  
   /* Add some space around the table */
   .exerciseList-table-container {
-    margin: 20px;
+    margin: 40px;
   }
   .exerciseList-table tr {
     transition: background-color 0.3s, opacity 0.3s;
-    
+  
+  
   }
-  /* Change background color and opacity on hover */
-  .exerciseList-table tr:hover {
-    background-color: #ccc;
-    opacity: 0.8;
-  }
+  
     /* Add animation to row hover effect */
   .exerciseList-table tr {
     transition: background-color 0.3s, opacity 0.3s;
   }
   /* Change background color and opacity on hover */
   .exerciseList-table tr:hover {
-    background-color: #b409f88c;
+    background-color: #b409f896;
     opacity: 0.8;
     transform: scale(1.01);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
@@ -201,15 +151,24 @@ export default {
   }
   /* Add a subtle border to table rows */
   .exerciseList-table tr {
-    border-bottom: 2px solid #8F05FF;
+    border-bottom: 2px solid #8f05ffb9;
     margin-left: 60vw;
   }
   /* Add a gradient background to header cells */
   .exerciseList-table th {
-    background: linear-gradient(to bottom, #070606, #585656);
+    background-color: #8f05ffb9;
     color: rgb(255, 255, 255);
     text-align: center;
+        font-style: italic;
+
   }
+
+tbody{
+   height: 600px;
+  overflow: scroll;
+  display: block;
+  
+}
   /* Add a shadow to header cells */
   .exerciseList-table th {
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
@@ -227,16 +186,15 @@ export default {
     
      margin-top: 20px;
      display: flex;
-    justify-content: space-between;
-    margin-right: 18%;
-    margin-left: 18%;
-    margin-bottom: 40px;
+    justify-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 60px;
 }
   /* Basic button styles */
   button {
     background-color: #0b080cc0;
     color: #fff;
-    border: none;
+    border: 10px;
     padding: 10px 20px;
     font-size: 16px;
     border-radius: 5px;
@@ -252,22 +210,5 @@ export default {
   /* Add a subtle box shadow on hover for depth */
   button:hover {
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-  }
-  .table-container {
-    overflow-y: auto;
-    max-height: 40px; /* Adjust the maximum height as needed */
-  }
-
-
-  /* .exerciseList-table {
-    
-    display: inline-block;
-    border: 1px black solid;
-    padding: 10px 20px;
-    border-radius: 15px;
-    font-family: 'Poppins',sans-serif;
-    background-color: rgba(255,255,255,0.13);
-    backdrop-filter: blur(30px);
-} */
-
+}
 </style>
