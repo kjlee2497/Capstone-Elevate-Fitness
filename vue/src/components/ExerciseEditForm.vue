@@ -137,8 +137,14 @@ form.cardForm {
     padding: 10px 20px;
     border-radius: 15px;
     font-family: 'Poppins',sans-serif;
-    background-color: rgba(255,255,255,0.13);
-    backdrop-filter: blur(30px);
+     background-color: rgba(228, 219, 219, 0.301);
+    backdrop-filter: blur(25px);
+    
+     color: #FFFFFF;
+      letter-spacing: 0.5px;
+      outline: none;
+      border: none;
+     text-shadow: 2px 2px 2px black;
 }
 
 .btn-container{

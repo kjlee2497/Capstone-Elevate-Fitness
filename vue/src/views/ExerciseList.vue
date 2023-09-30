@@ -13,7 +13,8 @@
         <th>Target Area</th>
         <th class="editHeader"></th>
         <th class="deleteHeader"></th>
-        <tbody>
+        <tbody> 
+          
           <tr v-for="exercise in exercises" v-bind:key="exercise.id">
             <td class="name">{{ exercise.name }}</td>
             <td class="description">{{ exercise.description }}</td>
@@ -23,7 +24,9 @@
             <td class="target">{{ exercise.target }}</td>
             <td><button v-on:click="goToEditPage(exercise.exercise_id)">Edit</button></td>
             <td><button v-on:click="deleteExercise(exercise.exercise_id)">Delete</button></td>
+            
         </tr>
+        
         </tbody>
       </table>
       <div id="buttons">
@@ -115,6 +118,9 @@ export default {
     background-color: rgba(255,255,255,0.13);
     backdrop-filter: blur(15px);
   }
+
+  
+
  
   /* Data cell styles */
   .exerciseList-table td {

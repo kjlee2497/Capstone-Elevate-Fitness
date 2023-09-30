@@ -1,15 +1,16 @@
 <template>
-<div class="bg-image"
-     style="background-image: url('https://images.rawpixel.com/image_1000/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8yMV9waG90b19vZl9tb2Rlcm5fZ3ltX3Jvb21fZml0bmVzc19jZW50ZXJfd2l0aF84MWUwNjEzMC1lOGQwLTQ4MDktOTEwZC04NzQzZDQxY2M5ZWJfMS5qcGc.jpg');" >
+
   
 
   <div class="allWorkouts">
     <h1>Workout List</h1>
+    
       <table class="workoutList-table">
         <tbody>
         <th> Workout name</th>
         <th>Description</th>
         <th>Status</th>
+        
           <tr v-for="workout in workouts" v-bind:key="workout.id">
             <td>{{ workout.name }}</td>
             <td>{{ workout.description }}</td>
@@ -22,7 +23,7 @@
       <button>Update Workout</button>
 </div>
   </div>
-  </div>
+  
 </template>
 <script>
  import service from '../services/WorkoutService'
@@ -40,6 +41,7 @@ export default {
 </script>
 
 <style scoped>
+
 table{
     display: flex;
     justify-content: center; /* Center horizontally */
@@ -59,7 +61,7 @@ table {
     padding: 10px 20px;
     border-radius: 15px;
     font-family: 'Poppins',sans-serif;
-    background-color: rgba(255,255,255,0.13);
+    background-color: rgba(255, 255, 255, 0.493);
     backdrop-filter: blur(30px);
 }
 
