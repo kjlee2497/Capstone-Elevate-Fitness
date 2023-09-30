@@ -7,20 +7,24 @@
     <div class="filterBar">
         <input type="text" id="filterTextBar" v-model="filterOptions.searchQuery">
         <select name="filterCategory" id="filterCategory" v-model="filterOptions.searchFilter">
+          <option value="exerciseName">Name</option>
           <option value="target">Target</option>
+          <option value="time">Time</option>
           <option value="all">All</option>
         </select>
         <button id="filterBtn" v-on:click="filterExercises">Filter</button>
     </div>
       <table class="exerciseList-table">
-        <th> Exercise name</th>
-        <th>Description</th>
-        <th>Suggested Weight</th>
-        <th>Rep Count</th>
-        <th>Expected Time to Complete</th>
-        <th>Target Area</th>
-        <th class="editHeader"></th>
-        <th class="deleteHeader"></th>
+        <thead>
+          <th class="name"> Exercise name</th>
+          <th class="description">Description</th>
+          <th class="weight">Suggested Weight</th>
+          <th class="repCount">Rep Count</th>
+          <th class="expectedTime">Expected Time to Complete</th>
+          <th class="target">Target Area</th>
+          <th class="edit-btn"></th>
+          <th class="delete-btn"></th>
+        </thead>
         <tbody>
           <tr v-for="exercise in filter" v-bind:key="exercise.id">
             <td class="name">{{ exercise.name }}</td>
@@ -29,8 +33,8 @@
             <td class="repCount">{{ exercise.repCount }}</td>
             <td class="expectedTime">{{ exercise.expectedTime }}</td>
             <td class="target">{{ exercise.target }}</td>
-            <td><button v-on:click="goToEditPage(exercise.exercise_id)">Edit</button></td>
-            <td><button v-on:click="deleteExercise(exercise.exercise_id)">Delete</button></td>
+            <td class="edit-btn"><button v-on:click="goToEditPage(exercise.exercise_id)">Edit</button></td>
+            <td class="delete-btn"><button v-on:click="deleteExercise(exercise.exercise_id)">Delete</button></td>
         </tr>
         </tbody>
       </table>
@@ -92,11 +96,31 @@ export default {
       if(this.filterOptions.searchFilter == 'target') {
         this.filter = [];
         let filteredExercises = [];
-        for(const exercise of this.exercises) {
+        for(let exercise of this.exercises) {
           if(exercise.target == this.filterOptions.searchQuery) {
             filteredExercises.push(exercise);
           }
         }
+        this.filter = filteredExercises;
+      }
+      if(this.filterOptions.searchFilter == 'exerciseName') {
+        this.filter = [];
+        let filteredExercises = [];
+        for(let exercise of this.exercises) {
+          if(exercise.name.toLowerCase().includes(this.filterOptions.searchQuery.toLowerCase())) {
+            filteredExercises.push(exercise);
+          }
+        }
+        this.filter = filteredExercises;
+      }
+      if(this.filterOptions.searchFilter == 'time') {
+          this.filter = [];
+          let filteredExercises = [];
+          for(let exercise of this.exercises) {
+            if(exercise.expectedTime <= this.filterOptions.searchQuery) {
+              filteredExercises.push(exercise);
+            }
+          }
         this.filter = filteredExercises;
       }
     },
@@ -118,6 +142,9 @@ export default {
 }
 </script>
 <style scoped>
+h1 {
+  margin: 0px 0px
+}
 .bg-image {
   height: 100vh;
   width: 100vw;
@@ -151,6 +178,7 @@ export default {
   .exerciseList-table td {
     padding: 10px;
     border-bottom: 1px solid #ddd;
+    text-align: center;
   }
   /* Alternate row background color */
   .exerciseList-table tr:nth-child(even) {
@@ -164,7 +192,6 @@ export default {
   }
   .exerciseList-table tr {
     transition: background-color 0.3s, opacity 0.3s;
-  
   
   }
   
@@ -260,4 +287,36 @@ tbody{
 #filterBtn {
   margin-left: 30px;
 }
+thead th{
+  text-align: center;
+  padding: 10px;
+}
+.name {
+  width: 10vw;
+}
+.description {
+  width: 20vw;
+}
+.weight {
+  width: 5vw;
+}
+.repCount {
+  width: 5vw;
+}
+.expectedTime{
+  width: 5vw;
+}
+.target {
+  width: 5vw;
+}
+.edit-btn{
+  width: 5vw;
+}
+.delete-btn{
+  width: 5vw;
+}
+
+
+
+
 </style>

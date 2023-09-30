@@ -20,16 +20,16 @@ VALUES ('Hammer Curl', 'A hammer curl is a resistance exercise that primarily ta
 '20', '10', '60', 'arms');
 
 INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target)
-VALUES ('Skullcrushers', 'skullcrushers DESCRIPTION', '0', '10', '60', 'arms');
+VALUES ('Skullcrushers', 'skullcrushers DESCRIPTION', '0', '10', '40', 'arms');
 
 INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target)
-VALUES ('Close-grip bench press', 'Close-grip bench press DESCRIPTION', '15', '10', '60', 'arms');
+VALUES ('Close-grip bench press', 'Close-grip bench press DESCRIPTION', '15', '10', '40', 'arms');
 
 INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target)
 VALUES ('Shoulder press', 'shoulder press DESCRIPTION', '20', '10', '60', 'arms');
 
 INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target)
-VALUES ('Calf raises', 'calf raises DESCRIPTION', '20', '10', '60', 'legs');
+VALUES ('Calf raises', 'calf raises DESCRIPTION', '20', '10', '80', 'legs');
 
 INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target)
 VALUES ('Squat', 'squat DESCRIPTION', '65', '10', '60', 'legs');
@@ -47,7 +47,7 @@ INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_cou
 VALUES ('Russian twists', 'Russian twists DESCRIPTION', '65', '10', '60', 'abs');
 
 INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target)
-VALUES ('Leg raises', 'Leg raises DESCRIPTION', '0', '10', '60', 'abs');
+VALUES ('Leg raises', 'Leg raises DESCRIPTION', '0', '10', '90', 'abs');
 
 INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target)
 VALUES ('Plank', 'Plank DESCRIPTION', '0', '10', '60', 'abs');
@@ -56,7 +56,7 @@ INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_cou
 VALUES ('Bicycle crunches', 'Bicycle crunches DESCRIPTION', '0', '10', '60', 'abs');
 
 INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target)
-VALUES ('Sit-up', 'Sit-up DESCRIPTION', '0', '10', '60', 'abs');
+VALUES ('Sit-up', 'Sit-up DESCRIPTION', '0', '10', '90', 'abs');
 
 INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target)
 VALUES ('Bent-over row', 'Bent-over row DESCRIPTION', '65', '10', '60', 'back');
@@ -74,22 +74,22 @@ INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_cou
 VALUES ('Renegade row', 'Renegade row DESCRIPTION', '20', '10', '60', 'back');
 
 INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target)
-VALUES ('Rowing machine', 'Rowing machine DESCRIPTION', '0', '0', '60', 'cardio');
+VALUES ('Rowing machine', 'Rowing machine DESCRIPTION', '0', '0', '90', 'cardio');
 
 INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target)
 VALUES ('Jump rope', 'Jump rope DESCRIPTION', '0', '0', '60', 'cardio');
 
 INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target)
-VALUES ('Jumping jack', 'Jumping jack DESCRIPTION', '0', '0', '60', 'cardio');
+VALUES ('Jumping jack', 'Jumping jack DESCRIPTION', '0', '0', '80', 'cardio');
 
 INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target)
-VALUES ('Elliptical machine', 'Elliptical machine DESCRIPTION', '0', '0', '60', 'cardio');
+VALUES ('Elliptical machine', 'Elliptical machine DESCRIPTION', '0', '0', '75', 'cardio');
 
 INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target)
 VALUES ('Exercise bike', 'Exercise bike DESCRIPTION', '0', '0', '60', 'cardio');
 
 INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target)
-VALUES ('Push ups', 'Push ups DESCRIPTION', '0', '10', '60', 'total body');
+VALUES ('Push ups', 'Push ups DESCRIPTION', '0', '10', '50', 'total body');
 
 INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target)
 VALUES ('Mountain climbers', 'Mountain climbers DESCRIPTION', '0', '20', '60', 'total body');
@@ -98,10 +98,10 @@ INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_cou
 VALUES ('Step ups', 'Step up DESCRIPTION', '0', '20', '60', 'total body');
 
 INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target)
-VALUES ('Bodyweight Squat', 'Bodyweight squat DESCRIPTION', '0', '10', '60', 'total body');
+VALUES ('Bodyweight Squat', 'Bodyweight squat DESCRIPTION', '0', '10', '70', 'total body');
 
 INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target)
-VALUES ('Jump Squat', 'Jump Squat DESCRIPTION', '0', '10', '60', 'total body');
+VALUES ('Jump Squat', 'Jump Squat DESCRIPTION', '0', '10', '90', 'total body');
 
 --arms (2001 - 2005), legs (2006 - 2010),
 -- abs (2011 2015), back (2016-2020), cardio (2021 - 2025), total body (2026 - 2030)
