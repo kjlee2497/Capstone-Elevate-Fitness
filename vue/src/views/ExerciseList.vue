@@ -33,9 +33,16 @@
             <td class="repCount">{{ exercise.repCount }}</td>
             <td class="expectedTime">{{ exercise.expectedTime }}</td>
             <td class="target">{{ exercise.target }}</td>
+<<<<<<< HEAD
             <td class="edit-btn"><button v-on:click="goToEditPage(exercise.exercise_id)">Edit</button></td>
             <td class="delete-btn"><button v-on:click="deleteExercise(exercise.exercise_id)">Delete</button></td>
+=======
+            <td><button v-on:click="goToEditPage(exercise.exercise_id)">Edit</button></td>
+            <td><button v-on:click="deleteExercise(exercise.exercise_id)">Delete</button></td>
+            
+>>>>>>> main
         </tr>
+        
         </tbody>
       </table>
       <div id="buttons">
@@ -173,6 +180,9 @@ h1 {
     background-color: rgba(255,255,255,0.13);
     backdrop-filter: blur(15px);
   }
+
+  
+
  
   /* Data cell styles */
   .exerciseList-table td {
