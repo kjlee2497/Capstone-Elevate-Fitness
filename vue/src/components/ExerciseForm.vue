@@ -1,42 +1,49 @@
 <template>
+
 <form v-on:submit.prevent="submitForm" class="cardForm">
+     
+ 
   <div class="form-group">
+     
+
         <div class="form-control">
             <label for="name">Exercise Name:</label>
-            <input type="text" id="name" v-model="exercise.name">
+            <input type="text" id="name" v-model="exercise.name" required>
         </div>
         <div class="form-control">
             <label for="">Description:</label>
-            <input type="text" id="description" v-model="exercise.description">
+            <input type="text" id="description" v-model="exercise.description" required>
         </div>
 
         <div class="form-control">
             <label for="weight">Suggested Weight:</label>
-            <input type="number" name="weight" id="weight" v-model="exercise.weight">
+            <input type="number" name="weight" id="weight" v-model="exercise.weight" required>
         </div>
 
         <div class="form-control">
             <label for="expectedTime">Expected Time (Seconds):</label>
-            <input type="number" name="expectedTime" id="expectedTime" v-model="exercise.expectedTime">
+            <input type="number" name="expectedTime" id="expectedTime" v-model="exercise.expectedTime" required>
         </div>
             
         <div class="form-control">
             <label for="repCount">Suggested Number of Reps (per Set):</label>
-            <input type="number" name="repCount" id="repCount" v-model="exercise.repCount">
+            <input type="number" name="repCount" id="repCount" v-model="exercise.repCount" required>
         </div>
 
         <div class="form-control">
             <label for="target">Target Muscle Group:</label>
-            <input type="text" name="target" id="target" v-model="exercise.target">
+            <input type="text" name="target" id="target" v-model="exercise.target" required>
         </div>
         
         <div class="btn-container">
             <button class="btn btn-submit">Submit</button>
-            <button class="btn btn-cancel">Cancel</button>
+            <button class="btn btn-cancel"  @click="cancelForm">Cancel</button>
         </div>
-
+  
   </div>
+    
 </form>
+  
 </template>
 
 <script>
@@ -76,7 +83,6 @@ export default {
             ExerciseService.createExercise(newExercise)
                 .then(res => {
                     if (res.status === 200) {
-                        window.alert('Exercise Added');
                         this.$router.push(`/exercises/`);
                     }
                 })
@@ -85,7 +91,10 @@ export default {
                 })
         },
         cancelForm() {
-            this.$router.push(`/exercises}`);
+            alert(
+                "Cancelled.  Returning to exercise list."
+            )
+            this.$router.push({ name: `all-exercises` });
         },
         handleErrorResponse(error, verb) {
             if (error.response) {
@@ -116,14 +125,30 @@ export default {
 </script>
 
 <style scoped>
-.div
+
+form.cardForm {
+    margin-top: -100px;
+}
+.cardForm{
+    
+    margin:0px;
+    height: 100vh;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+
+}
+
 .form-group {
+    
+    
     display: inline-block;
     border: 1px black solid;
     padding: 10px 20px;
     border-radius: 15px;
     font-family: 'Poppins',sans-serif;
-    background-color: lightgrey;
+    background-color: rgba(255,255,255,0.13);
+    backdrop-filter: blur(30px);
 }
 
 .btn-container{
@@ -132,6 +157,19 @@ export default {
 
 .btn {
     margin: 10px 50px;
+    background-color: #0b080cc0;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+.btn:hover {
+     background-color: #8F05FF;
+    transform: scale(1.05);
+        animation: pulse 0.5s ease infinite alternate;
 }
 
 .form-control {
