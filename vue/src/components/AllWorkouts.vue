@@ -7,14 +7,14 @@
     
       <table class="workoutList-table">
         <tbody>
-        <th> Workout name</th>
-        <th>Description</th>
-        <th>Status</th>
+        <th class="h-name"> Workout name</th>
+        <th class="h-desc">Description</th>
+        <th class="h-status">Status</th>
         
           <tr v-for="workout in workouts" v-bind:key="workout.id">
-            <td>{{ workout.name }}</td>
-            <td>{{ workout.description }}</td>
-            <td>{{ workout.status }}</td>
+            <td class="name">{{ workout.name }}</td>
+            <td class="description">{{ workout.description }}</td>
+            <td class="status">{{ workout.status }}</td>
         </tr>
         </tbody>
       </table>
@@ -121,23 +121,25 @@ table{
     padding: 10px;
     border-bottom: 1px solid #ddd;
   }
+
   /* Alternate row background color */
   table tr:nth-child(even) {
     background-color: #0505056e;
     backdrop-filter: blur(30px);
   }
+
   /* Hover effect for rows */
   table tr:hover {
     background-color: #b409f896;
   }
+
   /* Add some space around the table */
   table-container {
     margin: 40px;
   }
+
   table tr {
     transition: background-color 0.3s, opacity 0.3s;
-  
-  
   }
   
     /* Add animation to row hover effect */
@@ -158,12 +160,29 @@ table{
     margin-left: 60vw;
   }
   /* Add a gradient background to header cells */
-  table th {
+  th.h-name {
     background-color: #8f05ffb9;
     color: rgb(255, 255, 255);
     text-align: center;
         font-style: italic;
+        padding: 15px;
+        width: 10vw
+  }
 
+  th.h-desc {
+    background-color: #8f05ffb9;
+    color: rgb(255, 255, 255);
+    text-align: center;
+        font-style: italic;
+  }
+
+  th.h-status {
+    background-color: #8f05ffb9;
+    color: rgb(255, 255, 255);
+    text-align: center;
+        font-style: italic;
+        padding: 15px;
+        width: 10vw
   }
 
 tbody{
@@ -214,4 +233,12 @@ tbody{
   button:hover {
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
+
+.name {
+  width: 10vw;
+}
+.description {
+  width: 20vw;
+}
+
 </style>
