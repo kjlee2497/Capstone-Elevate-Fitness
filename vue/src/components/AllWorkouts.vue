@@ -3,10 +3,13 @@
   
 
   <div class="allWorkouts">
+    <!-- <div class="scrollbar" id="scrollbar"> -->
+    <br>
+    <br>
     <h1>Workout List</h1>
     
       <table class="workoutList-table">
-        <tbody>
+        <tbody class="scrollbar" id="scrollbar">
         <th class="h-name"> Workout name</th>
         <th class="h-desc">Description</th>
         <th class="h-status">Status</th>
@@ -21,8 +24,9 @@
       <div id="buttons">
       <button>Delete Workout</button>
       <button>Update Workout</button>
+      </div>
 </div>
-  </div>
+  <!-- </div> -->
   
 </template>
 <script>
@@ -36,16 +40,70 @@ export default {
     service.listWorkouts().then((response) => {
       this.workouts = response.data ?? []
     });
+  },
+  // updated() {
+  //  const tbody = document.getElementById('scrollbar'); 
+  //   if (tbody.scrollWidth > tbody.clientWidth) {
+  //     tbody.classList.add('tbody-with-scroll');
+  //   } else {
+  //     tbody.classList.remove('tbody-with-scroll');
+  //   }
+  // }
   }
-}
+
 </script>
 
 <style scoped>
 
+
+/* .allWorkouts {
+  display: flex;
+  margin: 50px;
+  column-gap: 20px;
+} */
+
+.scrollbar {
+  height: 300px;
+  width: auto;
+  overflow: auto;
+  
+        }
+
+#scrollbar::-webkit-scrollbar {
+  background-color: rgba(0, 0, 0, 0);
+  width: 12px;
+  border-radius: 10px;
+}
+        
+#scrollbar::-webkit-scrollbar-track {
+  border-radius: 10px;
+ background-color: rgba(255, 255, 255, 0.178);
+  backdrop-filter: blur(30px);
+}
+        
+#scrollbar::-webkit-scrollbar-thumb {
+  /* background-image: -webkit-gradient(linear, left bottom, left top, color-stop(.5, #a4a0a5), color-stop(1, #2f3031)); */
+  background-color: #8f05ffb9;
+   transform: scale(1.05);
+  backdrop-filter: blur(30px);
+  border-radius: 10px;
+
+}
+
+h1{
+  color:white;
+  text-align: center;
+  
+  margin: 0px 0px;
+  font-family: 'Poppins',sans-serif;
+  text-shadow: 2px 2px 2px black;
+
+}
+
 table{
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    justify-content: center; 
+    align-items: center; 
 
 }
 
