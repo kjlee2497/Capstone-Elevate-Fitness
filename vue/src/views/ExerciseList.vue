@@ -5,6 +5,7 @@
 ');" >
 <br>
     <h1>Exercise List</h1>
+    
     <br>
     <div class="filterBar">
         <input type="text" id="filterTextBar" v-model="filterOptions.searchQuery">
@@ -27,6 +28,7 @@
     <br>
     <br>
       <table class="exerciseList-table">
+      
         <thead>
           <th class="name"> Exercise name</th>
           <th class="description">Description</th>
@@ -37,7 +39,9 @@
           <th class="edit-btn"></th>
           <th class="delete-btn"></th>
         </thead>
-        <tbody>
+       
+        <tbody class="scrollbar" id="scrollbar">
+           
           <tr v-for="exercise in filter" v-bind:key="exercise.id">
             <td class="name">{{ exercise.name }}</td>
             <td class="description">{{ exercise.description }}</td>
@@ -47,13 +51,16 @@
             <td class="target">{{ exercise.target }}</td>
             <td class="edit-btn"><button v-on:click="goToEditPage(exercise.exercise_id)">Edit</button></td>
             <td class="delete-btn"><button v-on:click="deleteExercise(exercise.exercise_id)">Delete</button></td>
-        </tr>
         
+        </tr>
+           
         </tbody>
+       
       </table>
       
     </div>
   </div>
+
 </template>
 <script>
  import service from '../services/ExerciseService'
@@ -150,8 +157,40 @@ export default {
 }
 </script>
 <style scoped>
+
+
+.scrollbar {
+  height: 300px;
+  width: auto;
+  overflow: auto; 
+ }
+
+#scrollbar::-webkit-scrollbar {
+  background-color: rgba(0, 0, 0, 0);
+  width: 12px;
+  border-radius: 10px;
+}
+        
+#scrollbar::-webkit-scrollbar-track {
+  border-radius: 10px;
+ background-color: rgba(255, 255, 255, 0.178);
+  backdrop-filter: blur(30px);
+}
+        
+#scrollbar::-webkit-scrollbar-thumb {
+  background-color: #8f05ffb9;
+   transform: scale(1.05);
+  backdrop-filter: blur(30px);
+  border-radius: 10px;
+
+}
+
+
 h1 {
-  margin: 0px 0px
+  margin: 0px 0px;
+  font-family: 'Poppins',sans-serif;
+  text-shadow: 2px 2px 2px black;
+
 }
 .bg-image {
   height: 100vh;
@@ -178,7 +217,7 @@ h1 {
   display: inline-block;
     border: 1px black solid;
     padding: 30px;
-    font-family: 'Poppins',sans-serif;
+    
     background-color: rgba(255,255,255,0.13);
     backdrop-filter: blur(15px);
   }
@@ -186,19 +225,19 @@ h1 {
   
 
  
-  /* Data cell styles */
+ 
   .exerciseList-table td {
     padding: 10px;
     border-bottom: 1px solid #ddd;
     text-align: center;
   }
-  /* Alternate row background color */
+
   .exerciseList-table tr:nth-child(even) {
     background-color: #0505056e;
     backdrop-filter: blur(30px);
   }
   
-  /* Add some space around the table */
+  
   .exerciseList-table-container {
     margin: 40px;
   }
@@ -207,11 +246,11 @@ h1 {
   
   }
   
-    /* Add animation to row hover effect */
+   
   .exerciseList-table tr {
     transition: background-color 0.3s, opacity 0.3s;
   }
-  /* Change background color and opacity on hover */
+ 
   .exerciseList-table tr:hover {
     background-color: #b409f896;
     opacity: 0.8;
@@ -219,12 +258,12 @@ h1 {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     cursor: pointer;
   }
-  /* Add a subtle border to table rows */
+ 
   .exerciseList-table tr {
     border-bottom: 2px solid #8f05ffb9;
     margin-left: 60vw;
   }
-  /* Add a gradient background to header cells */
+  
   .exerciseList-table th {
     background-color: #8f05ffb9;
     color: rgb(255, 255, 255);
@@ -236,14 +275,15 @@ h1 {
 tbody{
    height: 600px;
   overflow: scroll;
+  
   display: block;
   
 }
-  /* Add a shadow to header cells */
+  
   .exerciseList-table th {
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   }
-  /* Define the pulse animation */
+ 
   @keyframes pulse {
     from {
       transform: scale(1);
@@ -260,7 +300,8 @@ tbody{
     justify-content: space-evenly;
     margin-bottom: 60px;
 }
-  /* Basic button styles */
+  
+  
   button {
     
     background-color: #0b080cc0;
@@ -272,13 +313,13 @@ tbody{
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
 }
-  /* Hover effect - change background color and add a slight scale effect */
+ 
   button:hover {
     background-color: #8F05FF;
     transform: scale(1.05);
         animation: pulse 0.5s ease infinite alternate;
   }
-  /* Add a subtle box shadow on hover for depth */
+ 
   button:hover {
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
