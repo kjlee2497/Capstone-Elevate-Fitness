@@ -3,7 +3,9 @@
     <div class="bg-image"
      style="background-image: url('  https://img.peerspace.com/image/upload/w_1200,c_limit/c_crop,g_custom,f_auto,q_auto,dpr_auto/l_PS-logo,g_south_east,x_20,y_20,w_175,o_75/nutvnqk8nwfellox26n5
 ');" >
+<br>
     <h1>Exercise List</h1>
+    <br>
     <div class="filterBar">
         <input type="text" id="filterTextBar" v-model="filterOptions.searchQuery">
         <select name="filterCategory" id="filterCategory" v-model="filterOptions.searchFilter">
@@ -22,6 +24,8 @@
     </div>
 
     </div>
+    <br>
+    <br>
       <table class="exerciseList-table">
         <thead>
           <th class="name"> Exercise name</th>
@@ -37,9 +41,9 @@
           <tr v-for="exercise in filter" v-bind:key="exercise.id">
             <td class="name">{{ exercise.name }}</td>
             <td class="description">{{ exercise.description }}</td>
-            <td class="weight">{{ exercise.weight }}</td>
-            <td class="repCount">{{ exercise.repCount }}</td>
-            <td class="expectedTime">{{ exercise.expectedTime }}</td>
+            <td class="weight">{{ exercise.weight }} lbs</td>
+            <td class="repCount">{{ exercise.repCount }} reps</td>
+            <td class="expectedTime">{{ exercise.expectedTime }} seconds</td>
             <td class="target">{{ exercise.target }}</td>
             <td class="edit-btn"><button v-on:click="goToEditPage(exercise.exercise_id)">Edit</button></td>
             <td class="delete-btn"><button v-on:click="deleteExercise(exercise.exercise_id)">Delete</button></td>
@@ -154,7 +158,7 @@ h1 {
   width: 100vw;
 }
   table{
-    margin-top: 80px;
+      margin-top:100px;
       width: 75vw;
       position:absolute;
       transform: translate(-50%,-50%);
