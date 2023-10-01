@@ -148,8 +148,8 @@ form.cardForm {
     padding: 10px 20px;
     border-radius: 15px;
     font-family: 'Poppins',sans-serif;
-   background-color: rgba(228, 219, 219, 0.301);
-    backdrop-filter: blur(25px);
+   background-color: rgba(122, 122, 122, 0.24);
+    backdrop-filter: blur(10px);
 }
 
 .btn-container{

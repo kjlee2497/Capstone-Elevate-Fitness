@@ -154,6 +154,7 @@ h1 {
   width: 100vw;
 }
   table{
+    margin-top: 80px;
       width: 75vw;
       position:absolute;
       transform: translate(-50%,-50%);
