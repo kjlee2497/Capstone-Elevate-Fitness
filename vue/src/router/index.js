@@ -13,7 +13,7 @@ import CreateWorkout from '../views/CreateWorkout'
 import Workout from '../views/Workout'
 import AllWorkoutsViews from '../views/AllWorkoutsViews'
 import WorkoutHistory from '../views/WorkoutHistory'
-import TestLanding from '../views/TestLanding'
+
 Vue.use(Router)
 
 /**
@@ -124,15 +124,8 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    },
-    {
-      path: "/landing/test",
-      name: "landing",
-      component: TestLanding,
-      meta: {
-        requiresAuth: false
-      }
     }
+    
   ]
 });
 

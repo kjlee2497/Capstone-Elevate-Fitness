@@ -25,8 +25,8 @@
     </div>
 
     </div>
-    <br>
-    <br>
+    
+    
       <table class="exerciseList-table">
       
         <thead>
@@ -197,7 +197,7 @@ h1 {
   width: 100vw;
 }
   table{
-      margin-top:100px;
+      
       width: 75vw;
       position:absolute;
       transform: translate(-50%,-50%);
