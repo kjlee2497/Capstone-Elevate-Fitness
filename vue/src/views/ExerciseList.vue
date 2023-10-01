@@ -13,6 +13,14 @@
           <option value="all">All</option>
         </select>
         <button id="filterBtn" v-on:click="filterExercises">Filter</button>
+    <div id="buttons">
+      <button>Add Selected Exercises to a Workout</button>
+      
+      <button class="requestButton" @click="goToRequestExercise">Request an Exercise</button>
+      <button>Generate a Random Workout</button>
+      
+    </div>
+
     </div>
       <table class="exerciseList-table">
         <thead>
@@ -39,12 +47,7 @@
         
         </tbody>
       </table>
-      <div id="buttons">
-      <button>Add Selected Exercises to a Workout</button>
       
-      <button class="requestButton" @click="goToRequestExercise">Request an Exercise</button>
-      <button>Generate a Random Workout</button>
-      </div>
     </div>
   </div>
 </template>
@@ -254,6 +257,7 @@ tbody{
 }
   /* Basic button styles */
   button {
+    
     background-color: #0b080cc0;
     color: #fff;
     border: 10px;
