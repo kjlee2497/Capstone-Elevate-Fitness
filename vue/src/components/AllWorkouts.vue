@@ -13,9 +13,8 @@
       <thead>
         <th class="h-name"> Workout name</th>
         <th class="h-desc">Description</th>
-      
         <th class="h-status">Status</th>
-          <th class="edit-btn"></th>
+        <th class="edit-btn"></th>
         <th class="delete-btn"></th>
         
       </thead>
@@ -25,6 +24,8 @@
           <tr v-for="workout in workouts" v-bind:key="workout.id">
             <td class="name">{{ workout.name }}</td>
             <td class="description">{{ workout.description }}</td>
+            <td class="status"></td>
+        
             <td class="edit-btn"><button v-on:click="goToEditPage(workout.workout_id)">Edit</button></td>
             <td class="delete-btn"><button v-on:click="deleteworkout(workout.workout_id)">Delete</button></td>
             <td class="status">{{ workout.status }}</td>
@@ -67,7 +68,10 @@ export default {
             this.handleErrorResponse(err, "deleting")
           })
 
-  }
+  },
+    getStatus(){
+
+    },
   // updated() {
   //  const tbody = document.getElementById('scrollbar'); 
   //   if (tbody.scrollWidth > tbody.clientWidth) {
@@ -156,7 +160,7 @@ table {
 }
 
 button {
-    margin: 10px 50px;
+    margin: 10px 10px;
     background-color: #0b080cc0;
     color: #fff;
     border: none;
