@@ -1,13 +1,14 @@
 <template>
+<div id="landing">
   <div class="wrapper">
     <!-- Navigation -->
     <nav class="main-nav">
       <ul>
         <li>
-          <a href="#">Sign in</a>
+          <a href="#" @click ="goToLogin" >Sign in</a>
         </li>
         <li>
-          <a href="#">Sign up</a>
+          <a href="#" @click="goToRegister">Sign up</a>
         </li>
         <li>
           <a href="#">Contact us</a>
@@ -28,13 +29,13 @@
       <div class="top-box top-box-a">
         
         <p class="neon">Don't wish for it.<br>Work for it.</p>
-        <a href="" class="btn">Sign in</a>
+        <a href="" class="btn" @click ="goToLogin">Sign in</a>
       </div>
       <div class="top-box top-box-b">
         <div class="container">
         </div>    
         <p class="neon">One day<br>or day one.<br>You decide.<br>Sign up Today.</p>
-        <a href="" class="btn">Sign Up</a>
+        <a href="" class="btn" @click="goToRegister">Sign Up</a>
       </div>
     </section>
 
@@ -88,10 +89,25 @@
 
   </div>
   <!-- Wrapper Ends -->
+  </div>
 </template>
 
 <script>
 export default {
+  name: "landingPage",
+  data() {
+    return {
+      homePage:[]
+    }
+  },
+  methods:{
+    goToLogin(){
+      this.$router.push({ name: 'login'})
+    },
+    goToRegister() {
+      this.$router.push({ name: 'register' })
+    }
+  }
 
 }
 </script>

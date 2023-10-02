@@ -9,24 +9,35 @@
     <h1>Workout List</h1>
     
       <table class="workoutList-table">
-        <tbody class="scrollbar" id="scrollbar">
+      
+      <thead>
         <th class="h-name"> Workout name</th>
         <th class="h-desc">Description</th>
+      
         <th class="h-status">Status</th>
+          <th class="edit-btn"></th>
+        <th class="delete-btn"></th>
         
+      </thead>
+
+        <tbody class="scrollbar" id="scrollbar">
+
           <tr v-for="workout in workouts" v-bind:key="workout.id">
             <td class="name">{{ workout.name }}</td>
             <td class="description">{{ workout.description }}</td>
+            <td class="edit-btn"><button v-on:click="goToEditPage(workout.workout_id)">Edit</button></td>
+            <td class="delete-btn"><button v-on:click="deleteworkout(workout.workout_id)">Delete</button></td>
             <td class="status">{{ workout.status }}</td>
-        </tr>
+          </tr>
+
         </tbody>
       </table>
+
       <div id="buttons">
-      <button>Delete Workout</button>
-      <button>Update Workout</button>
+      
       </div>
 </div>
-  <!-- </div> -->
+  
   
 </template>
 <script>
@@ -34,13 +45,29 @@
 export default {
   name: "all-workouts",
   data() {
-    return { workouts: [] };
+    return {
+       workouts: [] 
+       };
   },
   created() {
     service.listWorkouts().then((response) => {
       this.workouts = response.data ?? []
     });
   },
+  methods:{
+    deleteworkout(workoutId) {
+      service.deletworkout(workoutId)
+          .then(res => {
+            if(res.status == 200) {
+              confirm("Workout will be deleted.  Would you like to continue?");
+              this.$router.go();
+            }
+          })
+          .catch(err => {
+            this.handleErrorResponse(err, "deleting")
+          })
+
+  }
   // updated() {
   //  const tbody = document.getElementById('scrollbar'); 
   //   if (tbody.scrollWidth > tbody.clientWidth) {
@@ -50,7 +77,7 @@ export default {
   //   }
   // }
   }
-
+}
 </script>
 
 <style scoped>
@@ -101,6 +128,7 @@ h1{
 }
 
 table{
+  
     display: flex;
     justify-content: center; 
     align-items: center; 
@@ -153,7 +181,7 @@ table{
       width: 50vw;
       position:absolute;
       transform: translate(-50%,-50%);
-      top: 50%;
+      top: 40%;
       left: 50%;
       border-radius: 10px;
       backdrop-filter: blur(10px);

@@ -25,10 +25,10 @@
     </div>
 
     </div>
-    
-    
+    <br>
+    <br>
       <table class="exerciseList-table">
-      
+       
         <thead>
           <th class="name"> Exercise name</th>
           <th class="description">Description</th>
@@ -39,8 +39,8 @@
           <th class="edit-btn"></th>
           <th class="delete-btn"></th>
         </thead>
+       <tbody class="scrollbar" id="scrollbar">
        
-        <tbody class="scrollbar" id="scrollbar">
            
           <tr v-for="exercise in filter" v-bind:key="exercise.id">
             <td class="name">{{ exercise.name }}</td>
@@ -196,13 +196,18 @@ h1 {
   height: 100vh;
   width: 100vw;
 }
+
   table{
-      
+    display: flex;
+    justify-items: center;
+      margin-top:90px;
+      height: 65vh;
       width: 75vw;
       position:absolute;
       transform: translate(-50%,-50%);
       top: 50%;
-      left: 50%;
+      left: 53.5%;
+      
       border-radius: 10px;
       backdrop-filter: blur(10px);
       box-shadow: 0 0 40px rgba(8,7,16,0.6);
@@ -212,11 +217,11 @@ h1 {
       letter-spacing: 0.5px;
       outline: none;
       border: none;
-     text-shadow: 2px 2px 2px black;
-     border-collapse: collapse;
-  display: inline-block;
-    border: 1px black solid;
-    padding: 30px;
+      text-shadow: 2px 2px 2px black;
+      border-collapse: collapse;
+      display: inline-block;
+      border: 1px black solid;
+      padding: 30px;
     
     background-color: rgba(255,255,255,0.13);
     backdrop-filter: blur(15px);
@@ -224,7 +229,7 @@ h1 {
 
   
 
- 
+
  
   .exerciseList-table td {
     padding: 10px;
@@ -272,8 +277,13 @@ h1 {
 
   }
 
+tbody#scrollbar.scrollbar{
+  height: 50vh;
+
+}
+
 tbody{
-   height: 600px;
+  height: 50vh;
   overflow: scroll;
   
   display: block;

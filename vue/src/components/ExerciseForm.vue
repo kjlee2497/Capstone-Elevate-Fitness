@@ -30,9 +30,17 @@
             <input type="number" name="repCount" id="repCount" v-model="exercise.repCount" required>
         </div>
 
-        <div class="form-control">
+        <div class="filterBar">
             <label for="target">Target Muscle Group:</label>
-            <input type="text" name="target" id="target" v-model="exercise.target" required>
+            
+            <!-- <input type="text" name="filterTarget" id="filterTextBar" v-model="exercise.target" required> -->
+            <select name="filterTarget" id="filterTarget"  v-model="exercise.target" required>
+                <option value="arms">Arms</option>
+                <option value="legs">Legs</option>
+                <option value="back">Back</option>
+                <option value="body">Body</option>
+                <option value="cardio">Cardio</option>
+            </select>
         </div>
         
         <div class="btn-container">
@@ -194,4 +202,25 @@ input {
     border: 1px darkgrey solid;
 }
 
+.filterBar {
+  text-align: left;
+}
+
+#filterTextBar {
+  width: 40vw;
+  height: 20px;
+}
+
+#filterTarget {
+  width: 10vw;
+  height: 25px;
+  margin-left: 20px;
+}
+
+#filterBtn {
+  margin-left: 30px;
+}
+label{
+ text-align: left;   
+}
 </style>
