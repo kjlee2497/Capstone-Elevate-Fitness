@@ -14,8 +14,8 @@
         <th class="h-name"> Workout name</th>
         <th class="h-desc">Description</th>
         <th class="h-status">Status</th>
-        <th class="edit-btn"></th>
-        <th class="delete-btn"></th>
+        <th class="h-edit"></th>
+        <th class="h-delete"></th>
         
       </thead>
 
@@ -256,7 +256,7 @@ table{
     text-align: center;
         font-style: italic;
         padding: 15px;
-        width: 10vw
+        width: 8vw
   }
 
   th.h-desc {
@@ -272,8 +272,31 @@ table{
     text-align: center;
         font-style: italic;
         padding: 15px;
+        width: 15vw
+  }
+  th.h-edit {
+    background-color: #8f05ffb9;
+    color: rgb(255, 255, 255);
+    text-align: center;
+        font-style: italic;
+        padding: 15px;
         width: 10vw
   }
+th.h-delete {
+    background-color: #8f05ffb9;
+    color: rgb(255, 255, 255);
+    text-align: center;
+        font-style: italic;
+        padding: 15px;
+        width: 10vw
+  }
+  .edit-btn{
+  width: 5vw;
+}
+.delete-btn{
+  width: 5vw;
+}
+
 
 tbody{
    height: 50vh;
