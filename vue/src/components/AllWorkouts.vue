@@ -3,26 +3,42 @@
   
 
   <div class="allWorkouts">
+    <!-- <div class="scrollbar" id="scrollbar"> -->
+    <br>
+    <br>
     <h1>Workout List</h1>
     
       <table class="workoutList-table">
-        <tbody>
-        <th> Workout name</th>
-        <th>Description</th>
-        <th>Status</th>
+      
+      <thead>
+        <th class="h-name"> Workout name</th>
+        <th class="h-desc">Description</th>
+        <th class="h-status">Status</th>
+        <th class="h-edit"></th>
+        <th class="h-delete"></th>
         
+      </thead>
+
+        <tbody class="scrollbar" id="scrollbar">
+
           <tr v-for="workout in workouts" v-bind:key="workout.id">
-            <td>{{ workout.name }}</td>
-            <td>{{ workout.description }}</td>
-            <td>{{ workout.status }}</td>
-        </tr>
+            <td class="name">{{ workout.name }}</td>
+            <td class="description">{{ workout.description }}</td>
+            <td class="status"></td>
+        
+            <td class="edit-btn"><button v-on:click="goToEditPage(workout.workout_id)">Edit</button></td>
+            <td class="delete-btn"><button v-on:click="deleteworkout(workout.workout_id)">Delete</button></td>
+            <td class="status">{{ workout.status }}</td>
+          </tr>
+
         </tbody>
       </table>
+
       <div id="buttons">
-      <button>Delete Workout</button>
-      <button>Update Workout</button>
+      
+      </div>
 </div>
-  </div>
+  
   
 </template>
 <script>
@@ -30,22 +46,96 @@
 export default {
   name: "all-workouts",
   data() {
-    return { workouts: [] };
+    return {
+       workouts: [] 
+       };
   },
   created() {
     service.listWorkouts().then((response) => {
       this.workouts = response.data ?? []
     });
+  },
+  methods:{
+    deleteworkout(workoutId) {
+      service.deletworkout(workoutId)
+          .then(res => {
+            if(res.status == 200) {
+              confirm("Workout will be deleted.  Would you like to continue?");
+              this.$router.go();
+            }
+          })
+          .catch(err => {
+            this.handleErrorResponse(err, "deleting")
+          })
+
+  },
+    getStatus(){
+
+    },
+  // updated() {
+  //  const tbody = document.getElementById('scrollbar'); 
+  //   if (tbody.scrollWidth > tbody.clientWidth) {
+  //     tbody.classList.add('tbody-with-scroll');
+  //   } else {
+  //     tbody.classList.remove('tbody-with-scroll');
+  //   }
+  // }
   }
 }
 </script>
 
 <style scoped>
 
+
+/* .allWorkouts {
+  display: flex;
+  margin: 50px;
+  column-gap: 20px;
+} */
+
+.scrollbar {
+  height: 300px;
+  width: auto;
+  overflow: auto;
+  
+        }
+
+#scrollbar::-webkit-scrollbar {
+  background-color: rgba(0, 0, 0, 0);
+  width: 12px;
+  border-radius: 10px;
+}
+        
+#scrollbar::-webkit-scrollbar-track {
+  border-radius: 10px;
+ background-color: rgba(255, 255, 255, 0.178);
+  backdrop-filter: blur(30px);
+}
+        
+#scrollbar::-webkit-scrollbar-thumb {
+  /* background-image: -webkit-gradient(linear, left bottom, left top, color-stop(.5, #a4a0a5), color-stop(1, #2f3031)); */
+  background-color: #8f05ffb9;
+   transform: scale(1.05);
+  backdrop-filter: blur(30px);
+  border-radius: 10px;
+
+}
+
+h1{
+  color:white;
+  text-align: center;
+  
+  margin: 0px 0px;
+  font-family: 'Poppins',sans-serif;
+  text-shadow: 2px 2px 2px black;
+
+}
+
 table{
+  
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    justify-content: center; 
+    align-items: center; 
 
 }
 
@@ -70,7 +160,7 @@ table {
 }
 
 button {
-    margin: 10px 50px;
+    margin: 10px 10px;
     background-color: #0b080cc0;
     color: #fff;
     border: none;
@@ -95,7 +185,7 @@ table{
       width: 50vw;
       position:absolute;
       transform: translate(-50%,-50%);
-      top: 50%;
+      top: 40%;
       left: 50%;
       border-radius: 10px;
       backdrop-filter: blur(10px);
@@ -121,23 +211,25 @@ table{
     padding: 10px;
     border-bottom: 1px solid #ddd;
   }
+
   /* Alternate row background color */
   table tr:nth-child(even) {
     background-color: #0505056e;
     backdrop-filter: blur(30px);
   }
+
   /* Hover effect for rows */
   table tr:hover {
     background-color: #b409f896;
   }
+
   /* Add some space around the table */
   table-container {
     margin: 40px;
   }
+
   table tr {
     transition: background-color 0.3s, opacity 0.3s;
-  
-  
   }
   
     /* Add animation to row hover effect */
@@ -158,13 +250,53 @@ table{
     margin-left: 60vw;
   }
   /* Add a gradient background to header cells */
-  table th {
+  th.h-name {
     background-color: #8f05ffb9;
     color: rgb(255, 255, 255);
     text-align: center;
         font-style: italic;
-
+        padding: 15px;
+        width: 8vw
   }
+
+  th.h-desc {
+    background-color: #8f05ffb9;
+    color: rgb(255, 255, 255);
+    text-align: center;
+        font-style: italic;
+  }
+
+  th.h-status {
+    background-color: #8f05ffb9;
+    color: rgb(255, 255, 255);
+    text-align: center;
+        font-style: italic;
+        padding: 15px;
+        width: 15vw
+  }
+  th.h-edit {
+    background-color: #8f05ffb9;
+    color: rgb(255, 255, 255);
+    text-align: center;
+        font-style: italic;
+        padding: 15px;
+        width: 10vw
+  }
+th.h-delete {
+    background-color: #8f05ffb9;
+    color: rgb(255, 255, 255);
+    text-align: center;
+        font-style: italic;
+        padding: 15px;
+        width: 10vw
+  }
+  .edit-btn{
+  width: 5vw;
+}
+.delete-btn{
+  width: 5vw;
+}
+
 
 tbody{
    height: 50vh;
@@ -214,4 +346,12 @@ tbody{
   button:hover {
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
+
+.name {
+  width: 10vw;
+}
+.description {
+  width: 20vw;
+}
+
 </style>

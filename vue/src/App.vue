@@ -2,10 +2,7 @@
 
   
   <div id="app">
-    <!-- <div class="bg-image"
-     style="background-image: url('https://images.rawpixel.com/image_1000/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsb2ZmaWNlN19waG90b2dyYXBoeV9vZl9tb2Rlcm5fZml0bmVzc19yb29tX21pbmltYWxfOGtfMjdjNmZkYjctNGQxMS00Yjc1LWJkODQtZThjZTBiMTY4NmY3XzEuanBn.jpg');
-            height: 100vh ; width:100vw " ></div> -->
-            
+   
     <button class="toggle-button futuristic" @click="toggleSidebar">
       <i class="fas fa-bars"></i> 
     </button>
@@ -16,8 +13,6 @@
       <br>
       <br>
       <router-link v-if="$store.state.token !== ''" :to="{ name: 'home' }" @click="toggleSidebar">Home</router-link>
-
-      
       <router-link v-if="$store.state.token !== ''" :to="{ name: 'all-exercises' }" @click="toggleSidebar">Exercises</router-link>
       <router-link v-if="$store.state.token !== ''" :to="{ name: 'workouts' }" @click="toggleSidebar">Workouts</router-link>
       <router-link v-if="$store.state.token !== ''" :to="{ name: 'history' }" @click="toggleSidebar">History</router-link>
@@ -45,7 +40,14 @@ export default {
      
       this.isSidebarVisible = !this.isSidebarVisible;
     }
-  }
+  },
+    goToLandingPage(){
+      this.$router.push({name: '/'});
+       this.isSidebarVisible = !this.isSidebarVisible;
+
+    }
+     
+  
 };
 </script>
 

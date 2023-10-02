@@ -13,6 +13,9 @@ import CreateWorkout from '../views/CreateWorkout'
 import Workout from '../views/Workout'
 import AllWorkoutsViews from '../views/AllWorkoutsViews'
 import WorkoutHistory from '../views/WorkoutHistory'
+import landingPage from '../views/TestLanding'
+
+
 Vue.use(Router)
 
 /**
@@ -28,13 +31,22 @@ const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
+    
     {
-      path: '/',
+      path: '/home',
       name: 'home',
       component: Home,
       meta: {
         requiresAuth: true
       }
+    },
+    {
+      path: '/',
+      name: 'landingPage',
+      component: landingPage,
+      meta: {
+        requiresAuth: false
+      } 
     },
     {
       path: "/login",
@@ -123,7 +135,17 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    }
+    },
+    {
+      path: "/workout/history",
+      name: "history",
+      component: WorkoutHistory,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    
+    
   ]
 });
 
