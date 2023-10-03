@@ -40,12 +40,8 @@ export default {
      
       this.isSidebarVisible = !this.isSidebarVisible;
     }
-  },
-    goToLandingPage(){
-      this.$router.push({name: '/'});
-       this.isSidebarVisible = !this.isSidebarVisible;
-
-    }
+  }
+  
      
   
 };

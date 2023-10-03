@@ -5,10 +5,10 @@
     <nav class="main-nav">
       <ul>
         <li>
-          <a href="#" @click ="goToLogin" >Sign in</a>
+          <a href="#" class="topLoginBtn" @click ="goToLogin" >Sign in</a>
         </li>
         <li>
-          <a href="#" @click="goToRegister">Sign up</a>
+          <a href="#" class="topSignUpBtn" @click="goToRegister">Sign up</a>
         </li>
         <li>
           <a href="#">Contact us</a>
@@ -131,6 +131,13 @@ body {
   background: rgb(17, 17, 17);
   margin: 30px 50px;
   line-height: 1.4;
+}
+
+a.topSignUpBtn {
+  font-weight: bold;
+}
+a.topLoginBtn { 
+font-weight: bold;
 }
 
 .btn {
