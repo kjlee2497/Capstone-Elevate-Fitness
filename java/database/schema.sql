@@ -62,7 +62,7 @@ CREATE TABLE user_workouts (
 CREATE TABLE user_workouts_assigned (
     user_id int NOT NULL,
     workout_id int NOT NULL,
-    day_of_the_week varchar(10),
+    isCompleted boolean DEFAULT false,
     CONSTRAINT PK_assigned_workouts PRIMARY KEY(user_id, workout_id),
     CONSTRAINT FK_assigned_workouts_user FOREIGN KEY(user_id) REFERENCES users(user_id),
     CONSTRAINT FK_assigned_workouts_workout FOREIGN KEY(workout_id) REFERENCES workouts(workout_id)
