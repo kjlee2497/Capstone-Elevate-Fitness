@@ -6,6 +6,21 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import Metrics from '../views/Metrics.vue'
+import ExerciseList from '../views/ExerciseList'
+import EditExercise from '../views/EditExercise'
+import AddExercise from '../views/AddExercise'
+import CreateWorkout from '../views/CreateWorkout'
+import Workout from '../views/Workout'
+import AllWorkoutsViews from '../views/AllWorkoutsViews'
+import WorkoutHistory from '../views/WorkoutHistory'
+import landingPage from '../views/TestLanding'
+import GenerateWorkout from "../views/GenerateWorkout"
+import TrainerHome from '../views/TrainerHome'
+import Calendar from '../views/Calendar'
+import EditWorkout from '../views/EditWorkout'
+import ExercisesFromWorkout from '../views/ExercisesFromWorkout'
+
+
 Vue.use(Router)
 
 /**
@@ -21,13 +36,22 @@ const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
+    
     {
-      path: '/',
+      path: '/home',
       name: 'home',
       component: Home,
       meta: {
         requiresAuth: true
       }
+    },
+    {
+      path: '/',
+      name: 'landingPage',
+      component: landingPage,
+      meta: {
+        requiresAuth: false
+      } 
     },
     {
       path: "/login",
@@ -60,7 +84,110 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-    }
+    },
+    {
+      path: "/exercises",
+      name: "all-exercises",
+      component: ExerciseList,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/exercise/:exerciseId",
+      name: "edit-exercise",
+      component: EditExercise,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/exercise/add/try",
+      name: "add-exercises",
+      component: AddExercise,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/v1/workouts",
+      name: "all-workouts",
+      component: AllWorkoutsViews,
+      meta: {
+        requiresAuth: true
+      }
+    },    
+    {
+      path: "/workout/:workoutId",
+      name: "workout",
+      component: Workout,
+      meta: {
+        requiresAuth: true
+      }
+    },    
+    {
+      path: "/workout/add",
+      name: "add-workout",
+      component: CreateWorkout,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+     // route wouldn't work as /workout/generate for some reason
+     path: "/workouts/generate",
+     name: "generate-workout",
+     component: GenerateWorkout,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+     
+      path: "/exercises/workout/:workoutId",
+      name: "exercise-workout",
+      component: ExercisesFromWorkout,
+      meta: {
+        requiresAuth: true
+      }
+    },   
+    {
+      path: "/workout/history",
+      name: "history",
+      component: WorkoutHistory,
+      meta: {
+        requiresAuth: true
+      }
+    },
+
+    {
+    path: "/home/trainer",
+      name: "trainer-home",
+      component: TrainerHome,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    
+    {
+      path: "/trainer/calendar",
+        name: "calendar",
+        component: Calendar,
+        meta: {
+          requiresAuth: true
+        }
+      },
+
+      {
+        path: "/workout/edit/:workoutId",
+          name: "edit-workout",
+          component: EditWorkout,
+          meta: {
+            requiresAuth: true
+          }
+        }
+    
+    
   ]
 });
 

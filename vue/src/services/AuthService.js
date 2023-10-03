@@ -10,7 +10,7 @@ export default {
     return axios.post('/register', user)
   },
 
-  metrics(user){
-    return axios.post('/metrics',user)
+  landingPage(user) {
+    return axios.post('/', user)
   }
 }
