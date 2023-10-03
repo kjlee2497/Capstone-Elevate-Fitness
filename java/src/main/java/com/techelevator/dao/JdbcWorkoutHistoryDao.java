@@ -21,9 +21,13 @@ public class JdbcWorkoutHistoryDao implements WorkoutHistoryDao {
     public void addWorkoutHistory(WorkoutHistory workoutHistory) {
         String sql = "INSERT INTO workout_history (user_id, workout_id, date_completed, minutes_spent, " +
                 "exercises_count, focus_area) VALUES (?, ?, ?, ?, ?, ?)";
-        jdbcTemplate.update(sql, workoutHistory.getUserId(), workoutHistory.getWorkoutId(),
-                workoutHistory.getDateCompleted(), workoutHistory.getMinutesSpent(),
-                workoutHistory.getExercisesCount(), workoutHistory.getFocusArea());
+        jdbcTemplate.update(sql,
+                workoutHistory.getUserId(),
+                workoutHistory.getWorkoutId(),
+                workoutHistory.getDateCompleted(),
+                workoutHistory.getMinutesSpent(),
+                workoutHistory.getExercisesCount(),
+                workoutHistory.getFocusArea());
     }
 
     @Override
@@ -51,9 +55,9 @@ public class JdbcWorkoutHistoryDao implements WorkoutHistoryDao {
 
     private WorkoutHistory mapRowToWorkoutHistory(SqlRowSet rs) {
         WorkoutHistory workoutHistory = new WorkoutHistory();
-        workoutHistory.setWorkoutHistoryId(rs.getLong("workout_history_id"));
-        workoutHistory.setUserId((int) rs.getLong("user_id"));
-        workoutHistory.setWorkoutId(rs.getLong("workout_id"));
+        workoutHistory.setWorkoutHistoryId(rs.getInt("workout_history_id"));
+        workoutHistory.setUserId(rs.getInt("user_id"));
+        workoutHistory.setWorkoutId(rs.getInt("workout_id"));
         workoutHistory.setDateCompleted(rs.getDate("date_completed").toLocalDate());
         workoutHistory.setMinutesSpent(rs.getInt("minutes_spent"));
         workoutHistory.setExercisesCount(rs.getInt("exercises_count"));
@@ -61,3 +65,4 @@ public class JdbcWorkoutHistoryDao implements WorkoutHistoryDao {
         return workoutHistory;
     }
 }
+
