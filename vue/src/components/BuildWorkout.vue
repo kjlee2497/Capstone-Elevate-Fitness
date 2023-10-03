@@ -47,25 +47,27 @@
     
         <div id="workoutExercises">
         <table class="exerciseList-table table table2">
-        
-            <thead>
-            <th class="name"> Exercise name</th>
-            <th class="description">Description</th>
-            <th class="weight">Suggested Weight</th>
-            <th class="repCount">Rep Count</th>
-            <th class="expectedTime">Expected Time to Complete</th>
-            <th class="target">Target Area</th>
-            <th class="edit-btn"></th>
-            </thead>
-        <tbody class="scrollbar" id="scrollbar">
-            <tr v-for="exercise in this.$store.state.workoutExercises" v-bind:key="exercise.id">
-                <td class="name">{{ exercise.name }}</td>
-                <td class="description">{{ exercise.description }}</td>
-                <td class="weight">{{ exercise.weight }} lbs</td>
-                <td class="repCount">{{ exercise.repCount }} reps</td>
-                <td class="expectedTime">{{ exercise.expectedTime }} seconds</td>
-                <td class="target">{{ exercise.target }}</td>
-            </tr>    
+            <h1>{{ this.workout.name }}</h1>
+            <h2>{{ this.workout.description }}</h2>
+                <thead>
+                <th class="name"> Exercise name</th>
+                <th class="description">Description</th>
+                <th class="weight">Suggested Weight</th>
+                <th class="repCount">Rep Count</th>
+                <th class="expectedTime">Expected Time to Complete</th>
+                <th class="target">Target Area</th>
+                <th class="edit-btn"></th>
+                </thead>
+            <tbody class="scrollbar" id="scrollbar">
+                <tr v-for="exercise in this.$store.state.workoutExercises" v-bind:key="exercise.id">
+                    <td class="name">{{ exercise.name }}</td>
+                    <td class="description">{{ exercise.description }}</td>
+                    <td class="weight">{{ exercise.weight }} lbs</td>
+                    <td class="repCount">{{ exercise.repCount }} reps</td>
+                    <td class="expectedTime">{{ exercise.expectedTime }} seconds</td>
+                    <td class="target">{{ exercise.target }}</td>
+                </tr>    
+                <button class="refresh-btn" v-on:click="refreshPage">Refresh</button>
             </tbody> 
         </table>
         </div>
@@ -77,7 +79,9 @@
 
 </template>
 <script>
- import service from '../services/ExerciseService'
+import ExerciseService from '../services/ExerciseService'
+import WorkoutService from "../services/WorkoutService"
+
 export default {
   name: "all-exercises",
   data(){
@@ -85,19 +89,31 @@ export default {
       filterOptions: {
         searchQuery: "",
         searchFilter: "all"
+      },
+      workout: {
+          name: "",
+          description: "",
+          status: ""
       }
     }
   },
   created() {
-    service.getAllExercises().then((response) => {
+    ExerciseService.getAllExercises().then((response) => {
       this.$store.state.exercises = response.data;
       this.$store.state.filter = this.$store.state.exercises;
     })
     .catch(err => {
       this.handleErrorResponse(err, "getting")
     });
+    WorkoutService.getWorkoutById(this.$route.params.workoutId)
+        .then(res => {
+            this.workout = res.data;
+        })
   },
   methods: {
+    refreshPage() {
+        this.$router.go();
+    },
     goToRequestExercise() {
       this.$router.push({ name: 'add-exercises' });
   },
@@ -388,12 +404,15 @@ thead th{
 .edit-btn{
   width: 5vw;
 }
-.delete-btn{
+.refresh-btn{
   width: 5vw;
+  margin-top: 20px;
+  margin-left: 68%;
 }
 #main-container{
     height: 80vh;
 }
+
 
 
 </style>

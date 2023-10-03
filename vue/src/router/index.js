@@ -126,7 +126,8 @@ const router = new Router({
       }
     },    
     {
-      path: "/workout/add",
+      // had to change to workouts/add.  workout/add wasn't working for some reason.
+      path: "/workouts/add",
       name: "add-workout",
       component: CreateWorkout,
       meta: {
@@ -135,7 +136,7 @@ const router = new Router({
     },
     {
      // route wouldn't work as /workout/generate for some reason
-     path: "/workouts/generate",
+     path: "/exercises/workout/:workoutId/generate",
      name: "generate-workout",
      component: GenerateWorkout,
       meta: {
@@ -143,16 +144,7 @@ const router = new Router({
       }
     },
     {
-<<<<<<< HEAD
-      // route wouldn't work as /workout/generate for some reason
-      path: "/workouts/generate",
-      name: "generate-workout",
-      component: GenerateWorkout
-    },
-    {
-=======
      
->>>>>>> main
       path: "/exercises/workout/:workoutId",
       name: "exercise-workout",
       component: ExercisesFromWorkout,

@@ -55,8 +55,9 @@ public class WorkoutController {
     }
 
     @RequestMapping(path = "/v1/workout", method = RequestMethod.POST)
-    public void generateWorkout(@RequestBody Workout workout) {
-        workoutDao.generateWorkout(workout);
+    public int generateWorkout(@RequestBody Workout workout) {
+        Workout newWorkout =  workoutDao.generateWorkout(workout);
+        return newWorkout.getWorkout_id();
 
     }
 
