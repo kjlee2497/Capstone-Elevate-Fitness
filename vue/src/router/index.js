@@ -14,7 +14,8 @@ import Workout from '../views/Workout'
 import AllWorkoutsViews from '../views/AllWorkoutsViews'
 import WorkoutHistory from '../views/WorkoutHistory'
 import landingPage from '../views/TestLanding'
-
+import TrainerHome from '../views/TrainerHome'
+import Calendar from '../views/Calendar'
 
 Vue.use(Router)
 
@@ -144,6 +145,24 @@ const router = new Router({
         requiresAuth: true
       }
     },
+
+    {
+    path: "/home/trainer",
+      name: "trainer-home",
+      component: TrainerHome,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    
+    {
+      path: "/trainer/calendar",
+        name: "calendar",
+        component: Calendar,
+        meta: {
+          requiresAuth: true
+        }
+      }
     
     
   ]
