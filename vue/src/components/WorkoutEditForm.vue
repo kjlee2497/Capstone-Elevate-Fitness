@@ -54,14 +54,14 @@ export default {
         status: this.workout.status
       };
       WorkoutService.updateWorkout(newWorkout, this.$route.params.workoutID)
-        .then(res => {
-          if (res.status === 200) {
-            this.$router.push(`/v1/workouts`)
-          }
-        })
-        .catch(err => {
-          this.handleErrorResponse(err, "updating")
-        })
+        // .then(res => {
+        //   if (res.status === 200) {
+        //     this.$router.push(`/v1/workouts`)
+        //   }
+        // })
+        // .catch(err => {
+        //   this.handleErrorResponse(err, "updating")
+        // })
     },
         cancelForm() {
             alert(

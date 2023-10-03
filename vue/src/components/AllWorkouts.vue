@@ -68,9 +68,9 @@ export default {
             this.handleErrorResponse(err, "deleting")
           })
   },
-  goToEditPage(id) {
-      this.$router.push(`/workout/edit/${id}`)
-    },
+  // goToEditPage(id) {
+  //     this.$router.push(`/workout/edit/${id}`)
+  //   },
 
   
 
