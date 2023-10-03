@@ -186,6 +186,7 @@ public class ExerciseJdbcDao implements ExerciseDao {
         return userId;
     }
 
+
     @Override
     public Exercise createExercise(Exercise exercise, String username) {
 

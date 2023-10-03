@@ -19,7 +19,7 @@ deleteExercise(exerciseId) {
 },
 
 getExercisesByWorkout(workoutId) {
-    return axios.get(`/exercises/workout/id/${workoutId}`);
+    return axios.get(`/exercises/workout/${workoutId}`);
 },
 
 getExercisesByUser(userId) {
@@ -32,7 +32,9 @@ getExerciseByTarget(target) {
 
 getExerciseById(exerciseId) {
     return axios.get(`/exercises/id/${exerciseId}`);
-}
+},
+
+
 
 
 }

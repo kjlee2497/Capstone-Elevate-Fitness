@@ -14,6 +14,7 @@ import Workout from '../views/Workout'
 import AllWorkoutsViews from '../views/AllWorkoutsViews'
 import WorkoutHistory from '../views/WorkoutHistory'
 import landingPage from '../views/TestLanding'
+import ExercisesFromWorkout from '../views/ExercisesFromWorkout'
 
 
 Vue.use(Router)
@@ -136,6 +137,14 @@ const router = new Router({
         requiresAuth: true
       }
     },
+    {
+      path: "/exercises/workout/:workoutId",
+      name: "exercise-workout",
+      component: ExercisesFromWorkout,
+      meta: {
+        requiresAuth: true
+      }
+    },   
     {
       path: "/workout/history",
       name: "history",
