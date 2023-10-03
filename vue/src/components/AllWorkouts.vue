@@ -1,8 +1,8 @@
 <template>
 
-  
+  <div class="allworkouts">
 
-  <div class="allWorkouts">
+  <div class="workoutList">
     <!-- <div class="scrollbar" id="scrollbar"> -->
     <br>
     <br>
@@ -37,6 +37,9 @@
       <div id="buttons">
       
       </div>
+      
+</div>
+
 </div>
   
   
