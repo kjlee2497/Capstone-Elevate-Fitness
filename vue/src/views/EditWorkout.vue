@@ -1,19 +1,20 @@
 <template>
-    
 <div>
-    <br>
-    <br>
-     <h1>Edit Workout</h1>
+ <h1>Edit Workout</h1>
     <workout-edit-form v-bind:workoutId="this.workoutId" />
-  </div>
+</div>
 </template>
 
 <script>
-import WorkoutEditFrom from '../components/WorkoutEditForm.vue'
+import WorkoutEditForm from '../components/WorkoutEditForm.vue'
 
 export default {
-  components: {
-    WorkoutEditFrom
-      }
+    components: {
+        WorkoutEditForm
+    }
 }
 </script>
+
+<style>
+
+</style>

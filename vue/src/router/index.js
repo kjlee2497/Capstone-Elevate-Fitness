@@ -108,7 +108,7 @@ const router = new Router({
     },
     {
       path: "/v1/workouts",
-      name: "workouts",
+      name: "all-workouts",
       component: AllWorkoutsViews,
       meta: {
         requiresAuth: true
@@ -166,15 +166,13 @@ const router = new Router({
       },
 
       {
-        path: "/v1/workout/:id",
+        path: "/workout/edit/:workoutId",
           name: "edit-workout",
           component: EditWorkout,
           meta: {
             requiresAuth: true
           }
-        }, 
-
-
+        }
     
     
   ]
