@@ -26,8 +26,8 @@
             <td class="description">{{ workout.description }}</td>
             <td class="status"></td>
         
-            <td class="edit-btn"><button v-on:click="goToEditPage(workout.workout_id)">Edit</button></td>
-            <td class="delete-btn"><button v-on:click="deleteworkout(workout.workout_id)">Delete</button></td>
+            <td class="edit-btn"><button @click="goToEditPage(workout.workout_Id)">Edit</button></td>
+            <td class="delete-btn"><button v-on:click="deleteworkout(workout.workout_Id)">Delete</button></td>
             <td class="status">{{ workout.status }}</td>
           </tr>
 
@@ -57,7 +57,7 @@ export default {
   },
   methods:{
     deleteworkout(workoutId) {
-      service.deletworkout(workoutId)
+      service.deleteWorkout(workoutId)
           .then(res => {
             if(res.status == 200) {
               confirm("Workout will be deleted.  Would you like to continue?");
@@ -67,8 +67,14 @@ export default {
           .catch(err => {
             this.handleErrorResponse(err, "deleting")
           })
-
   },
+  goToEditPage(id) {
+      this.$router.push(`/workout/edit/${id}`)
+    },
+
+  
+
+
     getStatus(){
 
     },

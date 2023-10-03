@@ -16,6 +16,7 @@ import WorkoutHistory from '../views/WorkoutHistory'
 import landingPage from '../views/TestLanding'
 import TrainerHome from '../views/TrainerHome'
 import Calendar from '../views/Calendar'
+import EditWorkout from '../views/EditWorkout'
 
 Vue.use(Router)
 
@@ -107,7 +108,7 @@ const router = new Router({
     },
     {
       path: "/v1/workouts",
-      name: "workouts",
+      name: "all-workouts",
       component: AllWorkoutsViews,
       meta: {
         requiresAuth: true
@@ -162,7 +163,16 @@ const router = new Router({
         meta: {
           requiresAuth: true
         }
-      }
+      },
+
+      {
+        path: "/workout/edit/:workoutId",
+          name: "edit-workout",
+          component: EditWorkout,
+          meta: {
+            requiresAuth: true
+          }
+        }
     
     
   ]
