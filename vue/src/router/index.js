@@ -19,7 +19,7 @@ import TrainerHome from '../views/TrainerHome'
 import Calendar from '../views/Calendar'
 import EditWorkout from '../views/EditWorkout'
 import ExercisesFromWorkout from '../views/ExercisesFromWorkout'
-
+import WorkoutDetails from '../views/WorkoutDetails'
 
 Vue.use(Router)
 
@@ -186,7 +186,15 @@ const router = new Router({
           meta: {
             requiresAuth: true
           }
-        }
+        },
+      {
+        path: "/workout/details/:workoutId",
+        name: "workoutDeta",
+        component: WorkoutDetails,
+          meta: {
+            requiresAuth: true
+          }
+        },
     
     
   ]
