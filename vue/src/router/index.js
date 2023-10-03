@@ -14,7 +14,7 @@ import Workout from '../views/Workout'
 import AllWorkoutsViews from '../views/AllWorkoutsViews'
 import WorkoutHistory from '../views/WorkoutHistory'
 import landingPage from '../views/TestLanding'
-
+import GenerateWorkout from "../views/GenerateWorkout"
 
 Vue.use(Router)
 
@@ -137,9 +137,10 @@ const router = new Router({
       }
     },
     {
-      path: "/workout/history",
-      name: "history",
-      component: WorkoutHistory,
+      // route wouldn't work as /workout/generate for some reason
+      path: "/workouts/generate",
+      name: "generate-workout",
+      component: GenerateWorkout,
       meta: {
         requiresAuth: true
       }
