@@ -12,7 +12,7 @@
       <div class="top-box top-box-a">
         
         <p class="neon">Schedule</p>
-        <a href="#" class="btn" @click ="goToLogin">View Calendar</a>
+        <a href="#" class="btn" @click ="goToCalendar">View Calendar</a>
       </div>
       <div class="top-box top-box-b">
         <div class="container">
@@ -21,16 +21,16 @@
         <nav class="main-nav">
       <ul>
         <li>
-          <a href="#" class="btn" @click ="goToLogin" >Add Exercise</a>
+          <a href="#" class="btn" @click ="goToRequestExercise">Add Exercise</a>
         </li>
         <li>
-          <a href="#" class="btn">Edit Exercise</a>
+          <a href="#" class="btn"  @click ="goToExerciseList" >Edit Exercise</a>
         </li>
         <li>
-          <a href="#" class="btn">Delete Exercise</a>
+          <a href="#" class="btn" @click="goToExerciseList">Delete Exercise</a>
         </li>
         <li>
-          <a href="#" class="btn" @click="goToRegister">Add Workout</a>
+          <a href="#" class="btn">Add Workout</a>
         </li>
         <li>
           <a href="#" class="btn">edit workout</a>
@@ -53,7 +53,22 @@
 <script>
 
 export default {
+  name: "trainerHome",
+  data(){
+  return{
+      trainerHome:[]
+    } 
+  }, 
+  methods:{
+    goToExerciseList() {
+      this.$router.push({ name: '/exercises' });
+    },
+   goToRequestExercise() {
+      this.$router.push({ name: 'add-exercises' });
+  },
     
+  }
+
 }
 </script>
 
