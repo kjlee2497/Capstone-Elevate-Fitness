@@ -14,6 +14,9 @@ import Workout from '../views/Workout'
 import AllWorkoutsViews from '../views/AllWorkoutsViews'
 import WorkoutHistory from '../views/WorkoutHistory'
 import landingPage from '../views/TestLanding'
+import TrainerHome from '../views/TrainerHome'
+import Calendar from '../views/Calendar'
+import EditWorkout from '../views/EditWorkout'
 import ExercisesFromWorkout from '../views/ExercisesFromWorkout'
 
 
@@ -107,7 +110,7 @@ const router = new Router({
     },
     {
       path: "/v1/workouts",
-      name: "workouts",
+      name: "all-workouts",
       component: AllWorkoutsViews,
       meta: {
         requiresAuth: true
@@ -153,6 +156,33 @@ const router = new Router({
         requiresAuth: true
       }
     },
+
+    {
+    path: "/home/trainer",
+      name: "trainer-home",
+      component: TrainerHome,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    
+    {
+      path: "/trainer/calendar",
+        name: "calendar",
+        component: Calendar,
+        meta: {
+          requiresAuth: true
+        }
+      },
+
+      {
+        path: "/workout/edit/:workoutId",
+          name: "edit-workout",
+          component: EditWorkout,
+          meta: {
+            requiresAuth: true
+          }
+        }
     
     
   ]

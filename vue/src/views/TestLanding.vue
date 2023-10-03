@@ -5,10 +5,10 @@
     <nav class="main-nav">
       <ul>
         <li>
-          <a href="#" @click ="goToLogin" >Sign in</a>
+          <a href="#" class="topLoginBtn" @click ="goToLogin" >Sign in</a>
         </li>
         <li>
-          <a href="#" @click="goToRegister">Sign up</a>
+          <a href="#" class="topSignUpBtn" @click="goToRegister">Sign up</a>
         </li>
         <li>
           <a href="#">Contact us</a>
@@ -44,22 +44,35 @@
       <div class="box">
         <i class="fas fa-chart-pie fa-4x"></i>
         <h3>Analytics</h3>
-        <p>We use the gym analytics📊📈 for gym members to provide valuable insights and benefits to help individuals make informed decisions about their fitness journey and optimize their workouts</p>
+        <p>We use the gym analytics📊📈 for gym members to provide valuable 
+          insights and benefits to help individuals make informed decisions 
+          about their fitness journey and optimize their workouts</p>
       </div>
       <div class="box">
         <i class="fas fa-globe fa-4x"></i>
         <h3>Social Media</h3>
-        <p>Stay in the know and keep your motivation soaring by following on social media🏋️‍♀️📲. Get ready for exclusive workout tips, inspiring success stories🏅, exciting challenges, and the latest updates on classes and events. Let's achieve your fitness goals together, one like👍, one follow, one workout at a time!</p>
+        <p>Stay in the know and keep your motivation soaring by following on social media🏋️‍♀️📲. 
+          Get ready for exclusive workout tips, inspiring success stories🏅, exciting challenges, 
+          and the latest updates on classes and events. Let's achieve your fitness goals together, 
+          one like👍, one follow, one workout at a time!</p>
       </div>
       <div class="box">
         <i class="fas fa-cog fa-4x"></i>
         <h3>Development</h3>
-        <p>Embrace the journey of self-improvement and watch yourself transform🏋️‍♂️💪, not just physically but mentally too. Each rep, each set, and every drop of sweat💧 is a step closer to becoming the best version of yourself. Believe in your strength and dedication, because the gym isn't just about building muscle – it's about building character.🏆 </p>
+        <p>Embrace the journey of self-improvement and watch yourself transform🏋️‍♂️💪,
+           not just physically but mentally too. Each rep, each set, and every drop
+            of sweat💧 is a step closer to becoming the best version of yourself. 
+            Believe in your strength and dedication, because the gym isn't just about 
+            building muscle – it's about building character.🏆 </p>
       </div>
       <div class="box">
         <i class="fas fa-users fa-4x"></i>
         <h3>Support</h3>
-        <p>At our gym, support comes in all shapes and sizes! 💪🤝 Whether it's our friendly staff offering expert guidance, workout buddies cheering you on🎉🙌👏, or the community atmosphere that motivates you, you'll find a diverse range of support here. We're not just about lifting weights; we're about lifting each other up🏋️‍♂️🏋️‍♀️. Join us for a workout experience that's not just about fitness, but about the strength of a supportive community. Together, we achieve more!"</p>
+        <p>At our gym, support comes in all shapes and sizes! 💪🤝 Whether it's our friendly staff
+           offering expert guidance, workout buddies cheering you on🎉🙌👏, or the community atmosphere
+           that motivates you, you'll find a diverse range of support here. We're not just about lifting
+           weights; we're about lifting each other up🏋️‍♂️🏋️‍♀️. Join us for a workout experience that's not
+           just about fitness, but about the strength of a supportive community. Together, we achieve more!</p>
       </div>
     </section>
 
@@ -131,6 +144,13 @@ body {
   background: rgb(17, 17, 17);
   margin: 30px 50px;
   line-height: 1.4;
+}
+
+a.topSignUpBtn {
+  font-weight: bold;
+}
+a.topLoginBtn { 
+font-weight: bold;
 }
 
 .btn {
