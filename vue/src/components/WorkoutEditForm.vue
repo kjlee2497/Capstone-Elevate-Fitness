@@ -12,10 +12,7 @@
           <input type="text" id="description" v-model="workout.description">
         </div>
 
-        <div class="form-control">
-          <label for="status">Status:</label>
-          <input type="text" id="status" v-model="workout.status">
-        </div>
+        
 
         <div class="btn-container">
           <button class="btn btn-submit" type="submit">Submit</button>
@@ -54,14 +51,14 @@ export default {
         status: this.workout.status
       };
       WorkoutService.updateWorkout(newWorkout, this.$route.params.workoutID)
-        // .then(res => {
-        //   if (res.status === 200) {
-        //     this.$router.push(`/v1/workouts`)
-        //   }
-        // })
-        // .catch(err => {
-        //   this.handleErrorResponse(err, "updating")
-        // })
+        .then(res => {
+          if (res.status === 200) {
+            this.$router.push(`/v1/workouts`)
+          }
+        })
+        .catch(err => {
+          this.handleErrorResponse(err, "updating")
+        })
     },
         cancelForm() {
             alert(
