@@ -4,7 +4,7 @@
      style="background-image: url('  https://img.peerspace.com/image/upload/w_1200,c_limit/c_crop,g_custom,f_auto,q_auto,dpr_auto/l_PS-logo,g_south_east,x_20,y_20,w_175,o_75/nutvnqk8nwfellox26n5
 ');" >
 <br>
-    <h1>Current Exercise</h1>
+    <h1>Current Workout</h1>
     
     <br>
     
@@ -87,6 +87,9 @@ export default {
    setComplete(workoutId){
        WorkoutService.setcomplete(workoutId).then(response => {
             if(response.status == 200) {
+                alert(
+                "Cograts on finiishing your workout!"
+            )
              
               this.$router.push(`/home`);
             }
