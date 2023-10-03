@@ -134,18 +134,16 @@ const router = new Router({
       }
     },
     {
-      path: "/workout/history",
-      name: "history",
-      component: WorkoutHistory,
+     // route wouldn't work as /workout/generate for some reason
+     path: "/workouts/generate",
+     name: "generate-workout",
+     component: GenerateWorkout,
       meta: {
         requiresAuth: true
       }
     },
     {
-      // route wouldn't work as /workout/generate for some reason
-      path: "/workouts/generate",
-      name: "generate-workout",
-      component: GenerateWorkout,
+     
       path: "/exercises/workout/:workoutId",
       name: "exercise-workout",
       component: ExercisesFromWorkout,
