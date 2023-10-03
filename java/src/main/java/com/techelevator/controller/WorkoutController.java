@@ -55,13 +55,14 @@ public class WorkoutController {
     }
 
     @RequestMapping(path = "/v1/workout", method = RequestMethod.POST)
-    public void generateWorkout(@RequestBody Workout workout, @RequestBody  List<Integer> exercises) {
+    public void generateWorkout(@RequestBody Workout workout) {
         workoutDao.generateWorkout(workout);
 
-        for (int i = 0; i < exercises.size(); i++) {
-            workoutDao.addExerciseToWorkout(workout.getWorkout_id(), exercises.get(i));
-        }
+    }
 
+    @RequestMapping(path = "/v1/workout/{workoutId}/{exerciseId}", method = RequestMethod.GET)
+    public void addExerciseToWorkout(@PathVariable int workoutId, @PathVariable int exerciseId){
+        workoutDao.addExerciseToWorkout(workoutId, exerciseId);
     }
 
     //TODO: is it fine that the path for the bottom 2 methods is the same? update workoutservice in vue accordingly
@@ -73,5 +74,10 @@ public class WorkoutController {
     @RequestMapping(path = "v1/workout/{id}", method = RequestMethod.DELETE)
     public void deleteWorkout(@PathVariable int id) {
         workoutDao.deleteWorkout(id);
+    }
+
+    @RequestMapping(path = "v1/exercise/workout/{id}", method = RequestMethod.PUT)
+    public void setWorkoutComplete(@PathVariable int id) {
+        workoutDao.setWorkoutComplete(id);
     }
 }

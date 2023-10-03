@@ -183,6 +183,30 @@ public class WorkoutJdbcDao implements WorkoutDao {
     }
 
     @Override
+    public Workout setWorkoutComplete(int workoutId) {
+        Workout newWorkout = new Workout();
+        String sql = "UPDATE workouts " +
+                "SET isCompleted = true " +
+                "WHERE workout_id = ?";
+
+        try {
+            jdbcTemplate.update(sql, workoutId);
+            newWorkout = getWorkoutById(workoutId);
+        } catch (CannotGetJdbcConnectionException e){
+            throw new RuntimeException("Unable to contact the database!", e);
+        } catch (BadSqlGrammarException e){
+            throw new RuntimeException("Bad SQL query: " + e.getSql()
+                    +"\n"+e.getSQLException(), e);
+        } catch (DataIntegrityViolationException e){
+            throw new RuntimeException("Database Integrity Violation", e);
+        }
+
+        System.out.println("test");
+        return newWorkout;
+    }
+
+
+    @Override
     public Workout generateWorkout(Workout workout) {
 
         String sql = "INSERT INTO workouts (name, description, isCompleted)" +

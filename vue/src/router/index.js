@@ -14,7 +14,15 @@ import Workout from '../views/Workout'
 import AllWorkoutsViews from '../views/AllWorkoutsViews'
 import WorkoutHistory from '../views/WorkoutHistory'
 import landingPage from '../views/TestLanding'
+<<<<<<< HEAD
 import GenerateWorkout from "../views/GenerateWorkout"
+=======
+import TrainerHome from '../views/TrainerHome'
+import Calendar from '../views/Calendar'
+import EditWorkout from '../views/EditWorkout'
+import ExercisesFromWorkout from '../views/ExercisesFromWorkout'
+
+>>>>>>> main
 
 Vue.use(Router)
 
@@ -106,7 +114,7 @@ const router = new Router({
     },
     {
       path: "/v1/workouts",
-      name: "workouts",
+      name: "all-workouts",
       component: AllWorkoutsViews,
       meta: {
         requiresAuth: true
@@ -137,14 +145,55 @@ const router = new Router({
       }
     },
     {
+<<<<<<< HEAD
       // route wouldn't work as /workout/generate for some reason
       path: "/workouts/generate",
       name: "generate-workout",
       component: GenerateWorkout,
+=======
+      path: "/exercises/workout/:workoutId",
+      name: "exercise-workout",
+      component: ExercisesFromWorkout,
+      meta: {
+        requiresAuth: true
+      }
+    },   
+    {
+      path: "/workout/history",
+      name: "history",
+      component: WorkoutHistory,
+>>>>>>> main
       meta: {
         requiresAuth: true
       }
     },
+
+    {
+    path: "/home/trainer",
+      name: "trainer-home",
+      component: TrainerHome,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    
+    {
+      path: "/trainer/calendar",
+        name: "calendar",
+        component: Calendar,
+        meta: {
+          requiresAuth: true
+        }
+      },
+
+      {
+        path: "/workout/edit/:workoutId",
+          name: "edit-workout",
+          component: EditWorkout,
+          meta: {
+            requiresAuth: true
+          }
+        }
     
     
   ]

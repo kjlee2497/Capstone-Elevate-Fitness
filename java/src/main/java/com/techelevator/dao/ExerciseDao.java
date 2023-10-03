@@ -17,4 +17,5 @@ public interface ExerciseDao {
     Exercise editExercise(Exercise exercise, int exerciseId);
     boolean deleteExercise(int exerciseId);
     int findIdByUsername(String username);
+
 }
