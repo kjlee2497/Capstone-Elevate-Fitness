@@ -1,8 +1,8 @@
 <template>
-<div class="bg-image"
-     style="background-image: url('https://images.rawpixel.com/image_1000/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8yMV9waG90b19vZl9maXRuZXNzX2d5bV9iYWNrZ3JvdW5kX2NvcHlfc3BhY2VfZThiOGMxMTAtYzRhOC00YjlmLTk2OGEtZWUzNDVlZGQwYzUwXzEuanBn.jpg');" >
-  
-  <div class="history">
+  <div class="bg-image"
+       style="background-image: url('https://images.rawpixel.com/image_1000/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8yMV9waG90b19vZl9maXRuZXNzX2d5bV9iYWNrZ3JvdW5kX2NvcHlfc3BhY2VfZThiOGMxMTAtYzRhOC00YjlmLTk2OGEtZWUzNDVlZGQwYzUwXzEuanBn.jpg');">
+
+    <div class="history">
       <h1>Workout History</h1>
       <ul>
         <li v-for="entry in workoutHistory" :key="entry.workout_history_id">
@@ -17,8 +17,8 @@
 </template>
 
 <script>
-
 import axios from 'axios';
+
 export default {
   data() {
     return {
@@ -26,11 +26,16 @@ export default {
     };
   },
   mounted() {
-    this.getWorkoutHistory(this.userId);
+    if (this.$store.state.user && this.$store.state.user.id) {
+      this.getWorkoutHistory(this.$store.state.user.id);
+    } else {
+      console.error("User not logged in");
+      // Here you can handle the scenario, perhaps redirect to the login page or show an error message
+    }
   },
   methods: {
     getWorkoutHistory(userId) {
-      axios.get(`http://localhost:8080/workout-history/user/${userId}`)
+      axios.get(`http://localhost:8080/workout/history/user/${userId}`)
         .then(response => {
           this.workoutHistory = response.data;
         })
@@ -43,23 +48,19 @@ export default {
 </script>
 
 <style scoped>
-h1{
-  color:white;
-  text-align: center;
-  
-  margin: 0px 0px;
-  font-family: 'Poppins',sans-serif;
-  text-shadow: 2px 2px 2px black;
+  h1 {
+    color: white;
+    text-align: center;
+    margin: 0px 0px;
+    font-family: 'Poppins', sans-serif;
+    text-shadow: 2px 2px 2px black;
+  }
 
-}
-.bg-image {
- 
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  width: 100vw;
-  margin:0
-  
-}
-
+  .bg-image {
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+  }
 </style>

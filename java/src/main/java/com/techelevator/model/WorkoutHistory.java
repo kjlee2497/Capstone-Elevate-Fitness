@@ -4,19 +4,22 @@ import java.time.LocalDate;
 
 public class WorkoutHistory {
 
-    private int id;
+    private int workoutHistoryId;
     private int userId;
-    private LocalDate date;
-    private int minutes;
-    private int exerciseCount;
+    private int workoutId;
+    private LocalDate dateCompleted;
+    private int minutesSpent;
+    private int exercisesCount;
     private String focusArea;
 
-    public int getId() {
-        return id;
+    // Getters and Setters
+
+    public int getWorkoutHistoryId() {
+        return workoutHistoryId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setWorkoutHistoryId(int workoutHistoryId) {
+        this.workoutHistoryId = workoutHistoryId;
     }
 
     public int getUserId() {
@@ -27,28 +30,36 @@ public class WorkoutHistory {
         this.userId = userId;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public int getWorkoutId() {
+        return workoutId;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setWorkoutId(int workoutId) {
+        this.workoutId = workoutId;
     }
 
-    public int getMinutes() {
-        return minutes;
+    public LocalDate getDateCompleted() {
+        return dateCompleted;
     }
 
-    public void setMinutes(int minutes) {
-        this.minutes = minutes;
+    public void setDateCompleted(LocalDate dateCompleted) {
+        this.dateCompleted = dateCompleted;
     }
 
-    public int getExerciseCount() {
-        return exerciseCount;
+    public int getMinutesSpent() {
+        return minutesSpent;
     }
 
-    public void setExerciseCount(int exerciseCount) {
-        this.exerciseCount = exerciseCount;
+    public void setMinutesSpent(int minutesSpent) {
+        this.minutesSpent = minutesSpent;
+    }
+
+    public int getExercisesCount() {
+        return exercisesCount;
+    }
+
+    public void setExercisesCount(int exercisesCount) {
+        this.exercisesCount = exercisesCount;
     }
 
     public String getFocusArea() {
@@ -57,37 +68,6 @@ public class WorkoutHistory {
 
     public void setFocusArea(String focusArea) {
         this.focusArea = focusArea;
-    }
-
-    public void setDateCompleted(LocalDate date_completed) {
-    }
-
-    public void setWorkoutHistoryId(long workout_history_id) {
-    }
-
-    public void setWorkoutId(long workout_id) {
-    }
-
-    public void setMinutesSpent(int minutes_spent) {
-    }
-
-    public void setExercisesCount(int exercises_count) {
-    }
-
-    public Object getWorkoutId() {
-        return null;
-    }
-
-    public Object getDateCompleted() {
-        return null;
-    }
-
-    public Object getMinutesSpent() {
-        return null;
-    }
-
-    public Object getExercisesCount() {
-        return null;
     }
 }
 
