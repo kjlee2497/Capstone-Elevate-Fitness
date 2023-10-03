@@ -19,7 +19,7 @@
     <div id="buttons">
       <button>Add Selected Exercises to a Workout</button>
       
-      <button class="requestButton" @click="goToRequestExercise">Request an Exercise</button>
+      <button class="requestButton" @click="goToRequestExercise">Add an Exercise</button>
       <button>Generate a Random Workout</button>
       
     </div>

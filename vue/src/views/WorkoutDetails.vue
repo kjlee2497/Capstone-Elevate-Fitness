@@ -11,7 +11,7 @@
         
     <div id="buttons">
    
-      <button v-on:click="setComplete(myId)">Complete Workout</button>
+   
       <button v-on:click="backToWorkoutList(myId)">Exit Workout</button>
       
     
@@ -40,12 +40,7 @@
             <td class="repCount">{{ exercise.repCount }} reps</td>
             <td class="expectedTime">{{ exercise.expectedTime }} seconds</td>
             <td class="target">{{ exercise.target }}</td>
-            <td>
-              
-                <input name="cb" type="checkbox" id="cb"> 
-                <label for="cb"></label>
-                
-            </td>
+           
            
         </tr>
            
@@ -59,11 +54,11 @@
 </template>
 <script>
  import service from '../services/ExerciseService'
-import WorkoutService from '../services/WorkoutService'
+
 
 
 export default {
-  name: "all-exercises",
+  name: "workoutDetails",
   data(){
     return{
       exercises:[],
@@ -91,19 +86,9 @@ export default {
   backToWorkoutList(){
     this.$router.push(`/v1/workouts`)
   },
-   setComplete(workoutId){
-       WorkoutService.setcomplete(workoutId).then(response => {
-            if(response.status == 200) {
-                alert(
-                "Workout Completed!!"
-            )
-             
-              this.$router.push(`/v1/workouts`);
-            }
-          })
-   }
+  
    
-   
+ 
  
   }
 }

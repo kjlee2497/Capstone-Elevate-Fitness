@@ -20,14 +20,16 @@
       </thead>
 
         <tbody class="scrollbar" id="scrollbar">
+        
 
           <tr v-for="workout in workouts" v-bind:key="workout.id">
-            <td class="name" v-on:click="goToExercisesInWorkout(workout.workout_id)">{{ workout.name }}</td>
+           <td class="name" >{{ workout.name }}</td>
             <td class="description">{{ workout.description }}</td>
             <td class="status"></td>
         
-            <td class="edit-btn"><button v-on:click="goToEditPage(workout.workout_id)">Edit</button></td>
+            <td class="edit-btn"><button v-on:click="goToDetailPage(workout.workout_id)">Workout Details</button></td>
             <td class="delete-btn"><button v-on:click="deleteWorkout(workout.workout_id)">Delete</button></td>
+            <td class="add-btn"><button >Add To Log</button></td>
             <td class="status">{{ workout.status }}</td>
           </tr>
 
@@ -71,11 +73,11 @@ export default {
             this.handleErrorResponse(err, "deleting")
           })
   },
-  goToEditPage(id) {
-      this.$router.push(`/workout/edit/${id}`)
-    },
-   goToExercisesInWorkout(id){
-     this.router.push(`/exercises/workout/${id}`)
+  // goToEditPage(id) {
+  //     this.$router.push(`/workout/edit/${id}`)
+  //   },
+   goToDetailPage(workoutId){
+     this.$router.push(`/workout/details/${workoutId}`)
    } ,
 
     
@@ -312,7 +314,9 @@ th.h-delete {
 .delete-btn{
   width: 5vw;
 }
-
+.add-btn{
+  width: 5vw;
+}
 
 tbody{
    height: 50vh;
