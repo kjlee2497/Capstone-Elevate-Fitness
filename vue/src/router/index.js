@@ -14,6 +14,7 @@ import Workout from '../views/Workout'
 import AllWorkoutsViews from '../views/AllWorkoutsViews'
 import WorkoutHistory from '../views/WorkoutHistory'
 import landingPage from '../views/TestLanding'
+import GenerateWorkout from "../views/GenerateWorkout"
 import TrainerHome from '../views/TrainerHome'
 import Calendar from '../views/Calendar'
 import EditWorkout from '../views/EditWorkout'
@@ -133,14 +134,25 @@ const router = new Router({
       }
     },
     {
-      path: "/workout/history",
-      name: "history",
-      component: WorkoutHistory,
+     // route wouldn't work as /workout/generate for some reason
+     path: "/workouts/generate",
+     name: "generate-workout",
+     component: GenerateWorkout,
       meta: {
         requiresAuth: true
       }
     },
     {
+
+      // route wouldn't work as /workout/generate for some reason
+      path: "/workouts/generate",
+      name: "generate-workout",
+      component: GenerateWorkout
+    },
+    {
+
+     
+
       path: "/exercises/workout/:workoutId",
       name: "exercise-workout",
       component: ExercisesFromWorkout,

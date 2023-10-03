@@ -45,15 +45,15 @@ export default {
     methods: {
       submitForm() {
       const newWorkout = {
-        workout_id: Number(this.$route.params.workoutID),
+        workout_id: Number(this.$route.params.workoutId), //workoutId
         name: this.workout.name,
         description: this.workout.description,
         status: this.workout.status
       };
-      WorkoutService.updateWorkout(newWorkout, this.$route.params.workoutID)
+      WorkoutService.updateWorkout(newWorkout, this.$route.params.workoutId)
         .then(res => {
           if (res.status === 200) {
-            this.$router.push(`/v1/workouts`)
+            this.$router.push(`/v1/workouts/`) ///workouts/:id
           }
         })
         .catch(err => {
@@ -80,12 +80,21 @@ export default {
                 "Error " + verb + " workout. Request could not be created.";
             }
         },
-        clearForm() {
-            this.workout = {
-                name: "",
-                description: "",
-                status: ""
+        
+        created() {
+          WorkoutService.getWorkoutById(this.$route.params.workoutId)
+          .then(res => {
+            this.workout = res.data
+          })
+          .catch(err =>{
+            if (err.response && err.response.status === 404) {
+              alert(
+                "Workout not available."
+              );
+              this.$router.push({name: 'all-workouts'});
+            
             }
+          })
         }
     }
 

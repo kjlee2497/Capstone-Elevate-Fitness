@@ -1,8 +1,8 @@
 <template>
 
-  
+  <div class="allworkouts">
 
-  <div class="allWorkouts">
+  <div class="workoutList">
     <!-- <div class="scrollbar" id="scrollbar"> -->
     <br>
     <br>
@@ -26,8 +26,8 @@
             <td class="description">{{ workout.description }}</td>
             <td class="status"></td>
         
-            <td class="edit-btn"><button @click="goToEditPage(workout.workout_id)">Edit</button></td>
-            <td class="delete-btn"><button @click="deleteWorkout(workout.workout_id)">Delete</button></td>
+            <td class="edit-btn"><button v-on:click="goToEditPage(workout.workout_id)">Edit</button></td>
+            <td class="delete-btn"><button v-on:click="deleteWorkout(workout.workout_id)">Delete</button></td>
             <td class="status">{{ workout.status }}</td>
           </tr>
 
@@ -37,6 +37,9 @@
       <div id="buttons">
       
       </div>
+      
+</div>
+
 </div>
   
   
@@ -74,6 +77,10 @@ export default {
    goToExercisesInWorkout(id){
      this.router.push(`/exercises/workout/${id}`)
    } ,
+
+    
+
+
 
   
 
