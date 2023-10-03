@@ -95,13 +95,11 @@
     </section>
 
    
-    <!-- Footer -->
     <footer>
       <p>ElevateFitness &copy; 2023</p>
     </footer>
 
   </div>
-  <!-- Wrapper Ends -->
   </div>
 </template>
 
@@ -126,7 +124,6 @@ export default {
 </script>
 
 <style>
-/* CSS Variables */
 :root {
   --primary: #ddd;
   --dark: #333;

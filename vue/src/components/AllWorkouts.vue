@@ -1,8 +1,8 @@
 <template>
 
-  
+  <div class="allworkouts">
 
-  <div class="allWorkouts">
+  <div class="workoutList">
     <!-- <div class="scrollbar" id="scrollbar"> -->
     <br>
     <br>
@@ -22,7 +22,7 @@
         <tbody class="scrollbar" id="scrollbar">
 
           <tr v-for="workout in workouts" v-bind:key="workout.id">
-            <td class="name">{{ workout.name }}</td>
+            <td class="name" v-on:click="goToExercisesInWorkout(workout.workout_id)">{{ workout.name }}</td>
             <td class="description">{{ workout.description }}</td>
             <td class="status"></td>
         
@@ -37,6 +37,9 @@
       <div id="buttons">
       
       </div>
+      
+</div>
+
 </div>
   
   
@@ -68,9 +71,12 @@ export default {
             this.handleErrorResponse(err, "deleting")
           })
   },
-  // goToEditPage(id) {
-  //     this.$router.push(`/workout/edit/${id}`)
-  //   },
+  goToEditPage(id) {
+      this.$router.push(`/workout/edit/${id}`)
+    },
+   goToExercisesInWorkout(id){
+     this.router.push(`/exercises/workout/${id}`)
+   } ,
 
     
 

@@ -234,7 +234,7 @@ h1 {
 
   
 .table2{
-    margin-top: 810px;
+    margin-top: 925px;
 }
 
  
