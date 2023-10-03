@@ -1,8 +1,8 @@
 <template>
 
-  
+  <div class="allworkouts">
 
-  <div class="allWorkouts">
+  <div class="workoutList">
     <!-- <div class="scrollbar" id="scrollbar"> -->
     <br>
     <br>
@@ -22,12 +22,12 @@
         <tbody class="scrollbar" id="scrollbar">
 
           <tr v-for="workout in workouts" v-bind:key="workout.id">
-            <td class="name">{{ workout.name }}</td>
+            <td class="name" v-on:click="goToExercisesInWorkout(workout.workout_id)">{{ workout.name }}</td>
             <td class="description">{{ workout.description }}</td>
             <td class="status"></td>
         
-            <td class="edit-btn"><button @click="goToEditPage(workout.workout_Id)">Edit</button></td>
-            <td class="delete-btn"><button v-on:click="deleteworkout(workout.workout_Id)">Delete</button></td>
+            <td class="edit-btn"><button v-on:click="goToEditPage(workout.workout_id)">Edit</button></td>
+            <td class="delete-btn"><button v-on:click="deleteWorkout(workout.workout_id)">Delete</button></td>
             <td class="status">{{ workout.status }}</td>
           </tr>
 
@@ -37,6 +37,9 @@
       <div id="buttons">
       
       </div>
+      
+</div>
+
 </div>
   
   
@@ -56,8 +59,8 @@ export default {
     });
   },
   methods:{
-    deleteworkout(workoutId) {
-      service.deleteWorkout(workoutId)
+    deleteWorkout(id) {
+      service.deleteWorkout(id)
           .then(res => {
             if(res.status == 200) {
               confirm("Workout will be deleted.  Would you like to continue?");
@@ -68,9 +71,16 @@ export default {
             this.handleErrorResponse(err, "deleting")
           })
   },
-  // goToEditPage(id) {
-  //     this.$router.push(`/workout/edit/${id}`)
-  //   },
+  goToEditPage(id) {
+      this.$router.push(`/workout/edit/${id}`)
+    },
+   goToExercisesInWorkout(id){
+     this.router.push(`/exercises/workout/${id}`)
+   } ,
+
+    
+
+
 
   
 
