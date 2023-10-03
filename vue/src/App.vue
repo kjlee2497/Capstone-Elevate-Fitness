@@ -14,7 +14,7 @@
       <br>
       <router-link v-if="$store.state.token !== ''" :to="{ name: 'home' }" @click="toggleSidebar">Home</router-link>
       <router-link v-if="$store.state.token !== ''" :to="{ name: 'all-exercises' }" @click="toggleSidebar">Exercises</router-link>
-      <router-link v-if="$store.state.token !== ''" :to="{ name: 'workouts' }" @click="toggleSidebar">Workouts</router-link>
+      <router-link v-if="$store.state.token !== ''" :to="{ name: 'all-workouts' }" @click="toggleSidebar">Workouts</router-link>
       <router-link v-if="$store.state.token !== ''" :to="{ name: 'history' }" @click="toggleSidebar">History</router-link>
       <router-link v-if="$store.state.token !== ''" :to="{ name: 'logout' }" @click="toggleSidebar">Logout</router-link>
       

@@ -16,17 +16,20 @@ VALUES ('Bicep Curl', 'A bicep curl is a popular strength-training exercise that
 '20', '10', '60', 'arms');
 
 INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target)
-VALUES ('Hammer Curl', 'A hammer curl is a resistance exercise that primarily targets the brachialis muscle, which is located on the outer side of the upper arm, as well as the brachioradialis muscle, which runs along the forearm.' ,
+VALUES ('Hammer Curl', 'A hammer curl is a resistance exercise that primarily targets the brachialis muscle, which is located on the outer side of the upper arm, as well as the brachioradialis muscle, which runs along the forearm.',
 '20', '10', '60', 'arms');
 
 INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target)
-VALUES ('Skullcrushers', 'skullcrushers DESCRIPTION', '0', '10', '40', 'arms');
+VALUES ('Skullcrushers', 'a weightlifting exercise that primarily targets the triceps muscles. In this exercise, you typically lie on a bench with your back flat, extend your arms vertically, and then bend your elbows to lower the weight (barbell or dumbbells) toward your forehead, hence the name "skull crushers." The movement resembles the crushing motion of a skull, but the key is to control the weight and focus on working the triceps for strength and muscle development.',
+ '0', '10', '40', 'arms');
 
 INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target)
-VALUES ('Close-grip bench press', 'Close-grip bench press DESCRIPTION', '15', '10', '40', 'arms');
+VALUES ('Close-grip bench press', 'The "Close-Grip Bench Press" is a weightlifting exercise that targets the triceps, chest, and shoulders. In this exercise, you use a barbell and grip it with your hands positioned closer together than in a regular bench press. This narrower hand placement places greater emphasis on the triceps, helping to build strength and muscle in the back of your arms. The movement involves lowering the barbell to your chest and then pushing it back up to the starting position, working the targeted muscle groups for upper body strength and development.',
+ '15', '10', '40', 'arms');
 
 INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target)
-VALUES ('Shoulder press', 'shoulder press DESCRIPTION', '20', '10', '60', 'arms');
+VALUES ('Shoulder press', 'A fundamental weightlifting exercise that primarily targets the shoulder muscles. In this exercise, you typically stand or sit with a barbell or dumbbells at shoulder height and then push the weight directly overhead until your arms are fully extended. The shoulder press helps to develop strength and size in the deltoid muscles of the shoulders, as well as the triceps and upper chest. It is a key exercise in building upper body strength and achieving a well-rounded physique.',
+ '20', '10', '60', 'arms');
 
 INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target)
 VALUES ('Calf raises', 'calf raises DESCRIPTION', '20', '10', '80', 'legs');
@@ -109,38 +112,38 @@ VALUES ('Jump Squat', 'Jump Squat DESCRIPTION', '0', '10', '90', 'total body');
 --WORKOUTS DATA
 INSERT INTO workouts (isCompleted, name, description) VALUES (
     false,
-    'Tone your Arms',
-    'this is an arm workout'
+    'Arms',
+    'Forge formidable arms that command respect. Rise, embrace the weights, and conquer your limits. In each rep, you sculpt greatness. This workout is not a choice; it is destiny.'
 );
 
 INSERT INTO workouts (isCompleted, name, description) VALUES (
     true,
-    'Tone your Legs',
-    'this is a leg workout'
+    'Legs',
+    'Ignite your lower body. The iron bends, but you stand strong. With each squat, lunge, and lift, you carve the path to legendary strength. In this arena, you are not just training; you are rewriting your legacy.'
 );
 
 INSERT INTO workouts (isCompleted, name, description) VALUES (
     false,
-    '6 Pack Shortcuts',
-    'this is an ab workout'
+    'Abs',
+    'Discover the path to chiseled perfection with our intense ab workout. Unleash the hidden potential of your core as you sculpt a powerhouse midsection that commands attention. Brace yourself for a journey of sweat, strength, and six-pack satisfaction.'
 );
 
 INSERT INTO workouts (isCompleted, name, description) VALUES (
     false,
-    'Back Routine',
-    'this is a back workout'
+    'Back',
+    'Unleash the power within as you embark on a journey to sculpt your back into a fortress of strength and definition. With every rep, you forge a path to greatness, each exercise a battle won in the epic quest for a powerful and chiseled back. Feel the burn, embrace the challenge, and conquer your limits, for in the crucible of the gym, legends are born.'
 );
 
 INSERT INTO workouts (isCompleted, name, description) VALUES (
     false,
-    'Heart Racer',
-    'this is a cardio workout'
+    'Cardio',
+    'Embark on a journey that ignites your inner warrior, as you conquer the miles and seize the rhythm of your heart. In the realm of the cardio battlefield, you will find endurance, strength, and the relentless pursuit of vitality. Let the sweat be your victory, and with every beat, sculpt a heart of steel that echoes with the anthem of life itself.'
 );
 
 INSERT INTO workouts (isCompleted, name, description) VALUES (
     true,
-    'Full Body Til You Cry',
-    'this is a full body workout'
+    'Full Body',
+    'Enter the crucible of transformation, where every muscle becomes a weapon, and strength knows no bounds. In the arena of the total body workout, you will forge a physique of mythic proportions, sculpting your destiny with iron and determination. From head to toe, you rise as a titan of fitness, ready to conquer any challenge that stands in your path.'
 );
 
 --WORKOUT_EXERCISES TABLE DATA
