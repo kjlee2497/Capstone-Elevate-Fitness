@@ -3,10 +3,12 @@ package com.techelevator.dao;
 import com.techelevator.model.Exercise;
 import com.techelevator.model.Workout;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.BadSqlGrammarException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
@@ -322,6 +324,38 @@ public class WorkoutJdbcDao implements WorkoutDao {
         }
 
         return deleted;
+    }
+    @Override
+    public int findIdByUsername(String username) {
+        if (username == null) throw new IllegalArgumentException("Username cannot be null");
+
+        int userId;
+        try {
+            userId = jdbcTemplate.queryForObject("select user_id from users where username = ?", int.class, username);
+        } catch (EmptyResultDataAccessException e) {
+            throw new UsernameNotFoundException("User " + username + " was not found.");
+        }
+
+        return userId;
+    }
+
+    @Override
+    public void assignWorkoutToUser(int workoutId, String username) {
+
+        String sql = "INSERT INTO user_workouts_assigned(user_id, workout_id) VALUES(?, ?)";
+        int userId = findIdByUsername(username);
+
+        try {
+            jdbcTemplate.update(sql,userId, workoutId);
+
+        }catch (CannotGetJdbcConnectionException e){
+            throw new RuntimeException("Unable to contact the database!", e);
+        } catch (BadSqlGrammarException e){
+            throw new RuntimeException("Bad SQL query: " + e.getSql()
+                    +"\n"+e.getSQLException(), e);
+        } catch (DataIntegrityViolationException e){
+            throw new RuntimeException("Database Integrity Violation", e);
+        }
     }
 
     private Workout mapRowToWorkout(SqlRowSet results) {

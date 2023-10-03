@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -80,5 +81,10 @@ public class WorkoutController {
     @RequestMapping(path = "v1/exercise/workout/{id}", method = RequestMethod.PUT)
     public void setWorkoutComplete(@PathVariable int id) {
         workoutDao.setWorkoutComplete(id);
+    }
+
+    @RequestMapping(path = "v1/workout/add/{workoutId}", method = RequestMethod.POST)
+    public void assignWorkoutToUser(Principal principal, @PathVariable int workoutId){
+        workoutDao.assignWorkoutToUser(workoutId, principal.getName() );
     }
 }
