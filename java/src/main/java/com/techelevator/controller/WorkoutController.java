@@ -75,4 +75,9 @@ public class WorkoutController {
     public void deleteWorkout(@PathVariable int id) {
         workoutDao.deleteWorkout(id);
     }
+
+    @RequestMapping(path = "v1/exercise/workout/{id}", method = RequestMethod.PUT)
+    public void setWorkoutComplete(@PathVariable int id) {
+        workoutDao.setWorkoutComplete(id);
+    }
 }

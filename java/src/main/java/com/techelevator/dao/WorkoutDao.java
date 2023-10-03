@@ -9,10 +9,13 @@ public interface WorkoutDao {
     List<Workout> listWorkouts();
     Workout getWorkoutById(int id);
 //    Workout getWorkoutByName(String name);
+
     List<Workout> listWorkoutsByTarget(String target);
     List<Workout> listWorkoutsByUser(int id);
     List<Workout> listWorkoutsByLength();
     List<Workout> listCompletedWorkouts(int id);
+    Workout setWorkoutComplete(int workoutId);
+
     Workout generateWorkout(Workout workout);
 
     void addExerciseToWorkout(int workoutId, int exercisesId);
