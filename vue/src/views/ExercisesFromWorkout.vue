@@ -12,7 +12,7 @@
     <div id="buttons">
    
       <button v-on:click="setComplete(myId)">Complete Workout</button>
-      <button v-on:click="backToWorkoutList(myId)">Exit Workout</button>
+      <button v-on:click="backToWorkoutList()">Exit Workout</button>
       
     
 

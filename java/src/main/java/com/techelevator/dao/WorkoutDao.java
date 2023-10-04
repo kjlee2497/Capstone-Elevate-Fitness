@@ -25,4 +25,6 @@ public interface WorkoutDao {
     void assignWorkoutToUser(int workoutId, String username);
     int findIdByUsername(String username);
 
+    List<Workout> listAssignedWorkout(String username);
+
 }

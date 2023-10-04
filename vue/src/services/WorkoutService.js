@@ -42,7 +42,11 @@ setcomplete(id) {
 },
 addExerciseToWorkout(workoutId, exerciseId) {
     return axios.post(`/v1/workout/${workoutId}/${exerciseId}`)
+},
+assignUserToWorkout(id) {
+    return axios.post(`/v1/workout/add/${id}`)
 }
+
 
 
 
