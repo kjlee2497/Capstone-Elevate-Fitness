@@ -33,10 +33,10 @@
           <a href="" class="btn" @click="goToAddWorkout">Add Workout</a>
         </li>
         <li>
-          <a href="" class="btn">edit workout</a>
+          <a href="" class="btn">Edit Workout</a>
         </li>
         <li>
-          <a href="" class="btn" @click="goToDeleteWorkout">Delete workout</a>
+          <a href="" class="btn" @click="goToDeleteWorkout">Delete Workout</a>
         </li>
       </ul>
     </nav>    

@@ -2,7 +2,7 @@
   <body>
     
     <h1>Meet The Trainers</h1>
-    <button class="back-btn" @click="goToLandingPage">Back</button>
+    <button class="back-btn" @click="goToLandingPage">Go Back</button>
     <div class="container">
       <div class="row">
         <div class="col">
@@ -170,6 +170,7 @@ export default {
 }
 
 .usercard {
+  
   background: white;
   display: -webkit-box;
   display: -moz-box;
@@ -216,7 +217,9 @@ export default {
 }
 
  .back-btn {
-   margin-right: 10%;
+   align-items: center;
+  
+  
     background-color: rgb(238, 238, 238);
     color: black;
     border: 10px;

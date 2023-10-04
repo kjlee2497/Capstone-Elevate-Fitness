@@ -10,7 +10,7 @@
         Invalid username and password!
       </div>
       <div role="alert" v-if="this.$route.query.registration">
-        Thank you for registering, please sign in.
+        Thank You For Registering, Please Sign In.
       </div>
       <div class="form-input-group">
         <label for="username">Username</label>
@@ -20,9 +20,9 @@
         <label for="password">Password</label>
         <input type="password" id="password" v-model="user.password" required />
       </div>
-     <button type="submit"> Sign in</button>
+     <button type="submit"> Sign In</button>
       <p class="registerLink">
-      <router-link :to="{ name: 'register' }" align:center >Need an account? Sign up.</router-link></p>
+      <router-link :to="{ name: 'register' }" align:center >Need an Account? Sign Up.</router-link></p>
     </form>
   </div>
 </template>

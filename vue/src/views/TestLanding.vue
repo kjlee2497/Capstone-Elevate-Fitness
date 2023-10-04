@@ -6,10 +6,10 @@
     <nav class="main-nav">
       <ul>
         <li>
-          <a href="#" class="topLoginBtn1" @click ="goToLogin" >Sign in</a>
+          <a href="#" class="topLoginBtn1" @click ="goToLogin" >Sign In</a>
         </li>
         <li>
-          <a href="#" class="topSignUpBtn2" @click="goToRegister">Sign up</a>
+          <a href="#" class="topSignUpBtn2" @click="goToRegister">Sign Up</a>
         </li>
         <li>
           <a href="#">Contact us</a>
@@ -29,13 +29,13 @@
       </header>
       <div class="top-box top-box-a">
         
-        <p class="neon">Don't wish for it.<br>Work for it.</p>
-        <a href="" class="btn" @click ="goToLogin">Sign in</a>
+        <p class="neon">Don't Wish For It.<br>Work For It.</p>
+        <a href="" class="btn" @click ="goToLogin">Sign In</a>
       </div>
       <div class="top-box top-box-b">
         <div class="container">
         </div>    
-        <p class="neon">One day<br>or day one.<br>You decide.<br>Sign up Today.</p>
+        <p class="neon">One Day<br>Or Day One.<br>You Decide.<br>Sign Up Today.</p>
         <a href="" class="btn" @click="goToRegister">Sign Up</a>
       </div>
     </section>

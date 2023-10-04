@@ -11,7 +11,7 @@
       <table class="workoutList-table">
       
       <thead>
-        <th class="h-name"> Workout name</th>
+        <th class="h-name"> Workout Name</th>
         <th class="h-desc">Description</th>
         <th class="h-edit"></th>
         

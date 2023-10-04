@@ -30,7 +30,7 @@
       <table class="exerciseList-table">
        
         <thead>
-          <th class="name"> Exercise name</th>
+          <th class="name"> Exercise Name</th>
           <th class="description">Description</th>
           <th class="weight">Suggested Weight</th>
           <th class="repCount">Rep Count</th>
