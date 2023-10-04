@@ -38,7 +38,10 @@ export default {
         return axios.delete(`/v1/workout/${id}`);
     },
     setcomplete(id) {
-        return axios.put(`/v1/exercise/workout/${id}`);
+        return axios.put(`/v1/exercise/workout/${id}/complete`);
+    },
+    setincomplete(id) {
+        return axios.put(`/v1/exercise/workout/${id}/incomplete`);
     },
     addExerciseToWorkout(workoutId, exerciseId) {
         return axios.post(`/v1/workout/${workoutId}/${exerciseId}`);
