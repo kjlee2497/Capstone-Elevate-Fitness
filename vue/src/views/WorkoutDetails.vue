@@ -13,7 +13,7 @@
         
     <div id="buttons">
    
-   
+      <button v-on:click="goToEditWorkout(workout.workout_id)">Edit</button>
       <button v-on:click="backToWorkoutList()">Exit Workout</button>
       
     
@@ -97,6 +97,9 @@ export default {
   backToWorkoutList(){
     this.$router.push(`/v1/workouts`)
   },
+  goToEditWorkout(workoutId){
+    this.$router.push(`/workout/edit/${workoutId}`);
+  }
   
    
  

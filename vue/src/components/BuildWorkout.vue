@@ -19,6 +19,11 @@
 
     </div>
     <br>
+    <div id="buttons">
+        <button class="refresh-btn" v-on:click="refreshPage">Refresh</button>
+        <button class="submit-exercises" v-on:click="addExercisesToWorkout()">Add Exercises To Workout</button>
+        <button v-on:click="deleteWorkout(workoutId)">Cancel</button>
+    </div>
     <br>
     <div id="main-container">
         <table class="exerciseList-table table">
@@ -67,8 +72,6 @@
                     <td class="expectedTime">{{ exercise.expectedTime }} seconds</td>
                     <td class="target">{{ exercise.target }}</td>
                 </tr>    
-                <button class="refresh-btn" v-on:click="refreshPage">Refresh</button>
-                <button class="submit-exercises" v-on:click="addExercisesToWorkout()">Add Exercises To Workout</button>
             </tbody> 
         </table>
         </div>
@@ -194,12 +197,20 @@ export default {
     },
     storeExercisesInLocal() {
         this.exercisesToAdd = this.$store.state.workoutExercises;
+    },
+    deleteWorkout(workoutId) {
+      WorkoutService.deleteWorkout(workoutId)
+        .then(res=> {
+          if(res.status == 200) {
+            alert("Workout has not been created.  Returning to Home...");
+            this.$router.push('/home');
+          }
+        })
     }
   }
 }
 </script>
 <style scoped>
-
 
 .scrollbar {
   height: 300px;
@@ -242,13 +253,14 @@ h1 {
   .table{
     display: flex;
     justify-items: center;
-      margin-top:90px;
+      margin-top:8%;
       height: 65vh;
-      width: 75vw;
+      width: 50vw;
       position:absolute;
       transform: translate(-50%,-50%);
       top: 42%;
-      left: 53.5%;
+      /* left: 53.5%; */
+      left: 33%;
       
       border-radius: 10px;
       backdrop-filter: blur(10px);
@@ -271,7 +283,9 @@ h1 {
 
   
 .table2{
-    margin-top: 925px;
+    margin-top: 8%;
+    width: 35vw;
+    left: 77%;
 }
 
  
@@ -339,35 +353,34 @@ tbody{
   }
   #buttons{
     
-     margin-top: 20px;
+     margin-top: 1%;
      display: flex;
     justify-items: center;
     justify-content: space-evenly;
     margin-bottom: 60px;
+    margin-right: 8%
 }
   
+button {
   
-  button {
-    
-    background-color: #0b080cc0;
-    color: #fff;
-    border: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
+  background-color: #0b080cc0;
+  color: #fff;
+  border: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
 }
  
-  button:hover {
-    background-color: #8F05FF;
-    transform: scale(1.05);
-        animation: pulse 0.5s ease infinite alternate;
-  }
- 
-  button:hover {
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+button:hover {
+  background-color: #8F05FF;
+  transform: scale(1.05);
+  animation: pulse 0.5s ease infinite alternate;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+
 }
+
 .filterBar {
   text-align: center;
   margin-top: 0px;
@@ -402,27 +415,16 @@ thead th{
   width: 25vw;
 }
 .weight {
-  width: 7vw;
+  width: 5vw;
 }
 .repCount {
-  width: 7vw;
+  width: 5vw;
 }
 .expectedTime{
-  width: 7vw;
+  width: 5vw;
 }
 .target {
-  width: 7vw;
-}
-.edit-btn{
-  width: 10vw;
-}
-.refresh-btn{
   width: 5vw;
-  margin-top: 20px;
-  margin-left: 68%;
-}
-#main-container{
-    height: 80vh;
 }
 
 

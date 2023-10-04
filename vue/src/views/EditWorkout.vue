@@ -7,9 +7,11 @@
         <input type="text" v-model="workout.name" id="workout-name">
         <br>
         <textarea rows="4" columns="50" v-model="workout.description" id="workout-description" />
-        <button>Submit Changes</button> 
- 
+        <br>
+        <button class="submit-btn">Submit Changes</button> 
+
     </form>
+
       <table class="exerciseList-table">
        
         <thead>
@@ -139,12 +141,11 @@ export default {
 }
 </script>
 <style scoped>
-input[id=cb]:checked~td.strikethrough {
-  text-decoration: line-through;
-  color: red;
+
+.submit-btn {
+  font-size: 20px;
+  margin-top: 0.3%
 }
-
-
 .scrollbar {
   height: 300px;
   width: auto;
@@ -171,7 +172,6 @@ input[id=cb]:checked~td.strikethrough {
 
 }
 
-
 h1 {
   margin: 0px 0px;
   font-family: 'Poppins',sans-serif;
@@ -186,12 +186,12 @@ h1 {
   table{
     display: flex;
     justify-items: center;
-      margin-top:90px;
+      margin-top:6%;
       height: 65vh;
       width: 75vw;
       position:absolute;
       transform: translate(-50%,-50%);
-      top: 50%;
+      top: 52%;
       left: 53.5%;
       
       border-radius: 10px;
@@ -270,6 +270,12 @@ tbody{
   display: block;
   
 }
+
+
+thead th{
+  text-align: center;
+  padding: 10px;
+}
   
  
   @keyframes pulse {
@@ -312,12 +318,9 @@ tbody{
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-thead th{
-  text-align: center;
-  padding: 10px;
-}
+
 .name {
-  width: 10vw;
+  width: 5vw;
  
 }
 .description {
@@ -344,8 +347,9 @@ thead th{
   height: 1.5vw;
 }
 form {
-  margin-left: 33%;
+  margin-left: 0%;
   padding-top: 3%;
+  text-align: center;
 }
 
 #workout-name {
@@ -353,14 +357,16 @@ form {
   height: 5vh;
   font-size: 30px;
   font-family: 'Poppins',sans-serif;
+  text-align: center;
 }
 
 #workout-description {
   font-family: 'Poppins',sans-serif;
   width: 40vw;
-  height: 8vh;
+  height: 10vh;
   font-size: 15px;
-  margin-top: 15px;
+  margin-top: 1%;
+  padding: 10px;
 }
 
 
