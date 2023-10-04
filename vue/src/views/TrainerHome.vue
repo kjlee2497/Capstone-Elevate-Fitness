@@ -33,10 +33,10 @@
           <a href="" class="btn" @click="goToAddWorkout">Add Workout</a>
         </li>
         <li>
-          <a href="#" class="btn">edit workout</a>
+          <a href="" class="btn">edit workout</a>
         </li>
         <li>
-          <a href="#" class="btn">Delete workout</a>
+          <a href="" class="btn" @click="goToDeleteWorkout">Delete workout</a>
         </li>
       </ul>
     </nav>    
@@ -67,7 +67,10 @@ export default {
       this.$router.push({ name: 'add-exercises' });
   },
     goToAddWorkout() {
-      this.$router.push('/exercises/workout/:workoutId/generate')
+      this.$router.push('/workouts/add');
+    },
+    goToDeleteWorkout() {
+      this.$router.push('/v1/workouts');
     }
     
   }

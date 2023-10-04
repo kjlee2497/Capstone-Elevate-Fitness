@@ -328,11 +328,7 @@ tbody{
   display: block;
   
 }
-  
-  .exerciseList-table th {
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-  }
- 
+   
   @keyframes pulse {
     from {
       transform: scale(1);
@@ -403,22 +399,22 @@ thead th{
   width: 10vw;
 }
 .description {
-  width: 20vw;
+  width: 25vw;
 }
 .weight {
-  width: 5vw;
+  width: 7vw;
 }
 .repCount {
-  width: 5vw;
+  width: 7vw;
 }
 .expectedTime{
-  width: 5vw;
+  width: 7vw;
 }
 .target {
-  width: 5vw;
+  width: 7vw;
 }
 .edit-btn{
-  width: 5vw;
+  width: 10vw;
 }
 .refresh-btn{
   width: 5vw;
