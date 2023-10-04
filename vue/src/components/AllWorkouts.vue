@@ -27,7 +27,7 @@
         
             <td class="edit-btn"><button v-on:click="goToDetailPage(workout.workout_id)">Workout Details</button></td>
             <td class="delete-btn"><button v-on:click="deleteWorkout(workout.workout_id)">Delete</button></td>
-            <td class="add-btn"><button >Add To Log</button></td>
+            <td class="add-btn" v-on:click="assignWorkoutToUser(workout.workout_id)"><button >Add To Log</button></td>
             <td class="status">{{ workout.status }}</td>
           </tr>
 
@@ -77,14 +77,17 @@ export default {
    goToDetailPage(workoutId){
      this.$router.push(`/workout/details/${workoutId}`)
    } ,
-
-    
-
-
-
-  
-
-
+   assignWorkoutToUser(workoutId) {
+     service.assignUserToWorkout(workoutId)
+        .then(res => {
+           if(res.status == 200) {
+             this.$router.push('/home');
+           }
+        })
+        .catch(err => {
+            this.handleErrorResponse(err, "deleting")
+          });
+   },
     getStatus(){
 
     },
