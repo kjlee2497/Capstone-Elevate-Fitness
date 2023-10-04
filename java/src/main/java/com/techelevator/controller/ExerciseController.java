@@ -72,4 +72,9 @@ public class ExerciseController {
         exerciseDao.deleteExercise(exerciseId);
     }
 
+    @RequestMapping(path = "/workout/exercises/{exerciseId}", method = RequestMethod.DELETE)
+    public void deleteExerciseFromWorkout(@PathVariable int exerciseId) {
+        exerciseDao.deleteExerciseFromWorkout(exerciseId);
+    }
+
 }
