@@ -30,4 +30,6 @@ public interface WorkoutDao {
 
     List<Workout> listWorkoutHistoryForUser(String username);
 
+    Workout setWorkoutIncomplete(int workoutId, String username);
+
 }
