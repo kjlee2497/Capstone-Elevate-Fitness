@@ -47,25 +47,28 @@
     
         <div id="workoutExercises">
         <table class="exerciseList-table table table2">
-        
-            <thead>
-            <th class="name"> Exercise name</th>
-            <th class="description">Description</th>
-            <th class="weight">Suggested Weight</th>
-            <th class="repCount">Rep Count</th>
-            <th class="expectedTime">Expected Time to Complete</th>
-            <th class="target">Target Area</th>
-            <th class="edit-btn"></th>
-            </thead>
-        <tbody class="scrollbar" id="scrollbar">
-            <tr v-for="exercise in this.$store.state.workoutExercises" v-bind:key="exercise.id">
-                <td class="name">{{ exercise.name }}</td>
-                <td class="description">{{ exercise.description }}</td>
-                <td class="weight">{{ exercise.weight }} lbs</td>
-                <td class="repCount">{{ exercise.repCount }} reps</td>
-                <td class="expectedTime">{{ exercise.expectedTime }} seconds</td>
-                <td class="target">{{ exercise.target }}</td>
-            </tr>    
+            <h1>{{ this.workout.name }}</h1>
+            <h2>{{ this.workout.description }}</h2>
+                <thead>
+                <th class="name"> Exercise name</th>
+                <th class="description">Description</th>
+                <th class="weight">Suggested Weight</th>
+                <th class="repCount">Rep Count</th>
+                <th class="expectedTime">Expected Time to Complete</th>
+                <th class="target">Target Area</th>
+                <th class="edit-btn"></th>
+                </thead>
+            <tbody class="scrollbar" id="scrollbar">
+                <tr v-for="exercise in this.$store.state.workoutExercises" v-bind:key="exercise.id">
+                    <td class="name">{{ exercise.name }}</td>
+                    <td class="description">{{ exercise.description }}</td>
+                    <td class="weight">{{ exercise.weight }} lbs</td>
+                    <td class="repCount">{{ exercise.repCount }} reps</td>
+                    <td class="expectedTime">{{ exercise.expectedTime }} seconds</td>
+                    <td class="target">{{ exercise.target }}</td>
+                </tr>    
+                <button class="refresh-btn" v-on:click="refreshPage">Refresh</button>
+                <button class="submit-exercises" v-on:click="addExercisesToWorkout()">Add Exercises To Workout</button>
             </tbody> 
         </table>
         </div>
@@ -77,7 +80,9 @@
 
 </template>
 <script>
- import service from '../services/ExerciseService'
+import ExerciseService from '../services/ExerciseService'
+import WorkoutService from "../services/WorkoutService"
+
 export default {
   name: "all-exercises",
   data(){
@@ -85,19 +90,34 @@ export default {
       filterOptions: {
         searchQuery: "",
         searchFilter: "all"
-      }
+      },
+      workout: {
+          name: "",
+          description: "",
+          status: ""
+      },
+      exercisesToAdd: [],
+      workoutId: ""
     }
   },
   created() {
-    service.getAllExercises().then((response) => {
+    ExerciseService.getAllExercises().then((response) => {
       this.$store.state.exercises = response.data;
       this.$store.state.filter = this.$store.state.exercises;
     })
     .catch(err => {
       this.handleErrorResponse(err, "getting")
     });
+    WorkoutService.getWorkoutById(this.$route.params.workoutId)
+        .then(res => {
+            this.workout = res.data;
+            this.workoutId = this.$route.params.workoutId;
+        })
   },
   methods: {
+    refreshPage() {
+        this.$router.go();
+    },
     goToRequestExercise() {
       this.$router.push({ name: 'add-exercises' });
   },
@@ -139,15 +159,15 @@ export default {
     handleErrorResponse(error, verb) {
       if (error.response) {
         this.errorMsg =
-          "Error " + verb + " exercise. Response received was '" +
+          "Error " + verb + " exercise to workout. Response received was '" +
           error.response.statusText +
           "'.";
       } else if (error.request) {
         this.errorMsg =
-          "Error " + verb + " exercise. Server could not be reached.";
+          "Error " + verb + " exercise to workout. Server could not be reached.";
       } else {
         this.errorMsg =
-          "Error " + verb + " exercise. Request could not be created.";
+          "Error " + verb + " exercise to workout. Request could not be created.";
       }
     },
     addToWorkoutList(currentExercise) {
@@ -157,6 +177,23 @@ export default {
                this.$store.commit("ADD_EXERCISE_TO_WORKOUT", currentExercise);
             }
         }
+    },
+    addExercisesToWorkout() {
+        this.storeExercisesInLocal();
+        for(let exercise of this.exercisesToAdd) {
+            WorkoutService.addExerciseToWorkout(this.workoutId, exercise.exercise_id)
+                .then(res => {
+                    if(res.status == 200) {
+                        console.log("Exercise has been added");
+                    }
+                })
+                .catch(err => {
+                    this.handleErrorResponse(err, "adding")
+                });        }
+                this.$router.push(`/workout/details/${this.workoutId}`);
+    },
+    storeExercisesInLocal() {
+        this.exercisesToAdd = this.$store.state.workoutExercises;
     }
   }
 }
@@ -388,12 +425,15 @@ thead th{
 .edit-btn{
   width: 5vw;
 }
-.delete-btn{
+.refresh-btn{
   width: 5vw;
+  margin-top: 20px;
+  margin-left: 68%;
 }
 #main-container{
     height: 80vh;
 }
+
 
 
 </style>

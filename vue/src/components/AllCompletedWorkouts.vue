@@ -27,9 +27,9 @@
             <td class="description">{{ workout.description }}</td>
             <td class="status"></td>
         
-            <td class="edit-btn"><button v-on:click="goToDetailPage(workout.workout_id)">Workout Details</button></td>
-            <td class="delete-btn"><button v-on:click="deleteWorkout(workout.workout_id)">Delete</button></td>
-            <td class="add-btn"><button v-on:click=" assignUserToWorkout(workout.workout_id)">Add To Log</button></td>
+            <td class="delete-btn"><button v-on:click="goToWorkout(workout.workout_id)">Start Workout</button></td>
+            <!-- <td class="delete-btn"><button v-on:click="deleteWorkout(workout.workout_id)">Delete</button></td> -->
+           
             <td class="status">{{ workout.status }}</td>
           </tr>
 
@@ -49,14 +49,14 @@
 <script>
  import service from '../services/WorkoutService'
 export default {
-  name: "all-workouts",
+  name: "assigned-workouts",
   data() {
     return {
        workouts: [] 
        };
   },
   created() {
-    service.listWorkouts().then((response) => {
+    service.listWorkoutHistoryForUser().then((response) => {
       this.workouts = response.data ?? []
     });
   },
@@ -76,8 +76,8 @@ export default {
   // goToEditPage(id) {
   //     this.$router.push(`/workout/edit/${id}`)
   //   },
-   goToDetailPage(workoutId){
-     this.$router.push(`/workout/details/${workoutId}`)
+   goToWorkout(workoutId){
+     this.$router.push(`/exercises/workout/${workoutId}`)
    } ,
    assignUserToWorkout(workoutId){
      service.assignUserToWorkout(workoutId).then(response => {

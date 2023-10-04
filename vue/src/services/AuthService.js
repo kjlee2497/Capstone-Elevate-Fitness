@@ -12,5 +12,10 @@ export default {
 
   landingPage(user) {
     return axios.post('/', user)
+  },
+
+  getLoggedInUsername() {
+    return axios.get('/user/username')
   }
+
 }

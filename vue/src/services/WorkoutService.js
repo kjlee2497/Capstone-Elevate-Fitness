@@ -2,44 +2,57 @@ import axios from "axios";
 
 export default {
 
-listWorkouts() {
-    return axios.get("/v1/workouts");
-},
+    listWorkouts() {
+        return axios.get("/v1/workouts");
+    },
 
-getWorkoutById(id) {
-    return axios.get(`/v1/workouts/id/${id}`);
-},
+    getWorkoutById(id) {
+        return axios.get(`/v1/workouts/id/${id}`);
+    },
 
-listWorkoutsByTarget(target) {
-    return axios.get("/v1/workouts/target/", target);
-},
+    listWorkoutsByTarget(target) {
+        return axios.get("/v1/workouts/target/", target);
+    },
 
-listWorkoutsByUser(id) {
-    return axios.get("/v1/workouts/user", id);
-},
+    listWorkoutsByUser(id) {
+        return axios.get("/v1/workouts/user", id);
+    },
 
-listWorkoutsByLength() {
-    return axios.get("/v1/workouts/length");
-},
+    listWorkoutsByLength() {
+        return axios.get("/v1/workouts/length");
+    },
 
-listCompletedWorkouts(id) {
-    return axios.get("/v1/workouts/completed", id);
-},
+    listCompletedWorkouts(id) {
+        return axios.get("/v1/workouts/completed", id);
+    },
 
-generateWorkout(workout) {
-    return axios.post("/v1/workout", workout)
-},
+    generateWorkout(workout) {
+        return axios.post("/v1/workout", workout)
+    },
 
-updateWorkout(id) {
-    return axios.put(`/v1/workout/${id}`);
-},
+    updateWorkout(id) {
+        return axios.put(`/v1/workout/${id}`);
+    },
 
-deleteWorkout(id) {
-    return axios.delete(`/v1/workout/${id}`);
-},
-setcomplete(id) {
-    return axios.put(`/v1/exercise/workout/${id}`)
-}
+    deleteWorkout(id) {
+        return axios.delete(`/v1/workout/${id}`);
+    },
+    setcomplete(id) {
+        return axios.put(`/v1/exercise/workout/${id}`);
+    },
+    addExerciseToWorkout(workoutId, exerciseId) {
+        return axios.post(`/v1/workout/${workoutId}/${exerciseId}`);
+    },
+    assignUserToWorkout(id) {
+        return axios.post(`/v1/workout/add/${id}`);
+    },
+    listAssignedWorkout(){
+        return axios.get(`/assigned`)
+    },
+    listWorkoutHistoryForUser(){
+        return axios.get(`/completed`)
+    },
+
 
 
 

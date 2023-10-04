@@ -56,12 +56,12 @@ public class WorkoutController {
     }
 
     @RequestMapping(path = "/v1/workout", method = RequestMethod.POST)
-    public void generateWorkout(@RequestBody Workout workout) {
-        workoutDao.generateWorkout(workout);
+    public Workout generateWorkout(@RequestBody Workout workout) {
+        return workoutDao.generateWorkout(workout);
 
     }
 
-    @RequestMapping(path = "/v1/workout/{workoutId}/{exerciseId}", method = RequestMethod.GET)
+    @RequestMapping(path = "/v1/workout/{workoutId}/{exerciseId}", method = RequestMethod.POST)
     public void addExerciseToWorkout(@PathVariable int workoutId, @PathVariable int exerciseId){
         workoutDao.addExerciseToWorkout(workoutId, exerciseId);
     }
@@ -77,13 +77,23 @@ public class WorkoutController {
         workoutDao.deleteWorkout(id);
     }
 
-    @RequestMapping(path = "v1/exercise/workout/{id}", method = RequestMethod.PUT)
-    public void setWorkoutComplete(@PathVariable int id) {
-        workoutDao.setWorkoutComplete(id);
+    @RequestMapping(path = "/v1/exercise/workout/{id}", method = RequestMethod.PUT)
+    public void setWorkoutComplete(Principal principal, @PathVariable int id) {
+        workoutDao.setWorkoutComplete(id, principal.getName());
     }
 
-    @RequestMapping(path = "v1/workout/add/{workoutId}", method = RequestMethod.POST)
+    @RequestMapping(path = "/v1/workout/add/{workoutId}", method = RequestMethod.POST)
     public void assignWorkoutToUser(Principal principal, @PathVariable int workoutId){
         workoutDao.assignWorkoutToUser(workoutId, principal.getName() );
+    }
+
+    @RequestMapping(path = "/assigned", method = RequestMethod.GET)
+    public List<Workout> listAssignedWorkout(Principal principal){
+       return workoutDao.listAssignedWorkout(principal.getName());
+    }
+
+    @RequestMapping(path = "/completed", method = RequestMethod.GET)
+    public List<Workout> listWorkoutHistoryForUser(Principal principal){
+        return workoutDao.listWorkoutHistoryForUser(principal.getName());
     }
 }

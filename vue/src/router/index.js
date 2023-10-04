@@ -21,6 +21,7 @@ import EditWorkout from '../views/EditWorkout'
 import ExercisesFromWorkout from '../views/ExercisesFromWorkout'
 import WorkoutDetails from '../views/WorkoutDetails'
 import MeetTrainers from '../views/MeetTrainers'
+import HistoryView from '../views/HistoryView'
 
 Vue.use(Router)
 
@@ -127,7 +128,8 @@ const router = new Router({
       }
     },    
     {
-      path: "/workout/add",
+      // had to change to workouts/add.  workout/add wasn't working for some reason.
+      path: "/workouts/add",
       name: "add-workout",
       component: CreateWorkout,
       meta: {
@@ -136,7 +138,7 @@ const router = new Router({
     },
     {
      // route wouldn't work as /workout/generate for some reason
-     path: "/workouts/generate",
+     path: "/exercises/workout/:workoutId/generate",
      name: "generate-workout",
      component: GenerateWorkout,
       meta: {
@@ -154,7 +156,6 @@ const router = new Router({
     {
 
      
-
       path: "/exercises/workout/:workoutId",
       name: "exercise-workout",
       component: ExercisesFromWorkout,
@@ -212,7 +213,15 @@ const router = new Router({
         meta: {
           requiresAuth: false
         }
-      }
+      },
+      {
+        path: "/history/completed",
+        name: "Completed",
+        component: HistoryView,
+          meta: {
+            requiresAuth: true
+          }
+        },
     
     
   ]

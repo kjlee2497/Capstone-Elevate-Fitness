@@ -1,10 +1,16 @@
 <template>
-  <div></div>
+  <div>
+      <new-workout-form></new-workout-form>
+  </div>
 </template>
 
 <script>
-export default {
+import NewWorkoutForm from '../components/NewWorkoutForm.vue'
 
+export default {
+  components: {
+    NewWorkoutForm
+  }
 }
 </script>
 

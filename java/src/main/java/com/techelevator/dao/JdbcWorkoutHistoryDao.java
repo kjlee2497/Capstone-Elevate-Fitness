@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Workout;
 import com.techelevator.model.WorkoutHistory;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -42,6 +43,7 @@ public class JdbcWorkoutHistoryDao implements WorkoutHistoryDao {
         return workoutHistoryList;
     }
 
+
     @Override
     public WorkoutHistory getWorkoutHistoryById(int workoutHistoryId) {
         String sql = "SELECT * FROM workout_history WHERE workout_history_id = ?";
@@ -52,6 +54,7 @@ public class JdbcWorkoutHistoryDao implements WorkoutHistoryDao {
             return null;
         }
     }
+
 
     private WorkoutHistory mapRowToWorkoutHistory(SqlRowSet rs) {
         WorkoutHistory workoutHistory = new WorkoutHistory();

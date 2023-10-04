@@ -68,7 +68,7 @@ export default {
     return{
       exercises:[],
       filter:[],
-      myId: this.$route.params.workoutId,  //wonky solution, fix it tomorrow 
+      myId: [],  //wonky solution, fix it tomorrow 
       filterOptions: {
         searchQuery: "",
         searchFilter: "all"
@@ -84,12 +84,12 @@ export default {
     .catch(err => {
       this.handleErrorResponse(err, "getting")
     });
-  
+  this.myId = this.$route.params.workoutId
   },
   methods: {
 
   backToWorkoutList(){
-    this.$router.push(`/v1/workouts`)
+    this.$router.push(`/home`)
   },
    setComplete(workoutId){
        WorkoutService.setcomplete(workoutId).then(response => {
@@ -98,7 +98,7 @@ export default {
                 "Workout Completed!!"
             )
              
-              this.$router.push(`/v1/workouts`);
+              this.$router.push(`/home`);
             }
           })
    }
