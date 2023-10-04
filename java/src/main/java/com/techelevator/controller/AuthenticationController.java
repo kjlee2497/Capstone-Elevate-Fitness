@@ -68,5 +68,11 @@ public class AuthenticationController {
         return username;
     }
 
+    @RequestMapping(value = "/currentuser/info", method = RequestMethod.GET)
+    public UserRoleDTO getLoggedInUserInfo(Principal principal) {
+        return userDao.getLoggedInUserInfo(principal.getName());
+    }
+
 }
+
 
