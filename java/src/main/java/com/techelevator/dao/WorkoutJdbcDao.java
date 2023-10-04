@@ -279,6 +279,23 @@ public class WorkoutJdbcDao implements WorkoutDao {
         String sql = "DELETE FROM workouts WHERE workout_id = ?;";
         String sql2 = "DELETE FROM user_workouts WHERE workout_id = ?";
         String sql3 = "DELETE FROM workout_exercises WHERE workout_id = ?";
+        String sql4 = "DELETE FROM user_workouts_assigned WHERE workout_id = ?";
+
+        try {
+            int rows = jdbcTemplate.update(sql4, id);
+            if(rows == 1) {
+                deleted = true;
+            } else {
+                deleted = false;
+            }
+        } catch (CannotGetJdbcConnectionException e){
+            throw new RuntimeException("Unable to contact the database!", e);
+        } catch (BadSqlGrammarException e){
+            throw new RuntimeException("Bad SQL query: " + e.getSql()
+                    +"\n"+e.getSQLException(), e);
+        } catch (DataIntegrityViolationException e){
+            throw new RuntimeException("Database Integrity Violation", e);
+        }
 
         try {
             int rows = jdbcTemplate.update(sql3, id);
