@@ -16,6 +16,11 @@ export default {
 
   getLoggedInUsername() {
     return axios.get('/user/username')
+  },
+
+  getLoggedInUserInfo() {
+    return axios.get('/currentuser/info')
   }
+
 
 }

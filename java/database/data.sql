@@ -52,7 +52,7 @@ VALUES ('Leg Press', 'A weightlifting exercise performed on a specialized machin
  '60', '10', '60', 'legs');
 
 INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target)
-VALUES ('Russian twists', 'a core-strengthening exercise performed by sitting on the floor, bending your knees, and leaning back slightly while keeping your back straight. You then twist your torso from side to side, bringing your hands or a weight across your body toward the floor. This movement targets the obliques and helps improve rotational core strength and stability. Russian twists can be done with body weight or by holding a weight or medicine ball, making them a versatile exercise for building a strong and balanced core.',
+VALUES ('Russian twists', 'A core-strengthening exercise performed by sitting on the floor, bending your knees, and leaning back slightly while keeping your back straight. You then twist your torso from side to side, bringing your hands or a weight across your body toward the floor. This movement targets the obliques and helps improve rotational core strength and stability. Russian twists can be done with body weight or by holding a weight or medicine ball, making them a versatile exercise for building a strong and balanced core.',
  '65', '10', '60', 'abs');
 
 INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target)
@@ -103,7 +103,7 @@ VALUES ('Jumping jack', 'A classic and efficient bodyweight exercise. To perform
  '0', '0', '80', 'cardio');
 
 INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target)
-VALUES ('Elliptical machine', ' When using an elliptical machine, you stand on the pedals and move your legs in an elliptical, or oval-shaped, motion while simultaneously holding onto the handlebars. This low-impact exercise provides a full-body cardiovascular workout, engaging the legs, glutes, arms, and upper body muscles. The elliptical machine is valued for its ability to deliver an effective, joint-friendly workout that enhances cardiovascular endurance, burns calories, and tones various muscle groups.',
+VALUES ('Elliptical machine', 'When using an elliptical machine, you stand on the pedals and move your legs in an elliptical, or oval-shaped, motion while simultaneously holding onto the handlebars. This low-impact exercise provides a full-body cardiovascular workout, engaging the legs, glutes, arms, and upper body muscles. The elliptical machine is valued for its ability to deliver an effective, joint-friendly workout that enhances cardiovascular endurance, burns calories, and tones various muscle groups.',
  '0', '0', '75', 'cardio');
 
 INSERT INTO exercises (exercise_name, description, suggested_weight_lbs, rep_count, expected_time_seconds, target)

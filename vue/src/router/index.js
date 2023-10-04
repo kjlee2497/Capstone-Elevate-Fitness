@@ -20,6 +20,7 @@ import Calendar from '../views/Calendar'
 import EditWorkout from '../views/EditWorkout'
 import ExercisesFromWorkout from '../views/ExercisesFromWorkout'
 import WorkoutDetails from '../views/WorkoutDetails'
+import MeetTrainers from '../views/MeetTrainers'
 import HistoryView from '../views/HistoryView'
 
 Vue.use(Router)
@@ -146,6 +147,15 @@ const router = new Router({
     },
     {
      
+
+      // route wouldn't work as /workout/generate for some reason
+      path: "/workouts/generate",
+      name: "generate-workout",
+      component: GenerateWorkout
+    },
+    {
+
+     
       path: "/exercises/workout/:workoutId",
       name: "exercise-workout",
       component: ExercisesFromWorkout,
@@ -197,6 +207,14 @@ const router = new Router({
           }
         },
         {
+        path: "/trainers/meet",
+        name: "meet-trainers",
+        component: MeetTrainers,
+        meta: {
+          requiresAuth: false
+        }
+      },
+      {
         path: "/history/completed",
         name: "Completed",
         component: HistoryView,

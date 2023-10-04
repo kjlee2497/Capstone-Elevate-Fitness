@@ -28,7 +28,7 @@
           
         
             <td class="delete-btn"><button v-on:click="goToWorkout(workout.workout_id)">Start Workout</button></td>
-            <td class="delete-btn"><button v-on:click="deleteWorkout(workout.workout_id)">Delete</button></td>
+            <!-- <td class="delete-btn"><button v-on:click="deleteWorkout(workout.workout_id)">Delete</button></td> -->
            
         
           </tr>

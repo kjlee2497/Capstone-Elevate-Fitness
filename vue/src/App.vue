@@ -28,23 +28,39 @@
 </template>
 
 <script>
+import AuthService from './services/AuthService';
+
 export default {
   
   data() {
     return {
-      isSidebarVisible: false 
+      isSidebarVisible: false ,
+      user: {
+        userId: '',
+        name: '',
+        role: ''
+      }
     };
   },
   methods: {
     toggleSidebar() {
      
       this.isSidebarVisible = !this.isSidebarVisible;
-    }
-  },
-  goToLandingPage() {
+    },
+      goToLandingPage() {
     this.$router.push({ name: '/'});
     this.isSidebarVisible = !this.isSidebarVisible;
   }
+},
+created() {
+  AuthService.getLoggedInUserInfo()
+    .then(res => {
+      console.log("getting user data");
+      this.user = res.data;
+      console.log(this.user.role); 
+    })
+}
+
 };
 </script>
 
