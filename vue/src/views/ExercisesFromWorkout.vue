@@ -28,6 +28,8 @@
           <th class="repCount">Rep Count</th>
           <th class="expectedTime">Expected Time to Complete</th>
           <th class="target">Target Area</th>
+          <th class="checkmark"></th>
+
         
         </thead>
        <tbody class="scrollbar" id="scrollbar">
@@ -202,12 +204,7 @@ h1 {
   .exerciseList-table-container {
     margin: 40px;
   }
-  .exerciseList-table tr {
-    transition: background-color 0.3s, opacity 0.3s;
-  
-  }
-  
-   
+ 
   .exerciseList-table tr {
     transition: background-color 0.3s, opacity 0.3s;
   }
@@ -246,9 +243,6 @@ tbody{
   
 }
   
-  .exerciseList-table th {
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-  }
  
   @keyframes pulse {
     from {
@@ -273,7 +267,7 @@ tbody{
     background-color: #0b080cc0;
     color: #fff;
     border: 10px;
-    padding: 10px 20px;
+    padding: 15px 20px;
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
@@ -289,24 +283,7 @@ tbody{
   button:hover {
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
-.filterBar {
-  text-align: center;
-}
 
-#filterTextBar {
-  width: 40vw;
-  height: 20px;
-}
-
-#filterCategory {
-  width: 10vw;
-  height: 25px;
-  margin-left: 30px;
-}
-
-#filterBtn {
-  margin-left: 30px;
-}
 thead th{
   text-align: center;
   padding: 10px;
@@ -316,27 +293,28 @@ thead th{
  
 }
 .description {
-  width: 20vw;
+  width: 25vw;
 }
 .weight {
-  width: 5vw;
+  width: 8vw;
 }
 .repCount {
-  width: 5vw;
+  width: 8vw;
 }
 .expectedTime{
-  width: 5vw;
+  width: 8vw;
 }
 .target {
-  width: 5vw;
+  width: 8vw;
 }
-.edit-btn{
-  width: 5vw;
-}
-.delete-btn{
-  width: 5vw;
+.checkmark {
+  width: 4vw;
 }
 
+#cb {
+  width: 1.5vw;
+  height: 1.5vw;
+}
 
 
 

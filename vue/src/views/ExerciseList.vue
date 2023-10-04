@@ -36,8 +36,9 @@
           <th class="repCount">Rep Count</th>
           <th class="expectedTime">Expected Time to Complete</th>
           <th class="target">Target Area</th>
-          <th class="edit-btn"></th>
-          <th class="delete-btn"></th>
+          <th class="edit"></th>
+
+          
         </thead>
        <tbody class="scrollbar" id="scrollbar">
        
@@ -161,7 +162,7 @@ export default {
 
 .scrollbar {
   height: 300px;
-  width: auto;
+  width: 62vw;
   overflow: auto; 
  }
 
@@ -200,9 +201,8 @@ h1 {
   table{
     display: flex;
     justify-items: center;
-      margin-top:90px;
+      margin-top:150px;
       height: 65vh;
-      width: 75vw;
       position:absolute;
       transform: translate(-50%,-50%);
       top: 50%;
@@ -250,11 +250,6 @@ h1 {
     transition: background-color 0.3s, opacity 0.3s;
   
   }
-  
-   
-  .exerciseList-table tr {
-    transition: background-color 0.3s, opacity 0.3s;
-  }
  
   .exerciseList-table tr:hover {
     background-color: #b409f896;
@@ -290,9 +285,7 @@ tbody{
   
 }
   
-  .exerciseList-table th {
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-  }
+ 
  
   @keyframes pulse {
     from {
@@ -304,11 +297,12 @@ tbody{
   }
   #buttons{
     
-     margin-top: 20px;
+     margin-top: 30px;
      display: flex;
     justify-items: center;
     justify-content: space-evenly;
     margin-bottom: 60px;
+    
 }
   
   
@@ -317,7 +311,7 @@ tbody{
     background-color: #0b080cc0;
     color: #fff;
     border: 10px;
-    padding: 10px 20px;
+    padding: 15px 20px;
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
@@ -373,12 +367,10 @@ thead th{
 .target {
   width: 5vw;
 }
-.edit-btn{
-  width: 5vw;
+.edit{
+  width: 12vw;
 }
-.delete-btn{
-  width: 5vw;
-}
+
 
 
 

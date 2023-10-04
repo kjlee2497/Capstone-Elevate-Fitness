@@ -13,9 +13,7 @@
       <thead>
         <th class="h-name"> Workout name</th>
         <th class="h-desc">Description</th>
-        <th class="h-status">Status</th>
         <th class="h-edit"></th>
-        <th class="h-delete"></th>
         
       </thead>
 
@@ -25,12 +23,9 @@
           <tr v-for="workout in workouts" v-bind:key="workout.id">
            <td class="name" >{{ workout.name }}</td>
             <td class="description">{{ workout.description }}</td>
-            <td class="status"></td>
         
             <td class="delete-btn"><button v-on:click="goToWorkout(workout.workout_id)">Start Workout</button></td>
-            <!-- <td class="delete-btn"><button v-on:click="deleteWorkout(workout.workout_id)">Delete</button></td> -->
-           
-            <td class="status">{{ workout.status }}</td>
+            <!-- <td class="delete-btn"><button v-on:click="deleteWorkout(workout.workout_id)">Delete</button></td> -->           
           </tr>
 
         </tbody>
@@ -125,7 +120,7 @@ export default {
 
 .scrollbar {
   height: 300px;
-  width: auto;
+  width: 40vw;
   overflow: auto;
   
         }
@@ -212,7 +207,6 @@ input {
 }
 
 table{
-      width: 50vw;
       position:absolute;
       transform: translate(-50%,-50%);
       top: 40%;
@@ -286,7 +280,8 @@ table{
     text-align: center;
         font-style: italic;
         padding: 15px;
-        width: 8vw
+        width: 8vw;
+        height: 4vw;
   }
 
   th.h-desc {
@@ -294,23 +289,17 @@ table{
     color: rgb(255, 255, 255);
     text-align: center;
         font-style: italic;
+        padding-left: 80px;
+        width: 18vw;
   }
 
-  th.h-status {
-    background-color: #8f05ffb9;
-    color: rgb(255, 255, 255);
-    text-align: center;
-        font-style: italic;
-        padding: 15px;
-        width: 15vw
-  }
   th.h-edit {
     background-color: #8f05ffb9;
     color: rgb(255, 255, 255);
     text-align: center;
         font-style: italic;
         padding: 15px;
-        width: 10vw
+        width: 14vw
   }
 th.h-delete {
     background-color: #8f05ffb9;
@@ -319,12 +308,6 @@ th.h-delete {
         font-style: italic;
         padding: 15px;
         width: 10vw
-  }
-  .edit-btn{
-  width: 5vw;
-}
-.delete-btn{
-  width: 5vw;
 }
 .add-btn{
   width: 5vw;

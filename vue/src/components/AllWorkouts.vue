@@ -13,8 +13,6 @@
       <thead>
         <th class="h-name"> Workout name</th>
         <th class="h-desc">Description</th>
-        <th class="h-status">Status</th>
-        <th class="h-edit"></th>
         <th class="h-delete"></th>
         
       </thead>
@@ -29,7 +27,7 @@
         
             <td class="edit-btn"><button v-on:click="goToDetailPage(workout.workout_id)">Workout Details</button></td>
             <td class="delete-btn"><button v-on:click="deleteWorkout(workout.workout_id)">Delete</button></td>
-            <td class="add-btn"><button v-on:click=" assignUserToWorkout(workout.workout_id)">Add To Log</button></td>
+            <td class="add-btn"><button >Add To Log</button></td>
             <td class="status">{{ workout.status }}</td>
           </tr>
 
@@ -79,18 +77,6 @@ export default {
    goToDetailPage(workoutId){
      this.$router.push(`/workout/details/${workoutId}`)
    } ,
-   assignUserToWorkout(workoutId){
-     service.assignUserToWorkout(workoutId).then(response => {
-            if(response.status == 200) {
-                alert(
-                "Workout Added!!"
-            )
-             
-              this.$router.push(`/v1/workouts`);
-            }
-          })
-
-   },
 
     
 
@@ -102,26 +88,11 @@ export default {
     getStatus(){
 
     },
-  // updated() {
-  //  const tbody = document.getElementById('scrollbar'); 
-  //   if (tbody.scrollWidth > tbody.clientWidth) {
-  //     tbody.classList.add('tbody-with-scroll');
-  //   } else {
-  //     tbody.classList.remove('tbody-with-scroll');
-  //   }
-  // }
   }
 }
 </script>
 
 <style scoped>
-
-
-/* .allWorkouts {
-  display: flex;
-  margin: 50px;
-  column-gap: 20px;
-} */
 
 .scrollbar {
   height: 300px;
@@ -143,7 +114,6 @@ export default {
 }
         
 #scrollbar::-webkit-scrollbar-thumb {
-  /* background-image: -webkit-gradient(linear, left bottom, left top, color-stop(.5, #a4a0a5), color-stop(1, #2f3031)); */
   background-color: #8f05ffb9;
    transform: scale(1.05);
   backdrop-filter: blur(30px);
@@ -161,29 +131,11 @@ h1{
 
 }
 
-table{
-  
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-
-}
-
 body {
   margin: auto;
 }
 
-table {
-    
-    
-    display: inline-block;
-    border: 1px black solid;
-    padding: 10px 20px;
-    border-radius: 15px;
-    font-family: 'Poppins',sans-serif;
-    background-color: rgba(255, 255, 255, 0.493);
-    backdrop-filter: blur(30px);
-}
+
 
 .button-container{
     text-align: center;
@@ -212,6 +164,7 @@ input {
 }
 
 table{
+    margin-top: 10vh;
       width: 50vw;
       position:absolute;
       transform: translate(-50%,-50%);
@@ -232,41 +185,33 @@ table{
     border: 1px black solid;
     padding: 30px;
     font-family: 'Poppins',sans-serif;
-    background-color: rgba(255,255,255,0.13);
+    background-color: rgba(0, 0, 0, 0.219);
     backdrop-filter: blur(15px);
   }
  
-  /* Data cell styles */
   table td {
     padding: 10px;
     border-bottom: 1px solid #ddd;
   }
 
-  /* Alternate row background color */
   table tr:nth-child(even) {
     background-color: #0505056e;
     backdrop-filter: blur(30px);
   }
 
-  /* Hover effect for rows */
   table tr:hover {
     background-color: #b409f896;
   }
 
-  /* Add some space around the table */
   table-container {
     margin: 40px;
   }
 
-  table tr {
-    transition: background-color 0.3s, opacity 0.3s;
-  }
   
-    /* Add animation to row hover effect */
+  
   table tr {
     transition: background-color 0.3s, opacity 0.3s;
   }
-  /* Change background color and opacity on hover */
   tr:hover {
     background-color: #b409f896;
     opacity: 0.8;
@@ -274,12 +219,10 @@ table{
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     cursor: pointer;
   }
-  /* Add a subtle border to table rows */
   table tr {
     border-bottom: 2px solid #8f05ffb9;
     margin-left: 60vw;
   }
-  /* Add a gradient background to header cells */
   th.h-name {
     background-color: #8f05ffb9;
     color: rgb(255, 255, 255);
@@ -294,32 +237,18 @@ table{
     color: rgb(255, 255, 255);
     text-align: center;
         font-style: italic;
+        width: 15vw;
+        height: 8vh;
   }
-
-  th.h-status {
-    background-color: #8f05ffb9;
-    color: rgb(255, 255, 255);
-    text-align: center;
-        font-style: italic;
-        padding: 15px;
-        width: 15vw
-  }
-  th.h-edit {
-    background-color: #8f05ffb9;
-    color: rgb(255, 255, 255);
-    text-align: center;
-        font-style: italic;
-        padding: 15px;
-        width: 10vw
-  }
+ 
 th.h-delete {
     background-color: #8f05ffb9;
     color: rgb(255, 255, 255);
     text-align: center;
         font-style: italic;
         padding: 15px;
-        width: 10vw
-  }
+        width:25vw
+}
   .edit-btn{
   width: 5vw;
 }
@@ -336,11 +265,7 @@ tbody{
   display: block;
   
 }
-  /* Add a shadow to header cells */
-  .exerciseList-table th {
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-  }
-  /* Define the pulse animation */
+  
   @keyframes pulse {
     from {
       transform: scale(1);
@@ -357,7 +282,6 @@ tbody{
 
     margin-bottom: 40px;
 }
-  /* Basic button styles */
   button {
     background-color: #0b080cc0;
     color: #fff;
@@ -368,13 +292,11 @@ tbody{
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
 }
-  /* Hover effect - change background color and add a slight scale effect */
   button:hover {
     background-color: #8F05FF;
     transform: scale(1.05);
         animation: pulse 0.5s ease infinite alternate;
   }
-  /* Add a subtle box shadow on hover for depth */
   button:hover {
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }

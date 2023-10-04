@@ -206,6 +206,7 @@ const router = new Router({
           requiresAuth: false
         }
       },
+      
       {
         path: "/history/completed",
         name: "Completed",
