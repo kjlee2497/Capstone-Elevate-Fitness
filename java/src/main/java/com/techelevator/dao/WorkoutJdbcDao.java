@@ -198,7 +198,7 @@ public class WorkoutJdbcDao implements WorkoutDao {
 
             jdbcTemplate.update(sql, workoutId, userId);
             newWorkout = getWorkoutById(workoutId);
-            System.out.println("the problem is in vue");
+
         } catch (CannotGetJdbcConnectionException e){
             throw new RuntimeException("Unable to contact the database!", e);
         } catch (BadSqlGrammarException e){
@@ -403,6 +403,33 @@ public class WorkoutJdbcDao implements WorkoutDao {
 
 
         return display;
+    }
+
+    @Override
+    public Workout setWorkoutIncomplete(int workoutId, String username) {
+        Workout newWorkout = new Workout();
+        String sql = "UPDATE user_workouts_assigned " +
+                "SET isCompleted = false " +
+                "WHERE workout_id = ? AND user_id = ?;";
+
+        int userId = findIdByUsername(username);
+
+        try {
+
+            jdbcTemplate.update(sql, workoutId, userId);
+            newWorkout = getWorkoutById(workoutId);
+
+        } catch (CannotGetJdbcConnectionException e){
+            throw new RuntimeException("Unable to contact the database!", e);
+        } catch (BadSqlGrammarException e){
+            throw new RuntimeException("Bad SQL query: " + e.getSql()
+                    +"\n"+e.getSQLException(), e);
+        } catch (DataIntegrityViolationException e){
+            throw new RuntimeException("Database Integrity Violation", e);
+        }
+
+        System.out.println("test");
+        return newWorkout;
     }
 
     @Override

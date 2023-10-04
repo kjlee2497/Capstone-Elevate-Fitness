@@ -77,9 +77,13 @@ public class WorkoutController {
         workoutDao.deleteWorkout(id);
     }
 
-    @RequestMapping(path = "/v1/exercise/workout/{id}", method = RequestMethod.PUT)
+    @RequestMapping(path = "/v1/exercise/workout/{id}/complete", method = RequestMethod.PUT)
     public void setWorkoutComplete(Principal principal, @PathVariable int id) {
         workoutDao.setWorkoutComplete(id, principal.getName());
+    }
+    @RequestMapping(path = "/v1/exercise/workout/{id}/incomplete", method = RequestMethod.PUT)
+    public void setWorkoutIncomplete(Principal principal, @PathVariable int id) {
+        workoutDao.setWorkoutIncomplete(id, principal.getName());
     }
 
     @RequestMapping(path = "/v1/workout/add/{workoutId}", method = RequestMethod.POST)
