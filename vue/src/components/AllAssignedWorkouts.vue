@@ -13,9 +13,7 @@
       <thead>
         <th class="h-name"> Workout name</th>
         <th class="h-desc">Description</th>
-       
-        <th class="h-edit"></th>
-        <th class="h-delete"></th>
+        <th class="h-workout"></th>
         
       </thead>
 
@@ -25,12 +23,8 @@
           <tr v-for="workout in workouts" v-bind:key="workout.id">
            <td class="name" >{{ workout.name }}</td>
             <td class="description">{{ workout.description }}</td>
-          
-        
-            <td class="delete-btn"><button v-on:click="goToWorkout(workout.workout_id)">Start Workout</button></td>
-            <!-- <td class="delete-btn"><button v-on:click="deleteWorkout(workout.workout_id)">Delete</button></td> -->
-           
-        
+
+            <td class="workout-btn"><button v-on:click="goToWorkout(workout.workout_id)">Start Workout</button></td>
           </tr>
 
         </tbody>
@@ -61,21 +55,6 @@ export default {
     });
   },
   methods:{
-    deleteWorkout(id) {
-      service.deleteWorkout(id)
-          .then(res => {
-            if(res.status == 200) {
-              confirm("Workout will be deleted.  Would you like to continue?");
-              this.$router.go();
-            }
-          })
-          .catch(err => {
-            this.handleErrorResponse(err, "deleting")
-          })
-  },
-  // goToEditPage(id) {
-  //     this.$router.push(`/workout/edit/${id}`)
-  //   },
    goToWorkout(workoutId){
      this.$router.push(`/exercises/workout/${workoutId}`)
    } ,
@@ -131,19 +110,10 @@ export default {
 h1{
   color:white;
   text-align: center;
-  position: static;
+  /* position: static; */
   margin: 0px 0px;
   font-family: 'Poppins',sans-serif;
   text-shadow: 2px 2px 2px black;
-
-}
-
-table{
-  
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    
 
 }
 
@@ -151,21 +121,17 @@ body {
   margin: auto;
 }
 
-table {
-    
-    
-    display: inline-block;
-    border: 1px black solid;
-    padding: 10px 20px;
-    border-radius: 15px;
-    font-family: 'Poppins',sans-serif;
-    background-color: rgba(255, 255, 255, 0.493);
-    backdrop-filter: blur(30px);
-}
-
 .button-container{
     text-align: center;
 }
+
+/* table{
+  
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    
+} */
 
 button {
     margin: 10px 10px;
@@ -178,6 +144,21 @@ button {
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
 }
+
+/* table {
+    
+    
+    display: inline-block;
+    border: 1px black solid;
+    padding: 10px 20px;
+    border-radius: 15px;
+    font-family: 'Poppins',sans-serif;
+    background-color: rgba(255, 255, 255, 0.493);
+    backdrop-filter: blur(30px);
+} */
+
+
+
 button:hover {
      background-color: #8F05FF;
     transform: scale(1.05);
@@ -192,13 +173,12 @@ input {
 
 
 table{
-    margin-bottom: 10%;
-      width: 50vw;
-      height: 72vh;
-      position:static;
+  
+     margin-top:10vh;
+      position:absolute;
       transform: translate(-50%,-50%);
-      margin-top: 40%;
-      margin-left: 50%;
+      top: 70%;
+      left: 50%;
       border-radius: 10px;
       backdrop-filter: blur(10px);
       box-shadow: 0 0 40px rgba(8,7,16,0.6);
@@ -218,31 +198,28 @@ table{
     backdrop-filter: blur(15px);
   }
  
-  /* Data cell styles */
+  
   table td {
     padding: 10px;
     border-bottom: 1px solid #ddd;
   }
 
-  /* Alternate row background color */
   table tr:nth-child(even) {
     background-color: #0505056e;
     backdrop-filter: blur(30px);
   }
 
-  /* Hover effect for rows */
+  
   table tr:hover {
     background-color: #b409f896;
   }
 
-  /* Add some space around the table */
+  
   table-container {
     margin: 40px;
   }
 
-  table tr {
-    transition: background-color 0.3s, opacity 0.3s;
-  }
+  
   
     /* Add animation to row hover effect */
   table tr {
@@ -276,25 +253,13 @@ table{
     color: rgb(255, 255, 255);
     text-align: center;
         font-style: italic;
+        width: 15vw;
+        height: 8vh;
   }
 
-  th.h-status {
-    background-color: #8f05ffb9;
-    color: rgb(255, 255, 255);
-    text-align: center;
-        font-style: italic;
-        padding: 15px;
-        width: 15vw
-  }
-  th.h-edit {
-    background-color: #8f05ffb9;
-    color: rgb(255, 255, 255);
-    text-align: center;
-        font-style: italic;
-        padding: 15px;
-        width: 10vw
-  }
-th.h-delete {
+ 
+  
+th.h-workout {
     background-color: #8f05ffb9;
     color: rgb(255, 255, 255);
     text-align: center;
@@ -302,9 +267,6 @@ th.h-delete {
         padding: 15px;
         width: 40vw
   }
-
-
-
 
 tbody{
    height: 50vh;

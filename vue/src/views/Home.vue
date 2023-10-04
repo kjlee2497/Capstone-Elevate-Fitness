@@ -37,14 +37,18 @@ export default {
 </script>
 
 <style scoped>
+.bg-image {
+ 
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  margin:0
+}
 h1{
   color: white;
 }
-.workoutTable{
-  display: flex;
-  justify-content: center;
-  
-}
+
 .Avatar {
    display: flex;
   
