@@ -13,7 +13,7 @@
       <thead>
         <th class="h-name"> Workout name</th>
         <th class="h-desc">Description</th>
-        <th class="h-status">Status</th>
+       
         <th class="h-edit"></th>
         <th class="h-delete"></th>
         
@@ -25,12 +25,12 @@
           <tr v-for="workout in workouts" v-bind:key="workout.id">
            <td class="name" >{{ workout.name }}</td>
             <td class="description">{{ workout.description }}</td>
-            <td class="status"></td>
+          
         
             <td class="delete-btn"><button v-on:click="goToWorkout(workout.workout_id)">Start Workout</button></td>
             <td class="delete-btn"><button v-on:click="deleteWorkout(workout.workout_id)">Delete</button></td>
            
-            <td class="status">{{ workout.status }}</td>
+        
           </tr>
 
         </tbody>
@@ -91,25 +91,6 @@ export default {
           })
 
    },
-
-    
-
-
-
-  
-
-
-    getStatus(){
-
-    },
-  // updated() {
-  //  const tbody = document.getElementById('scrollbar'); 
-  //   if (tbody.scrollWidth > tbody.clientWidth) {
-  //     tbody.classList.add('tbody-with-scroll');
-  //   } else {
-  //     tbody.classList.remove('tbody-with-scroll');
-  //   }
-  // }
   }
 }
 </script>
@@ -117,11 +98,7 @@ export default {
 <style scoped>
 
 
-/* .allWorkouts {
-  display: flex;
-  margin: 50px;
-  column-gap: 20px;
-} */
+
 
 .scrollbar {
   height: 300px;
@@ -154,7 +131,7 @@ export default {
 h1{
   color:white;
   text-align: center;
-  
+  position: static;
   margin: 0px 0px;
   font-family: 'Poppins',sans-serif;
   text-shadow: 2px 2px 2px black;
@@ -166,6 +143,7 @@ table{
     display: flex;
     justify-content: center; 
     align-items: center; 
+    
 
 }
 
@@ -211,12 +189,15 @@ input {
     border: 1px darkgrey solid;
 }
 
+
+
 table{
+    margin-bottom: 10%;
       width: 50vw;
-      position:absolute;
+      position:static;
       transform: translate(-50%,-50%);
-      top: 40%;
-      left: 50%;
+      margin-top: 40%;
+      margin-left: 50%;
       border-radius: 10px;
       backdrop-filter: blur(10px);
       box-shadow: 0 0 40px rgba(8,7,16,0.6);

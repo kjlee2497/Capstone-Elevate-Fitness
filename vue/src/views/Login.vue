@@ -1,7 +1,7 @@
 <template>
   <div id="login">
     <div class="bg-image"
-     style="background-image: url('https://img.freepik.com/free-photo/dumbbells-floor-gym-ai-generative_123827-23745.jpg?w=1380&t=st=1695823629~exp=1695824229~hmac=ee69275c0111291a55c20f103415d66f21edafd2367d7ffcda747bc7a3c19745');
+     style="background-image: url('https://img.peerspace.com/image/upload/w_1200,c_limit/c_crop,g_custom,f_auto,q_auto,dpr_auto/l_PS-logo,g_south_east,x_20,y_20,w_175,o_75/seztuwttyztfuuz6ebmv');
             height: 100vh ; width:100vw "  ></div>
     <form @submit.prevent="login">
        <img class="logo" src="logo.png" alt="logo">

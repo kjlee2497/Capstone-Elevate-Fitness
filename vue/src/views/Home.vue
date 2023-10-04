@@ -9,7 +9,7 @@
 
 
     <user-data />
-    <all-assigned-workouts />
+    <all-assigned-workouts class="workoutTable" />
        
 
 
@@ -40,7 +40,10 @@ export default {
 h1{
   color: white;
 }
-
+.workoutTable{
+  display: flex;
+  justify-content: center;
+}
 .Avatar {
    display: flex;
   

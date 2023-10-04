@@ -5,7 +5,7 @@
     
 
     <div class="history">
-      <h1>Workout History</h1>
+     
 
      
 

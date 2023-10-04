@@ -223,7 +223,7 @@ h1 {
       border: 1px black solid;
       padding: 30px;
     
-    background-color: rgba(255,255,255,0.13);
+    background-color: rgba(39, 38, 38, 0.267);
     backdrop-filter: blur(15px);
   }
 

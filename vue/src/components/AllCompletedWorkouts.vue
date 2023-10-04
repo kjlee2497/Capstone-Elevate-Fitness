@@ -6,7 +6,7 @@
     <!-- <div class="scrollbar" id="scrollbar"> -->
     <br>
     <br>
-    <h1>Workout List</h1>
+    
     
       <table class="workoutList-table">
       
@@ -232,7 +232,7 @@ table{
     border: 1px black solid;
     padding: 30px;
     font-family: 'Poppins',sans-serif;
-    background-color: rgba(255,255,255,0.13);
+    background-color: rgba(20, 20, 20, 0.438);
     backdrop-filter: blur(15px);
   }
  
