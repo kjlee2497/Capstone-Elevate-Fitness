@@ -21,16 +21,16 @@
         <nav class="main-nav">
       <ul>
         <li>
-          <a href="#" class="btn" @click ="goToRequestExercise">Add Exercise</a>
+          <a href="" class="btn" @click ="goToRequestExercise">Add Exercise</a>
         </li>
         <li>
-          <a href="#" class="btn"  @click ="goToExerciseList" >Edit Exercise</a>
+          <a href="" class="btn"  @click ="goToExerciseList" >Edit Exercise</a>
         </li>
         <li>
-          <a href="#" class="btn" @click="goToExerciseList">Delete Exercise</a>
+          <a href="" class="btn" @click="goToExerciseList">Delete Exercise</a>
         </li>
         <li>
-          <a href="#" class="btn">Add Workout</a>
+          <a href="" class="btn" @click="goToAddWorkout">Add Workout</a>
         </li>
         <li>
           <a href="#" class="btn">edit workout</a>
@@ -61,11 +61,14 @@ export default {
   }, 
   methods:{
     goToExerciseList() {
-      this.$router.push({ name: '/exercises' });
+      this.$router.push({ name: 'all-exercises' });
     },
    goToRequestExercise() {
       this.$router.push({ name: 'add-exercises' });
   },
+    goToAddWorkout() {
+      this.$router.push('/exercises/workout/:workoutId/generate')
+    }
     
   }
 

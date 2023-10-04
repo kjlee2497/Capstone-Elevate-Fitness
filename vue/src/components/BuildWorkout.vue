@@ -295,11 +295,6 @@ h1 {
   
   }
   
-   
-  .exerciseList-table tr {
-    transition: background-color 0.3s, opacity 0.3s;
-  }
- 
   .exerciseList-table tr:hover {
     background-color: #b409f896;
     opacity: 0.8;

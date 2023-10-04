@@ -146,14 +146,6 @@ const router = new Router({
       }
     },
     {
-     
-
-      // route wouldn't work as /workout/generate for some reason
-      path: "/workouts/generate",
-      name: "generate-workout",
-      component: GenerateWorkout
-    },
-    {
 
      
       path: "/exercises/workout/:workoutId",
@@ -242,3 +234,4 @@ router.beforeEach((to, from, next) => {
 });
 
 export default router;
+
