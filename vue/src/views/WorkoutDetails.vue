@@ -30,6 +30,7 @@
           <th class="repCount">Rep Count</th>
           <th class="expectedTime">Expected Time To Complete</th>
           <th class="target">Target Area</th>
+          <!-- <th class="filler"></th> -->
         
         </thead>
        <tbody class="scrollbar" id="scrollbar">
@@ -139,6 +140,7 @@ input[id=cb]:checked~td.strikethrough {
   border-radius: 10px;
 
 }
+
 
 
 h1 {
@@ -310,31 +312,47 @@ thead th{
   text-align: center;
   padding: 10px;
 }
-.name {
-  width: 10vw;
+th.name {
+  width: 7vw;
  
 }
-.description {
-  width: 20vw;
+td.name{
+  width:8vw;
 }
-.weight {
-  width: 5vw;
+th.description {
+  width: 22vw;
 }
-.repCount {
-  width: 5vw;
+
+td.description{
+  width: 23vw;
 }
-.expectedTime{
-  width: 5vw;
+th.weight {
+  width: 10vw;
 }
-.target {
-  width: 5vw;
+td.weight {
+  width: 10vw;
 }
-.edit-btn{
-  width: 5vw;
+th.repCount {
+  width: 13w;
 }
-.delete-btn{
-  width: 5vw;
+td.repCount {
+  width: 13w;
 }
+
+th.expectedTime{
+  width: 15vw;
+}
+td.expectedTime{
+  width: 15vw;
+}
+th.target {
+  width: 13vw;
+}
+td.target {
+  width: 13vw;
+}
+
+
 
 
 

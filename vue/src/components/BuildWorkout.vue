@@ -52,8 +52,8 @@
     
         <div id="workoutExercises">
         <table class="exerciseList-table table table2">
-            <h1>{{ this.workout.name }}</h1>
-            <h2>{{ this.workout.description }}</h2>
+            <h1 class="workout-name">{{ this.workout.name }}</h1>
+           
                 <thead>
                 <th class="name"> Exercise Name</th>
                 <th class="description">Description</th>
@@ -63,7 +63,7 @@
                 <th class="target">Target Area</th>
                 <th class="edit-btn"></th>
                 </thead>
-            <tbody class="scrollbar" id="scrollbar">
+            <tbody class="scrollbar2" id="scrollbar2">
                 <tr v-for="exercise in this.$store.state.workoutExercises" v-bind:key="exercise.id">
                     <td class="name">{{ exercise.name }}</td>
                     <td class="description">{{ exercise.description }}</td>
@@ -217,14 +217,30 @@ export default {
   width: auto;
   overflow: auto; 
  }
+ .scrollbar2 {
+  height: 420px;
+  width: auto;
+  overflow: auto; 
+ }
 
 #scrollbar::-webkit-scrollbar {
   background-color: rgba(0, 0, 0, 0);
   width: 12px;
   border-radius: 10px;
 }
+#scrollbar2::-webkit-scrollbar {
+  background-color: rgba(0, 0, 0, 0);
+  width: 12px;
+  border-radius: 10px;
+}
         
 #scrollbar::-webkit-scrollbar-track {
+  border-radius: 10px;
+ background-color: rgba(255, 255, 255, 0.178);
+  backdrop-filter: blur(30px);
+}
+        
+#scrollbar2::-webkit-scrollbar-track {
   border-radius: 10px;
  background-color: rgba(255, 255, 255, 0.178);
   backdrop-filter: blur(30px);
@@ -237,14 +253,24 @@ export default {
   border-radius: 10px;
 
 }
+        
+#scrollbar2::-webkit-scrollbar-thumb {
+  background-color: #8f05ffb9;
+   transform: scale(1.05);
+  backdrop-filter: blur(30px);
+  border-radius: 10px;
 
+}
 
-h1 {
-  margin: 0px 0px;
+h1.workout-name {
+  margin-top:none;
+  padding-top: none;
   font-family: 'Poppins',sans-serif;
   text-shadow: 2px 2px 2px black;
 
 }
+
+
 .bg-image {
   height: 100vh;
   width: 100vw;
