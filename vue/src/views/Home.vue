@@ -43,6 +43,7 @@ h1{
 .workoutTable{
   display: flex;
   justify-content: center;
+  
 }
 .Avatar {
    display: flex;

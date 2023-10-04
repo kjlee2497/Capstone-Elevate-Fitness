@@ -194,6 +194,7 @@ input {
 table{
     margin-bottom: 10%;
       width: 50vw;
+      height: 72vh;
       position:static;
       transform: translate(-50%,-50%);
       margin-top: 40%;
@@ -253,7 +254,7 @@ table{
     opacity: 0.8;
     transform: scale(1.01);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
+   
   }
   /* Add a subtle border to table rows */
   table tr {
@@ -299,17 +300,11 @@ th.h-delete {
     text-align: center;
         font-style: italic;
         padding: 15px;
-        width: 10vw
+        width: 40vw
   }
-  .edit-btn{
-  width: 5vw;
-}
-.delete-btn{
-  width: 5vw;
-}
-.add-btn{
-  width: 5vw;
-}
+
+
+
 
 tbody{
    height: 50vh;
@@ -340,6 +335,8 @@ tbody{
 }
   /* Basic button styles */
   button {
+    /* got to go over margins */
+    margin-left: 13vw; 
     background-color: #0b080cc0;
     color: #fff;
     border: 10px;
