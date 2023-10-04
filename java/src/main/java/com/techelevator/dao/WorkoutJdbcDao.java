@@ -195,8 +195,10 @@ public class WorkoutJdbcDao implements WorkoutDao {
         int userId = findIdByUsername(username);
 
         try {
+
             jdbcTemplate.update(sql, workoutId, userId);
             newWorkout = getWorkoutById(workoutId);
+            System.out.println("the problem is in vue");
         } catch (CannotGetJdbcConnectionException e){
             throw new RuntimeException("Unable to contact the database!", e);
         } catch (BadSqlGrammarException e){

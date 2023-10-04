@@ -4,6 +4,7 @@
   <div class="home"  > 
     <h1>Welcome </h1>
     <user-data />
+    <all-assigned-workouts />
        
 
 
@@ -14,11 +15,13 @@
 </template>
 
 <script>
+import AllAssignedWorkouts from '../components/AllAssignedWorkouts.vue';
 import UserData from '../components/UserData.vue';
 
 export default {
   components: {
-    UserData
+    UserData,
+    AllAssignedWorkouts
   },
   data(){  
   return {};
