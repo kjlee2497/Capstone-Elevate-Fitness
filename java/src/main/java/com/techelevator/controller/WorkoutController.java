@@ -78,8 +78,8 @@ public class WorkoutController {
     }
 
     @RequestMapping(path = "/v1/exercise/workout/{id}", method = RequestMethod.PUT)
-    public void setWorkoutComplete(@PathVariable int id) {
-        workoutDao.setWorkoutComplete(id);
+    public void setWorkoutComplete(Principal principal, @PathVariable int id) {
+        workoutDao.setWorkoutComplete(id, principal.getName());
     }
 
     @RequestMapping(path = "/v1/workout/add/{workoutId}", method = RequestMethod.POST)
@@ -90,5 +90,10 @@ public class WorkoutController {
     @RequestMapping(path = "/assigned", method = RequestMethod.GET)
     public List<Workout> listAssignedWorkout(Principal principal){
        return workoutDao.listAssignedWorkout(principal.getName());
+    }
+
+    @RequestMapping(path = "/completed", method = RequestMethod.GET)
+    public List<Workout> listWorkoutHistoryForUser(Principal principal){
+        return workoutDao.listWorkoutHistoryForUser(principal.getName());
     }
 }
