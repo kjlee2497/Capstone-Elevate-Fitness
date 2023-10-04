@@ -56,13 +56,12 @@ public class WorkoutController {
     }
 
     @RequestMapping(path = "/v1/workout", method = RequestMethod.POST)
-    public int generateWorkout(@RequestBody Workout workout) {
-        Workout newWorkout =  workoutDao.generateWorkout(workout);
-        return newWorkout.getWorkout_id();
+    public Workout generateWorkout(@RequestBody Workout workout) {
+        return workoutDao.generateWorkout(workout);
 
     }
 
-    @RequestMapping(path = "/v1/workout/{workoutId}/{exerciseId}", method = RequestMethod.GET)
+    @RequestMapping(path = "/v1/workout/{workoutId}/{exerciseId}", method = RequestMethod.POST)
     public void addExerciseToWorkout(@PathVariable int workoutId, @PathVariable int exerciseId){
         workoutDao.addExerciseToWorkout(workoutId, exerciseId);
     }

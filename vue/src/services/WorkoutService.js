@@ -39,6 +39,9 @@ deleteWorkout(id) {
 },
 setcomplete(id) {
     return axios.put(`/v1/exercise/workout/${id}`)
+},
+addExerciseToWorkout(workoutId, exerciseId) {
+    return axios.post(`/v1/workout/${workoutId}/${exerciseId}`)
 }
 
 

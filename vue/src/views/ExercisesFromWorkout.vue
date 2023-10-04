@@ -101,7 +101,21 @@ export default {
               this.$router.push(`/v1/workouts`);
             }
           })
-   }
+   },
+   handleErrorResponse(error, verb) {
+      if (error.response) {
+        this.errorMsg =
+          "Error " + verb + " exercise to workout. Response received was '" +
+          error.response.statusText +
+          "'.";
+      } else if (error.request) {
+        this.errorMsg =
+          "Error " + verb + " exercise to workout. Server could not be reached.";
+      } else {
+        this.errorMsg =
+          "Error " + verb + " exercise to workout. Request could not be created.";
+      }
+    }
    
    
  

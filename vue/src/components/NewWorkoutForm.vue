@@ -38,7 +38,6 @@ export default {
                 description: "",
                 status: "Pending"
             },
-            newWorkoutId: ""
         }
     },
     methods: {
@@ -48,18 +47,20 @@ export default {
         description: this.workout.description,
         status: this.workout.status
       };
+      let newWorkoutId = "";
       WorkoutService.generateWorkout(newWorkout)
         .then(res => {
           if (res.status === 200) {
             // this.$router.push(`/v1/workouts/`) ///workouts/:id
-            this.newWorkoutId = res.data.results;
+            newWorkoutId = res.data.workout_id;
             // this.$router.push(`/exercises/workout/${generatedWorkoutId}/generate`)
+            console.log(newWorkoutId);
+            this.$router.push(`/exercises/workout/${newWorkoutId}/generate`);
           }
         })
         .catch(err => {
           this.handleErrorResponse(err, "updating")
         });
-          console.log(this.newWorkoutId);
     },
         cancelForm() {
             alert(
