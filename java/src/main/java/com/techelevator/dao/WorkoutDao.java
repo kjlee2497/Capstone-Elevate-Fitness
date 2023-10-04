@@ -22,4 +22,7 @@ public interface WorkoutDao {
     Workout updateWorkout(Workout workout);
     boolean deleteWorkout(int id);
 
+    void assignWorkoutToUser(int workoutId, String username);
+    int findIdByUsername(String username);
+
 }

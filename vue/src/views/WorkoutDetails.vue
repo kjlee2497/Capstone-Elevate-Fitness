@@ -4,25 +4,17 @@
      style="background-image: url('  https://img.peerspace.com/image/upload/w_1200,c_limit/c_crop,g_custom,f_auto,q_auto,dpr_auto/l_PS-logo,g_south_east,x_20,y_20,w_175,o_75/nutvnqk8nwfellox26n5
 ');" >
 <br>
-    <h1>Exercise List</h1>
+    <h1>Current Workout</h1>
     
     <br>
-    <div class="filterBar">
-        <input type="text" id="filterTextBar" v-model="filterOptions.searchQuery">
-        <select name="filterCategory" id="filterCategory" v-model="filterOptions.searchFilter">
-          <option value="exerciseName">Name</option>
-          <option value="target">Target</option>
-          <option value="time">Time</option>
-          <option value="all">All</option>
-        </select>
-        <button id="filterBtn" v-on:click="filterExercises">Filter</button>
+    
+        
     <div id="buttons">
-      <button>Add Selected Exercises to a Workout</button>
+   
+   
+      <button v-on:click="backToWorkoutList(myId)">Exit Workout</button>
       
-      <button class="requestButton" @click="goToRequestExercise">Add an Exercise</button>
-      <button>Generate a Random Workout</button>
-      
-    </div>
+    
 
     </div>
     <br>
@@ -36,22 +28,20 @@
           <th class="repCount">Rep Count</th>
           <th class="expectedTime">Expected Time to Complete</th>
           <th class="target">Target Area</th>
-          <th class="edit-btn"></th>
-          <th class="delete-btn"></th>
+        
         </thead>
        <tbody class="scrollbar" id="scrollbar">
        
            
           <tr v-for="exercise in filter" v-bind:key="exercise.id">
-            <td class="name">{{ exercise.name }}</td>
+            <td class="strikethrough">{{ exercise.name }}</td>
             <td class="description">{{ exercise.description }}</td>
             <td class="weight">{{ exercise.weight }} lbs</td>
             <td class="repCount">{{ exercise.repCount }} reps</td>
             <td class="expectedTime">{{ exercise.expectedTime }} seconds</td>
             <td class="target">{{ exercise.target }}</td>
-            <td class="edit-btn"><button v-on:click="goToEditPage(exercise.exercise_id)">Edit</button></td>
-            <td class="delete-btn"><button v-on:click="deleteExercise(exercise.exercise_id)">Delete</button></td>
-        
+           
+           
         </tr>
            
         </tbody>
@@ -64,12 +54,16 @@
 </template>
 <script>
  import service from '../services/ExerciseService'
+
+
+
 export default {
-  name: "all-exercises",
+  name: "workoutDetails",
   data(){
     return{
       exercises:[],
       filter:[],
+      myId: this.$route.params.workoutId,  //wonky solution, fix it tomorrow 
       filterOptions: {
         searchQuery: "",
         searchFilter: "all"
@@ -77,86 +71,33 @@ export default {
     }
   },
   created() {
-    service.getAllExercises().then((response) => {
+    service.getExercisesByWorkout(this.$route.params.workoutId).then((response) => {
       this.exercises = response.data;
       this.filter = this.exercises;
+      
     })
     .catch(err => {
       this.handleErrorResponse(err, "getting")
     });
+  
   },
   methods: {
-    goToEditPage(exerciseId) {
-      this.$router.push(`/exercise/${exerciseId}`)
-    },
-   goToRequestExercise() {
-      this.$router.push({ name: 'add-exercises' });
+
+  backToWorkoutList(){
+    this.$router.push(`/v1/workouts`)
   },
-    deleteExercise(exerciseId) {
-      service.deleteExercise(exerciseId)
-          .then(res => {
-            if(res.status == 200) {
-              confirm("Exercise will be deleted.  Would you like to continue?");
-              this.$router.go();
-            }
-          })
-          .catch(err => {
-            this.handleErrorResponse(err, "deleting")
-          })
-    },
-    filterExercises(){
-      if(this.filterOptions.searchFilter == 'all') {
-        this.filter = this.exercises;
-      }
-      if(this.filterOptions.searchFilter == 'target') {
-        this.filter = [];
-        let filteredExercises = [];
-        for(let exercise of this.exercises) {
-          if(exercise.target == this.filterOptions.searchQuery) {
-            filteredExercises.push(exercise);
-          }
-        }
-        this.filter = filteredExercises;
-      }
-      if(this.filterOptions.searchFilter == 'exerciseName') {
-        this.filter = [];
-        let filteredExercises = [];
-        for(let exercise of this.exercises) {
-          if(exercise.name.toLowerCase().includes(this.filterOptions.searchQuery.toLowerCase())) {
-            filteredExercises.push(exercise);
-          }
-        }
-        this.filter = filteredExercises;
-      }
-      if(this.filterOptions.searchFilter == 'time') {
-          this.filter = [];
-          let filteredExercises = [];
-          for(let exercise of this.exercises) {
-            if(exercise.expectedTime <= this.filterOptions.searchQuery) {
-              filteredExercises.push(exercise);
-            }
-          }
-        this.filter = filteredExercises;
-      }
-    },
-    handleErrorResponse(error, verb) {
-      if (error.response) {
-        this.errorMsg =
-          "Error " + verb + " exercise. Response received was '" +
-          error.response.statusText +
-          "'.";
-      } else if (error.request) {
-        this.errorMsg =
-          "Error " + verb + " exercise. Server could not be reached.";
-      } else {
-        this.errorMsg =
-          "Error " + verb + " exercise. Request could not be created.";
-      }
-    }
+  
+   
+ 
+ 
   }
 }
 </script>
 <style scoped>
+input[id=cb]:checked~td.strikethrough {
+  text-decoration: line-through;
+  color: red;
+}
 
 
 .scrollbar {
@@ -357,6 +298,7 @@ thead th{
 }
 .name {
   width: 10vw;
+ 
 }
 .description {
   width: 20vw;

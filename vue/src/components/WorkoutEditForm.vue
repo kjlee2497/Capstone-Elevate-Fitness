@@ -12,10 +12,7 @@
           <input type="text" id="description" v-model="workout.description">
         </div>
 
-        <div class="form-control">
-          <label for="status">Status:</label>
-          <input type="text" id="status" v-model="workout.status">
-        </div>
+        
 
         <div class="btn-container">
           <button class="btn btn-submit" type="submit">Submit</button>

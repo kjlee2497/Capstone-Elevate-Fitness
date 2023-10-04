@@ -4,7 +4,7 @@
      style="background-image: url('  https://img.peerspace.com/image/upload/w_1200,c_limit/c_crop,g_custom,f_auto,q_auto,dpr_auto/l_PS-logo,g_south_east,x_20,y_20,w_175,o_75/nutvnqk8nwfellox26n5
 ');" >
 <br>
-    <h1>Current Exercise</h1>
+    <h1>Current Workout</h1>
     
     <br>
     
@@ -12,6 +12,7 @@
     <div id="buttons">
    
       <button v-on:click="setComplete(myId)">Complete Workout</button>
+      <button v-on:click="backToWorkoutList(myId)">Exit Workout</button>
       
     
 
@@ -33,14 +34,16 @@
        
            
           <tr v-for="exercise in filter" v-bind:key="exercise.id">
-            <td class="name">{{ exercise.name }}</td>
+            <td class="strikethrough">{{ exercise.name }}</td>
             <td class="description">{{ exercise.description }}</td>
             <td class="weight">{{ exercise.weight }} lbs</td>
             <td class="repCount">{{ exercise.repCount }} reps</td>
             <td class="expectedTime">{{ exercise.expectedTime }} seconds</td>
             <td class="target">{{ exercise.target }}</td>
             <td>
-                <input type="checkbox" id="complete"> 
+              
+                <input name="cb" type="checkbox" id="cb"> 
+                <label for="cb"></label>
                 
             </td>
            
@@ -84,11 +87,18 @@ export default {
   
   },
   methods: {
+
+  backToWorkoutList(){
+    this.$router.push(`/v1/workouts`)
+  },
    setComplete(workoutId){
        WorkoutService.setcomplete(workoutId).then(response => {
             if(response.status == 200) {
+                alert(
+                "Workout Completed!!"
+            )
              
-              this.$router.push(`/home`);
+              this.$router.push(`/v1/workouts`);
             }
           })
    }
@@ -99,6 +109,10 @@ export default {
 }
 </script>
 <style scoped>
+input[id=cb]:checked~td.strikethrough {
+  text-decoration: line-through;
+  color: red;
+}
 
 
 .scrollbar {
@@ -299,6 +313,7 @@ thead th{
 }
 .name {
   width: 10vw;
+ 
 }
 .description {
   width: 20vw;
@@ -321,6 +336,8 @@ thead th{
 .delete-btn{
   width: 5vw;
 }
+
+
 
 
 

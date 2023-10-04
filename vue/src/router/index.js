@@ -19,7 +19,8 @@ import TrainerHome from '../views/TrainerHome'
 import Calendar from '../views/Calendar'
 import EditWorkout from '../views/EditWorkout'
 import ExercisesFromWorkout from '../views/ExercisesFromWorkout'
-
+import WorkoutDetails from '../views/WorkoutDetails'
+import MeetTrainers from '../views/MeetTrainers'
 
 Vue.use(Router)
 
@@ -144,6 +145,16 @@ const router = new Router({
     },
     {
      
+
+      // route wouldn't work as /workout/generate for some reason
+      path: "/workouts/generate",
+      name: "generate-workout",
+      component: GenerateWorkout
+    },
+    {
+
+     
+
       path: "/exercises/workout/:workoutId",
       name: "exercise-workout",
       component: ExercisesFromWorkout,
@@ -185,7 +196,23 @@ const router = new Router({
           meta: {
             requiresAuth: true
           }
+        },
+      {
+        path: "/workout/details/:workoutId",
+        name: "workoutDeta",
+        component: WorkoutDetails,
+          meta: {
+            requiresAuth: true
+          }
+        },
+        {
+        path: "/trainers/meet",
+        name: "meet-trainers",
+        component: MeetTrainers,
+        meta: {
+          requiresAuth: false
         }
+      }
     
     
   ]
