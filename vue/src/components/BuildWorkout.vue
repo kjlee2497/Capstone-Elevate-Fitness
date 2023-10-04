@@ -29,7 +29,7 @@
         <table class="exerciseList-table table">
         
             <thead>
-            <th class="name"> Exercise name</th>
+            <th class="name"> Exercise Name</th>
             <th class="description">Description</th>
             <th class="weight">Suggested Weight</th>
             <th class="repCount">Rep Count</th>
@@ -55,7 +55,7 @@
             <h1>{{ this.workout.name }}</h1>
             <h2>{{ this.workout.description }}</h2>
                 <thead>
-                <th class="name"> Exercise name</th>
+                <th class="name"> Exercise Name</th>
                 <th class="description">Description</th>
                 <th class="weight">Suggested Weight</th>
                 <th class="repCount">Rep Count</th>
