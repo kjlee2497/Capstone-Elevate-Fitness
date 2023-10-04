@@ -20,6 +20,7 @@ import Calendar from '../views/Calendar'
 import EditWorkout from '../views/EditWorkout'
 import ExercisesFromWorkout from '../views/ExercisesFromWorkout'
 import WorkoutDetails from '../views/WorkoutDetails'
+import HistoryView from '../views/HistoryView'
 
 Vue.use(Router)
 
@@ -191,6 +192,14 @@ const router = new Router({
         path: "/workout/details/:workoutId",
         name: "workoutDeta",
         component: WorkoutDetails,
+          meta: {
+            requiresAuth: true
+          }
+        },
+        {
+        path: "/history/completed",
+        name: "Completed",
+        component: HistoryView,
           meta: {
             requiresAuth: true
           }

@@ -45,7 +45,13 @@ export default {
     },
     assignUserToWorkout(id) {
         return axios.post(`/v1/workout/add/${id}`);
-    }
+    },
+    listAssignedWorkout(){
+        return axios.get(`/assigned`)
+    },
+    listWorkoutHistoryForUser(){
+        return axios.get(`/completed`)
+    },
 
 
 
