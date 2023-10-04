@@ -34,6 +34,9 @@ getExerciseById(exerciseId) {
     return axios.get(`/exercises/id/${exerciseId}`);
 },
 
+deleteExerciseFromWorkout(exerciseId) {
+    return axios.delete(`/workout/exercises/${exerciseId}`)
+}
 
 
 

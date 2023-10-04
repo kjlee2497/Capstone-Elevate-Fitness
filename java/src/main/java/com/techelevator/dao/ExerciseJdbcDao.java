@@ -186,6 +186,30 @@ public class ExerciseJdbcDao implements ExerciseDao {
         return userId;
     }
 
+    @Override
+    public boolean deleteExerciseFromWorkout(int exerciseId) {
+        boolean deleted = false;
+        String sql = "DELETE FROM workout_exercises WHERE exercise_id = ?";
+
+        try {
+            int rowsDeleted = jdbcTemplate.update(sql, exerciseId);
+            if(rowsDeleted == 1) {
+                deleted = true;
+            } else {
+                deleted = false;
+            }
+        } catch (CannotGetJdbcConnectionException e){
+            throw new RuntimeException("Unable to contact the database!", e);
+        } catch (BadSqlGrammarException e){
+            throw new RuntimeException("Bad SQL query: " + e.getSql()
+                    +"\n"+e.getSQLException(), e);
+        } catch (DataIntegrityViolationException e){
+            throw new RuntimeException("Database Integrity Violation", e);
+        }
+
+        return deleted;
+    }
+
 
     @Override
     public Exercise createExercise(Exercise exercise, String username) {

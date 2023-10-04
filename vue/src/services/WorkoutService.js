@@ -30,8 +30,8 @@ export default {
         return axios.post("/v1/workout", workout)
     },
 
-    updateWorkout(id) {
-        return axios.put(`/v1/workout/${id}`);
+    updateWorkout(id, workout) {
+        return axios.put(`/v1/workout/${id}`, workout);
     },
 
     deleteWorkout(id) {

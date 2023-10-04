@@ -230,7 +230,7 @@ table{
     opacity: 0.8;
     transform: scale(1.01);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
+    
   }
   table tr {
     border-bottom: 2px solid #8f05ffb9;

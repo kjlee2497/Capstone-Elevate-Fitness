@@ -4,7 +4,9 @@
      style="background-image: url('  https://img.peerspace.com/image/upload/w_1200,c_limit/c_crop,g_custom,f_auto,q_auto,dpr_auto/l_PS-logo,g_south_east,x_20,y_20,w_175,o_75/nutvnqk8nwfellox26n5
 ');" >
 <br>
-    <h1>Current Workout</h1>
+    <h1>{{ workout.name }}</h1>
+    <!-- left commented out in case we don't want to show a description here -->
+    <!-- <h2>{{ workout.description }}</h2> -->
     
     <br>
     
@@ -53,7 +55,8 @@
 
 </template>
 <script>
- import service from '../services/ExerciseService'
+import service from '../services/ExerciseService'
+import WorkoutService from '../services/WorkoutService'
 
 
 
@@ -67,7 +70,11 @@ export default {
       filterOptions: {
         searchQuery: "",
         searchFilter: "all"
-      }
+      },
+      workout: {
+        workout_id: '',
+        name: '',
+        description: ''      }
     }
   },
   created() {
@@ -79,7 +86,11 @@ export default {
     .catch(err => {
       this.handleErrorResponse(err, "getting")
     });
-  
+    WorkoutService.getWorkoutById(this.$route.params.workoutId)
+      .then(res => {
+        this.workout = res.data
+        console.log(this.workout)
+      })
   },
   methods: {
 
