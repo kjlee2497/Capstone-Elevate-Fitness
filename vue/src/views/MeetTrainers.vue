@@ -1,7 +1,8 @@
 <template>
   <body>
-    <button class="back-btn" @click="goToLandingPage">Back</button>
+    
     <h1>Meet The Trainers</h1>
+    <button class="back-btn" @click="goToLandingPage">Back</button>
     <div class="container">
       <div class="row">
         <div class="col">
@@ -214,7 +215,8 @@ export default {
         0 0 20px #8f05ff83;
 }
 
- /* button {
+ .back-btn {
+   margin-right: 10%;
     background-color: rgb(238, 238, 238);
     color: black;
     border: 10px;
@@ -227,7 +229,9 @@ export default {
     
 }
  
-  button:hover {
+  .back-btn:hover {
+    display: flex;
+    
     background-color: #8F05FF;
     transform: scale(1.05);
         animation: pulse 0.5s ease infinite alternate;
@@ -235,9 +239,9 @@ export default {
         color: white;
   }
  
-  button:hover {
+ back-btn:hover {
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-} */
+} 
 
 
 .usercard-about {

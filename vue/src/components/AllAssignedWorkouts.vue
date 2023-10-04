@@ -9,7 +9,6 @@
     <h1>Workout List</h1>
     
       <table class="workoutList-table">
-      
       <thead>
         <th class="h-name"> Workout name</th>
         <th class="h-desc">Description</th>
@@ -174,11 +173,12 @@ input {
 
 table{
   
-     margin-top:10vh;
+     /* margin-top:5vh; */
       position:absolute;
       transform: translate(-50%,-50%);
       top: 70%;
       left: 50%;
+      
       border-radius: 10px;
       backdrop-filter: blur(10px);
       box-shadow: 0 0 40px rgba(8,7,16,0.6);
