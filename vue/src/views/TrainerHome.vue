@@ -72,6 +72,19 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.showcase {
+  grid-area: showcase;
+  min-height: 400px;
+  background: url(https://hips.hearstapps.com/hmg-prod/images/gettyimages-865837254-1520531198.jpg?crop=0.686xw:0.791xh;0.107xw,0.0879xh&resize=1200:*);
+  background-size: cover;
+  background-position: center;
+  padding: 4.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  box-shadow: var(--shadow);
+}
 
 </style>

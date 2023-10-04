@@ -20,6 +20,7 @@ import Calendar from '../views/Calendar'
 import EditWorkout from '../views/EditWorkout'
 import ExercisesFromWorkout from '../views/ExercisesFromWorkout'
 import WorkoutDetails from '../views/WorkoutDetails'
+import MeetTrainers from '../views/MeetTrainers'
 
 Vue.use(Router)
 
@@ -203,6 +204,14 @@ const router = new Router({
             requiresAuth: true
           }
         },
+        {
+        path: "/trainers/meet",
+        name: "meet-trainers",
+        component: MeetTrainers,
+        meta: {
+          requiresAuth: false
+        }
+      }
     
     
   ]

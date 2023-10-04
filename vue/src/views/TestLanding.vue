@@ -1,14 +1,15 @@
 <template>
+
 <div id="landing">
   <div class="wrapper">
     <!-- Navigation -->
     <nav class="main-nav">
       <ul>
         <li>
-          <a href="#" class="topLoginBtn" @click ="goToLogin" >Sign in</a>
+          <a href="#" class="topLoginBtn1" @click ="goToLogin" >Sign in</a>
         </li>
         <li>
-          <a href="#" class="topSignUpBtn" @click="goToRegister">Sign up</a>
+          <a href="#" class="topSignUpBtn2" @click="goToRegister">Sign up</a>
         </li>
         <li>
           <a href="#">Contact us</a>
@@ -43,7 +44,7 @@
     <section class="boxes">
       <div class="box">
         <i class="fas fa-chart-pie fa-4x"></i>
-        <h3>Analytics</h3>
+        <h3>Gym Analytics</h3>
         <p>We use the gym analytics📊📈 for gym members to provide valuable 
           insights and benefits to help individuals make informed decisions 
           about their fitness journey and optimize their workouts</p>
@@ -58,7 +59,7 @@
       </div>
       <div class="box">
         <i class="fas fa-cog fa-4x"></i>
-        <h3>Development</h3>
+        <h3>Personal Development</h3>
         <p>Embrace the journey of self-improvement and watch yourself transform🏋️‍♂️💪,
            not just physically but mentally too. Each rep, each set, and every drop
             of sweat💧 is a step closer to becoming the best version of yourself. 
@@ -67,7 +68,7 @@
       </div>
       <div class="box">
         <i class="fas fa-users fa-4x"></i>
-        <h3>Support</h3>
+        <h3>Inclusiveness</h3>
         <p>At our gym, support comes in all shapes and sizes! 💪🤝 Whether it's our friendly staff
            offering expert guidance, workout buddies cheering you on🎉🙌👏, or the community atmosphere
            that motivates you, you'll find a diverse range of support here. We're not just about lifting
@@ -193,11 +194,14 @@ img {
     font-family: 'Poppins',sans-serif;
    background-color: #ddd;
     backdrop-filter: blur(25px);
+    
 }
 
 .main-nav a:hover {
   background: var(--dark);
   color: var(--light);
+  font-weight: bold;
+  
 }
 
 .top-container {
@@ -304,7 +308,7 @@ img {
     padding: 10px 20px;
     border-radius: 15px;
     font-family: 'Poppins',sans-serif;
-   background-color: #ddd;
+   background-color: rgb(255, 255, 255);
     backdrop-filter: blur(25px);
 }
 
@@ -317,7 +321,7 @@ img {
   padding: 3rem;
     border-radius: 10px;
     font-family: 'Poppins',sans-serif;
-   background-color: #ddd;
+   background-color: white;
     backdrop-filter: blur(25px);
 }
 
