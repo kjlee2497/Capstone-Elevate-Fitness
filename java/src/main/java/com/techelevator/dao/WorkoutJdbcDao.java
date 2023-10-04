@@ -340,6 +340,36 @@ public class WorkoutJdbcDao implements WorkoutDao {
     }
 
     @Override
+    public List<Workout> listAssignedWorkout(String username) {
+        List<Workout> display = new ArrayList<>();
+
+        String sql = "SELECT *\n" +
+                     "FROM workouts\n" +
+                     "JOIN user_workouts_assigned ON workouts.workout_id = user_workouts_assigned.workout_id\n" +
+                     "WHERE user_workouts_assigned.user_id = ? AND user_workouts_assigned.isCompleted = false;";
+
+        int userId = findIdByUsername(username);
+
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+            while(results.next()) {
+                System.out.println("hi");
+                Workout workout = mapRowToWorkout(results);
+                display.add(workout);
+            }
+        } catch (CannotGetJdbcConnectionException e){
+            throw new RuntimeException("Unable to contact the database!", e);
+        } catch (BadSqlGrammarException e){
+            throw new RuntimeException("Bad SQL query: " + e.getSql()
+                    +"\n"+e.getSQLException(), e);
+        } catch (DataIntegrityViolationException e){
+            throw new RuntimeException("Database Integrity Violation", e);
+        }
+
+        return display;
+    }
+
+    @Override
     public void assignWorkoutToUser(int workoutId, String username) {
 
         String sql = "INSERT INTO user_workouts_assigned(user_id, workout_id) VALUES(?, ?)";

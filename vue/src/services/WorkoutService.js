@@ -39,7 +39,11 @@ deleteWorkout(id) {
 },
 setcomplete(id) {
     return axios.put(`/v1/exercise/workout/${id}`)
+},
+assignUserToWorkout(id) {
+    return axios.post(`/v1/workout/add/${id}`)
 }
+
 
 
 
