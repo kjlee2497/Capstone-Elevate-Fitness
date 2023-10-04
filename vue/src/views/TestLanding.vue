@@ -91,7 +91,8 @@
           Whether you're looking to lose weight, build muscle, improve endurance, or simply lead a healthier lifestyle, 
           our personal trainers will be by your side every step of the way. Don't miss out on the advantage of having a 
           fitness professional on your team; it's the secret to realizing your fitness dreams faster and more effectively.</p>
-        <a href="#" class="btn">Meet the team</a>
+          <br>
+        <a href="" class="btn" @click="goToMeetTrainers">Meet the team</a>
       </div>
     </section>
 
@@ -118,6 +119,9 @@ export default {
     },
     goToRegister() {
       this.$router.push({ name: 'register' })
+    },
+    goToMeetTrainers() {
+      this.$router.push({ name: 'meet-trainers'})
     }
   }
 

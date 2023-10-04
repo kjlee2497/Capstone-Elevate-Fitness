@@ -1,5 +1,6 @@
 <template>
   <body>
+    <button class="back-btn" @click="goToLandingPage">Back</button>
     <h1>Meet The Trainers</h1>
     <div class="container">
       <div class="row">
@@ -121,7 +122,20 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "meet-trainers",
+  data() {
+    return {
+        meetTrainers:[]
+    }
+    },
+    methods: {
+      goToLandingPage() {
+        this.$router.push("/")
+      }
+    }
+    
+  }
 </script>
 
 <style>
@@ -198,9 +212,33 @@ export default {};
         0 0 10px #8f05ffb9,
         0 0 15px #8f05ffb9,
         0 0 20px #8f05ff83;
-
-
 }
+
+ /* button {
+    background-color: rgb(238, 238, 238);
+    color: black;
+    border: 10px;
+    padding: 15px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    
+    
+}
+ 
+  button:hover {
+    background-color: #8F05FF;
+    transform: scale(1.05);
+        animation: pulse 0.5s ease infinite alternate;
+        font-weight: bolder;
+        color: white;
+  }
+ 
+  button:hover {
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+} */
+
 
 .usercard-about {
   font-size: 16px;
