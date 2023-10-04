@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Exercise;
 import com.techelevator.model.Workout;
+import com.techelevator.model.WorkoutHistory;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ public interface WorkoutDao {
     List<Workout> listWorkoutsByUser(int id);
     List<Workout> listWorkoutsByLength();
     List<Workout> listCompletedWorkouts(int id);
-    Workout setWorkoutComplete(int workoutId);
+    Workout setWorkoutComplete(int workoutId, String username);
 
     Workout generateWorkout(Workout workout);
 
@@ -26,5 +27,7 @@ public interface WorkoutDao {
     int findIdByUsername(String username);
 
     List<Workout> listAssignedWorkout(String username);
+
+    List<Workout> listWorkoutHistoryForUser(String username);
 
 }

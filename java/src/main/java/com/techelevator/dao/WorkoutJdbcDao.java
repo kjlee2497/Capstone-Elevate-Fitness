@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Exercise;
 import com.techelevator.model.Workout;
+import com.techelevator.model.WorkoutHistory;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.BadSqlGrammarException;
@@ -185,14 +186,16 @@ public class WorkoutJdbcDao implements WorkoutDao {
     }
 
     @Override
-    public Workout setWorkoutComplete(int workoutId) {
+    public Workout setWorkoutComplete(int workoutId, String username) {
         Workout newWorkout = new Workout();
-        String sql = "UPDATE workouts " +
+        String sql = "UPDATE user_workouts_assigned " +
                 "SET isCompleted = true " +
-                "WHERE workout_id = ?";
+                "WHERE workout_id = ? AND user_id = ?;";
+
+        int userId = findIdByUsername(username);
 
         try {
-            jdbcTemplate.update(sql, workoutId);
+            jdbcTemplate.update(sql, workoutId, userId);
             newWorkout = getWorkoutById(workoutId);
         } catch (CannotGetJdbcConnectionException e){
             throw new RuntimeException("Unable to contact the database!", e);
@@ -346,7 +349,7 @@ public class WorkoutJdbcDao implements WorkoutDao {
         String sql = "SELECT *\n" +
                      "FROM workouts\n" +
                      "JOIN user_workouts_assigned ON workouts.workout_id = user_workouts_assigned.workout_id\n" +
-                     "WHERE user_workouts_assigned.user_id = ? AND user_workouts_assigned.isCompleted = false;";
+                     "WHERE user_workouts_assigned.user_id = ? AND user_workouts_assigned.isCompleted = false;"; //
 
         int userId = findIdByUsername(username);
 
@@ -365,6 +368,37 @@ public class WorkoutJdbcDao implements WorkoutDao {
         } catch (DataIntegrityViolationException e){
             throw new RuntimeException("Database Integrity Violation", e);
         }
+
+        return display;
+    }
+
+    @Override
+    public List<Workout> listWorkoutHistoryForUser(String username) {
+        List<Workout> display = new ArrayList<>();
+
+        String sql = "SELECT *\n" +
+                "FROM workouts\n" +
+                "JOIN user_workouts_assigned ON workouts.workout_id = user_workouts_assigned.workout_id\n" +
+                "WHERE user_workouts_assigned.user_id = ? AND user_workouts_assigned.isCompleted = true;";
+
+        int userId = findIdByUsername(username);
+
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+            while(results.next()) {
+                System.out.println("hi");
+                Workout workout = mapRowToWorkout(results);
+                display.add(workout);
+            }
+        } catch (CannotGetJdbcConnectionException e){
+            throw new RuntimeException("Unable to contact the database!", e);
+        } catch (BadSqlGrammarException e){
+            throw new RuntimeException("Bad SQL query: " + e.getSql()
+                    +"\n"+e.getSQLException(), e);
+        } catch (DataIntegrityViolationException e){
+            throw new RuntimeException("Database Integrity Violation", e);
+        }
+
 
         return display;
     }
