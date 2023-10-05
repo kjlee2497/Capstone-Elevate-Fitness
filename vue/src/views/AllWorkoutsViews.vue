@@ -41,7 +41,7 @@ export default {
 }
 
 .btn-container {
-  margin-top: 30%;
+  margin-top: none;
 }
 
 .btn {

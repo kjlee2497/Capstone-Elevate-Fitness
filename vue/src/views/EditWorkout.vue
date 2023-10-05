@@ -186,7 +186,7 @@ h1 {
   table{
     display: flex;
     justify-items: center;
-      margin-top:6%;
+      margin-top:155px;
       height: 65vh;
       width: 75vw;
       position:absolute;
