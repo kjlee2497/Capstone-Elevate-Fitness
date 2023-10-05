@@ -177,7 +177,7 @@ input {
 }
 
 table{
-    margin-top: 10vh;
+    margin-top: 4%;
       width: 50vw;
       position:absolute;
       transform: translate(-50%,-50%);

@@ -17,10 +17,10 @@
         </select>
         <button id="filterBtn" v-on:click="filterExercises">Filter</button>
     <div id="buttons">
-      <button>Add Selected Exercises to a Workout</button>
+      <!-- <button>Add Selected Exercises to a Workout</button> -->
       
       <button class="requestButton" @click="goToRequestExercise">Add an Exercise</button>
-      <button>Generate a Random Workout</button>
+      <!-- <button>Generate a Random Workout</button> -->
       
     </div>
 
