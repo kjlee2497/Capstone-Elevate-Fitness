@@ -56,7 +56,6 @@
            
                 <thead>
                 <th class="name"> Exercise Name</th>
-                <th class="description">Description</th>
                 <th class="weight">Suggested Weight</th>
                 <th class="repCount">Rep Count</th>
                 <th class="expectedTime">Expected Time to Complete</th>
@@ -66,7 +65,6 @@
             <tbody class="scrollbar2" id="scrollbar2">
                 <tr v-for="exercise in this.$store.state.workoutExercises" v-bind:key="exercise.id">
                     <td class="name">{{ exercise.name }}</td>
-                    <td class="description">{{ exercise.description }}</td>
                     <td class="weight">{{ exercise.weight }} lbs</td>
                     <td class="repCount">{{ exercise.repCount }} reps</td>
                     <td class="expectedTime">{{ exercise.expectedTime }} seconds</td>

@@ -78,25 +78,26 @@ export default {
      this.$router.push(`/workout/details/${workoutId}`)
    } ,
    assignWorkoutToUser(workoutId) {
-     service.setincomplete(workoutId).then(res => {
-       if(res.status == 200){
-         alert("Workout Added!")
-         console.log("it was set to incomplete")
-       }
-     })
-      .catch(err => {
-            this.handleErrorResponse(err, "deleting")
-          })
      service.assignUserToWorkout(workoutId)
         .then(res => {
-          console.log("it was set to complete")
+          // console.log("it was set to complete")
            if(res.status == 200) {
-             this.$router.push('/home');
+             console.log('assigned')
            }
         })
         .catch(err => {
             this.handleErrorResponse(err, "deleting")
           });
+      service.setincomplete(workoutId).then(res => {
+       if(res.status == 200){
+         alert("Workout Added!")
+        //  console.log("it was set to incomplete")
+          this.$router.push('/home');
+       }
+     })
+      .catch(err => {
+            this.handleErrorResponse(err, "deleting")
+          })
    },
     getStatus(){
 

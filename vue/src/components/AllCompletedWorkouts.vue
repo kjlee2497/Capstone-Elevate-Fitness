@@ -24,7 +24,7 @@
            <td class="name" >{{ workout.name }}</td>
             <td class="description">{{ workout.description }}</td>
         
-            <td class="delete-btn"><button v-on:click="goToWorkout(workout.workout_id)">Start Workout</button></td>
+            <td class="delete-btn"><button v-on:click="setIncomplete(workout.workout_id)">Redo Workout</button></td>
             <!-- <td class="delete-btn"><button v-on:click="deleteWorkout(workout.workout_id)">Delete</button></td> -->           
           </tr>
 
@@ -74,14 +74,13 @@ export default {
    goToWorkout(workoutId){
      this.$router.push(`/exercises/workout/${workoutId}`)
    } ,
-   assignUserToWorkout(workoutId){
-     service.assignUserToWorkout(workoutId).then(response => {
+   setIncomplete(workoutId){
+     service.setincomplete(workoutId).then(response => {
             if(response.status == 200) {
                 alert(
-                "Workout Added!!"
-            )
-             
-              this.$router.push(`/v1/workouts`);
+                "Workout Added!!  Returning to Home..."
+                );
+                this.$router.push('/home')
             }
           })
 
