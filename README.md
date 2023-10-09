@@ -1,5 +1,2 @@
-# Final Capstone
-​
-This directory contains all of the starter projects for the final capstone.
-​
-Each project contains instructions that provides information about the starting code and explains how to get started with the final capstone project.
+This application allows the User to build and complete workouts.
+Implements a SQL database (PostGreSQL) to manage users, exercises, and workouts.
